@@ -10,21 +10,26 @@ dox-app > *:not([show]) {
 fire-files {
   margin: 1.5vh;
   position: absolute;
-  top: 6vh;
+  top: 4vh;
   left: 0;
   bottom: 0;
   right: 0;
 }
-.file-tools {
+div[files] h1 {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4.5vh;
+  height: 2.5vh;
   margin: 1.5vh;
-  display: flex;
+  padding-left: 0.5vh;
+  font-size: 3.5vh;
+  line-height: 2.5vh;
+  /* display: flex; */
   align-items: center;
-  background: #fdfcfb;
+  color: #e7e6e5bb;
+  font-weight: lighter;
+  /* background: #fdfcfb; */
   border-radius: 1em;
 }
 .file-tools > div {

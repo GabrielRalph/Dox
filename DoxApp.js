@@ -20,6 +20,13 @@ class DoxApp extends SvgPlus {
 
   }
 
+  onconnect(){
+    let files = document.querySelector("fire-files");
+    files.addEventListener("open", (e) => {
+      this.gotoEditor(e.key)
+    })
+  }
+
   get user() {return document.querySelector("fire-user");}
   get editor() {return this.querySelector("dox-editor");}
   get files() {return this.querySelector("div[files]");}

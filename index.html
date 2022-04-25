@@ -6,13 +6,13 @@
     <title>DoX</title>
     <!-- <link rel="stylesheet" href="https://arcms.w4v.es//Assets/Supreme/stylesheet.css"> -->
     <link href = "./dox.css" rel = "stylesheet" />
-    <link href = "./FireFiles/fire-files.css" rel = "stylesheet" />
+    <link href = "./FileTree/fire-files.css" rel = "stylesheet" />
     <link href = "./dox-editor.css" rel = "stylesheet" />
     <link href = "./pages.css" rel = "stylesheet" />
     <link href = "./LoveHeart/styles.css" rel = "stylesheet" />
     <script type = "module" src = "./LoveHeart/love-heart.js"></script>
     <script type = "module" src = "./DoxEditor.js"></script>
-    <script type = "module" src = "./FireFiles/fire-files.js"></script>
+    <script type = "module" src = "./FileTree/fire-files.js"></script>
     <script type = "module" src = "./DoxApp.js"></script>
     <script type = "module" src = "./pages.js"></script>
 
@@ -62,19 +62,12 @@
       <template name = "user">
         <dox-app>
           <div files show>
-            <div class = "file-tools">
-              <div name = "add">
-                <img src = "./icons/i_add.svg"/>
-                <input />
-                <img src = "./FireFiles/file.svg"/>
-                <img src = "./FireFiles/folder.svg"/>
-              </div>
-              <div name = "delete">
-                <img src = "./icons/trash.svg"/>
-              </div>
-            </div>
-            <fire-files root = "fileRoot">
+            <h1>
+              Hello {{displayName}}
+              <span signout style = "float:right;">Logout</span>
+            </h1>
 
+            <fire-files root = "fileRoot" file-ref = "files">
             </fire-files>
           </div>
           <dox-editor edit>
@@ -136,6 +129,8 @@
     fire.addEventListener("leave", () => {
       fire.loaded = true;
     })
+    // fire.addEventListener("user", () )
+    // let files = document.querySelector("fire-files");
   </script>
   <script>
   </script>
