@@ -1,0 +1,40 @@
+.user-frame {
+  width: 100%;
+  height: 100%;
+}
+.user-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 1em;
+}
+.user-bar img {
+  height: 1em;
+  border-radius: 1em;
+}
+
+user-details h1 {
+  font-size: 1.3em;
+  margin-bottom: 0.2em;
+  margin-top: 0;
+}
+user-details .row {
+  display: flex;
+  justify-content: space-between;
+}
+user-details .row span:last-of-type {
+  text-align: right;
+}
+
+user-details .optionals {
+  margin-top: 0.5em;
+}
+
+@media print {
+  div.user-bar {
+    display: none;
+  }
+}
+.btn {
+  cursor: pointer;
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=230mm, initial-scale=1mm">
+    <title>DoX</title>
+    <!-- <link rel="stylesheet" href="https://arcms.w4v.es//Assets/Supreme/stylesheet.css"> -->
+    <link href = "./dox.css" rel = "stylesheet" />
+    <link href = "./FireFiles/fire-files.css" rel = "stylesheet" />
+    <link href = "./dox-editor.css" rel = "stylesheet" />
+    <link href = "./pages.css" rel = "stylesheet" />
+    <link href = "./LoveHeart/styles.css" rel = "stylesheet" />
+    <script type = "module" src = "./LoveHeart/love-heart.js"></script>
+    <script type = "module" src = "./DoxEditor.js"></script>
+    <script type = "module" src = "./FireFiles/fire-files.js"></script>
+    <script type = "module" src = "./DoxApp.js"></script>
+    <script type = "module" src = "./pages.js"></script>
+
+    <link rel = "stylesheet" href = "./FireUser/styles.css"/>
+    <script type = "module" src = "./FireUser/fire-user.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          macros: {
+            trans: `\\underset{heat}{\\overset{cool}{\\rightleftharpoons}}`,
+            mat: ["\\left[ \\begin{matrix} #1 \\end{matrix} \\right]", 1],
+            eq: ["\\begin{equation} #1 \\label{#2} \\end{equation}", 2]
+          },
+          tags: "ams",
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <fire-user users-ref = "doxs/users/" load-delay = "3000" config = '{
+        "apiKey": "AIzaSyAwKRqxNdoO05hLlGZwb5AgWugSBzruw6A",
+        "authDomain": "myaccounts-4a6c7.firebaseapp.com",
+        "databaseURL": "https://myaccounts-4a6c7-default-rtdb.asia-southeast1.firebasedatabase.app",
+        "projectId": "myaccounts-4a6c7",
+        "storageBucket": "myaccounts-4a6c7.appspot.com",
+        "messagingSenderId": "678570989696",
+        "appId": "1:678570989696:web:ca70c09476d4c5f627ee65"}'>
+
+      <div name = "loader">
+        <love-heart></love-heart>
+      </div>
+
+      <template name = "no-user">
+        <div class = "user-bar">
+          <div class = "btn" signin>
+            Sign in
+          </div>
+        </div>
+      </template>
+
+      <template name = "user">
+        <dox-app>
+          <div files show>
+            <div class = "file-tools">
+              <div name = "add">
+                <img src = "./icons/i_add.svg"/>
+                <input />
+                <img src = "./FireFiles/file.svg"/>
+                <img src = "./FireFiles/folder.svg"/>
+              </div>
+              <div name = "delete">
+                <img src = "./icons/trash.svg"/>
+              </div>
+            </div>
+            <fire-files root = "fileRoot">
+
+            </fire-files>
+          </div>
+          <dox-editor edit>
+            <dox-tools>
+              <!-- left tools -->
+              <div>
+                <!-- <div> -->
+                  <img name = "trash" />
+                  <img name = "up" />
+                  <img name = "down" />
+                <!-- </div>
+                <div> -->
+                  <img class = sp5 name = "section" />
+                  <img name = "row" />
+                  <img name = "text" />
+                  <img name = "image" />
+                <!-- </div>
+                <div> -->
+                  <div small class = "text-field sp5" name = "image_url">
+                    <span onclick="parentNode.toggleAttribute('small')">url</span>
+                    <input placeholder="https://"/>
+                  </div>
+
+                  <div small class = "text-field" name = "image_url">
+                    <span >upload</span>
+                  </div>
+                <!-- </div>
+                <div> -->
+                  <img class = sp5 name = "align_left" />
+                  <img name = "align_center" />
+                  <img name = "align_right" />
+                  <img name = "align_justify" />
+                  <div class = "text-field" name = "font_size">
+                    <span>P<span style = "font-size: 0.7em; padding-left:0.2em;">P</span></span>
+                    <input value = "12" style = 'width: 1.5em; text-align: center'/>
+                  </div>
+                <!-- </div>
+                <div> -->
+                  <img class = sp5 name = "expand" />
+                  <img class = sp5 name = "collapse" />
+                <!-- </div> -->
+              </div>
+
+              <!-- right tools -->
+              <div>
+                <img name = "preview" />
+                <img name = "edit" />
+              </div>
+            </dox-tools>
+            <!-- <dox-pages>
+            </dox-pages> -->
+          </dox-editor>
+        </dox-app>
+      </template>
+    </fire-user>
+  </body>
+  <script type = "module">
+    let fire = document.querySelector("fire-user");
+    fire.addEventListener("leave", () => {
+      fire.loaded = true;
+    })
+  </script>
+  <script>
+  </script>
+  <style>
+
+    body {
+      font-family: 'Supreme LL TT';
+      font-weight: 300;
+    }
+
+
+    input {
+      font-family: 'Supreme LL TT';
+      font-weight: 300;
+    }
+/*
+    dox-editor {
+      width: 100%;
+      height: 100%;
+    } */
+    mjx-container {
+      pointer-events: none;
+    }
+    mjx-container a {
+      color: black;
+    }
+
+  </style>
+</html>

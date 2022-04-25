@@ -1,0 +1,2088 @@
+{
+  "FxZRc3evshhkjfYwB6b161iTm703": {
+    "fileInfo": {
+      "0": {
+        "name": "test"
+      },
+      "1": {
+        "name": "for real"
+      },
+      "-MyBrDQ1yDy5HSI7mZ35": {
+        "name": "pset 3"
+      },
+      "-MyKGWeBzJbRx2h1mgQA": {
+        "name": "comp3027 A1"
+      },
+      "-MyjDAdNn95GnoSaCPkp": {
+        "name": "pset 4"
+      },
+      "-Myo9etMTKSA_EVrlAF2": {
+        "name": "lab 2"
+      },
+      "-MzDmufHrLL-EehFi5-l": {
+        "name": "AMME3500 A1"
+      },
+      "-MzJh7KYaW81o_hT4dX2": {
+        "name": "pset 5"
+      },
+      "-MzMooVn7b6VDliNuyj-": {
+        "name": "week5"
+      },
+      "-MzniUqIFyTL21n1mem1": {
+        "name": "comp3027 A2"
+      },
+      "-Mzr7GVSxx4tB9yCCOqF": {
+        "name": "matrix notes"
+      },
+      "-MzrCrxcUJNsED5jgEqB": {
+        "name": "pset 6"
+      },
+      "-N-5Yxc6w9xF3vXAJB4J": {
+        "name": "comp3027 r2"
+      },
+      "-N-QxAk8N2a0umzlWexh": {
+        "name": "pset 7"
+      },
+      "-N-VbYf9wAttaLHUjJBd": {
+        "name": "lab 3"
+      },
+      "-N-ffQzR2ODEzUnMAA20": {
+        "name": "quaternion rotations"
+      }
+    },
+    "fileRoot": "",
+    "files": {
+      "0": {
+        "0": {
+          "0": {
+            "content": "<div>12345&nbsp;<b>&nbsp;</b>12345<b></b><b></b><b></b></div><div><br></div><div></div>",
+            "styles": {
+              "--font-size-pt": "23"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "content": "<div>$t = \\cfrac{c_1}{c_2} \\cfrac{1}{2a} log(\\cfrac{a + v}{a - v}) + c$</div><div>$ce^\\cfrac{2ac_2t}{c_1} =\\cfrac{a + v}{a - v} $</div><div>$ce^\\cfrac{2ac_2t}{c_1}(a - v)&nbsp; =a + v$</div><div>$a(ce^\\cfrac{2ac_2t}{c_1} - 1) = v(1 + ce^\\cfrac{2ac_2t}{c_1})$</div><div></div><div>&nbsp;</div>",
+            "styles": {
+              "text-align": "center"
+            },
+            "type": "rich-text"
+          },
+          "2": {
+            "0": {
+              "class": {
+                "wide": true
+              },
+              "content": "<div><span style=\"font-size: 3vw;\">$\\dot{v} = \\cfrac{u - c_2v^2}{c_1}$</span><br></div><div>$dt = \\cfrac{c_1}{u - c_2v^2}dv$</div><div>$dt = \\cfrac{c_1}{c_2}\\cfrac{1}{\\frac{u}{c_2} - v^2}dv$</div>",
+              "styles": {
+                "text-align": "center"
+              },
+              "type": "rich-text"
+            },
+            "1": {
+              "content": "$$ v = \\cfrac{ a(ce^{t\\alpha} - 1)}{1 + ce^{t\\alpha}}$$",
+              "styles": {
+                "text-align": "center"
+              },
+              "type": "rich-text"
+            },
+            "length": 2,
+            "type": "section-row"
+          },
+          "3": {
+            "type": "section-image",
+            "url": "https://getonstream.com/wp-content/uploads/2021/06/Pogchamp.png"
+          },
+          "length": 4,
+          "type": "section"
+        },
+        "1": {
+          "0": {
+            "content": "",
+            "styles": {
+              "--font-size-pt": "23"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "content": "",
+            "type": "rich-text"
+          },
+          "2": {
+            "content": "",
+            "type": "rich-text"
+          },
+          "length": 3,
+          "type": "section"
+        },
+        "2": {
+          "0": {
+            "content": "",
+            "styles": {
+              "--font-size-pt": "23"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "content": "",
+            "type": "rich-text"
+          },
+          "length": 2,
+          "type": "section"
+        },
+        "length": 3,
+        "type": "section"
+      },
+      "1": {
+        "0": {
+          "content": "prove for n = 1 and 2<div>$p(a, 1) = a$ trivial</div><div>$p(a, 2) = a^2$</div>",
+          "styles": {
+            "--font-size-pt": "11",
+            "text-align": "left"
+          },
+          "type": "rich-text"
+        },
+        "1": {
+          "0": {
+            "class": {
+              "wide": true
+            },
+            "content": "assume true $n = k$ where k is even<div>$$p(a, k) = a^k = p(a, k/2)^2$$</div><div><br></div><div>prove for $n = k + 1$</div><div>$p(a, k+1) = p(a, k/2)^2a$</div><div>$p(a, k+1) = a^ka = a^{k+1}$</div>",
+            "styles": {
+              "--font-size-pt": "12",
+              "text-align": "left"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "class": {
+              "wide": true
+            },
+            "content": "",
+            "type": "rich-text"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "length": 2,
+        "styles": {
+          "--font-size-pt": "11"
+        },
+        "type": "section"
+      },
+      "-MyBrDQ1yDy5HSI7mZ35": {
+        "0": {
+          "content": "$$m\\dot v + F_d = T$$",
+          "type": "rich-text"
+        },
+        "1": {
+          "content": "$$F_d = 0.25v^2$$",
+          "type": "rich-text"
+        },
+        "2": {
+          "content": "Given&nbsp;<div>$$\\frac{dv}{dt} = \\left. \\frac{\\partial f}{\\partial v}\\right |_{v_0, \\ T_0} (v - v_0) + \\left. \\frac{\\partial f}{\\partial u} \\right |_{v_0, \\ T_0}(T - T_0)$$</div><div>We can say $\\delta_v = v - v_0$</div><div>$\\delta_T = T - T_0$</div><div>$a = \\left. \\frac{\\partial f}{\\partial v} \\right |_{v_0, \\ T_0}$</div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b = \\left. \\frac{\\partial f}{\\partial T} \\right |_{v_0, \\ T_0}$</span></div>",
+          "type": "rich-text"
+        },
+        "3": {
+          "content": "where $f(v, T) = \\frac{1}{m}T - \\frac{0.25}{m}v^2$",
+          "type": "rich-text"
+        },
+        "4": {
+          "content": "$a = -\\frac{0.5}{m}v_0$<div>and&nbsp;</div><div>$b = \\frac{1}{m}$<br></div>",
+          "type": "rich-text"
+        },
+        "5": {
+          "content": "$0 = \\frac{1}{m}(T - T_0) - \\frac{0.5}{m}v_0(v - v_0)$<div><br></div>",
+          "type": "rich-text"
+        },
+        "6": {
+          "content": "$\\delta_v(t) = v(t) - v_0$ and $\\delta_T(t) = k(v(t) - v_0)$",
+          "type": "rich-text"
+        },
+        "7": {
+          "content": "$\\dot v + \\frac{0.46}{m}v_0(v - v_0) = \\frac{1}{m}k(v - v_0)$",
+          "type": "rich-text"
+        },
+        "8": {
+          "content": "",
+          "type": "rich-text"
+        },
+        "length": 9,
+        "type": "section"
+      },
+      "-MyKGWeBzJbRx2h1mgQA": {
+        "0": {
+          "0": {
+            "0": {
+              "class": {
+                "wide": true
+              },
+              "content": "Assignment 1<div><br></div>",
+              "styles": {
+                "--font-size-pt": "22"
+              },
+              "type": "rich-text"
+            },
+            "1": {
+              "class": {
+                "wide": true
+              },
+              "content": "Mar 2022<br>",
+              "styles": {
+                "--font-size-pt": "10",
+                "text-align": "right"
+              },
+              "type": "rich-text"
+            },
+            "length": 2,
+            "type": "section-row"
+          },
+          "length": 1,
+          "type": "section"
+        },
+        "1": {
+          "0": {
+            "0": {
+              "content": "2",
+              "type": "rich-text"
+            },
+            "1": {
+              "0": {
+                "0": {
+                  "content": "a",
+                  "type": "rich-text"
+                },
+                "1": {
+                  "0": {
+                    "0": {
+                      "content": "i",
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "class": {
+                        "wide": true
+                      },
+                      "content": "<div>Consider the function $$combine\\_fits(P_L, \\ P_R, \\ B_L, \\ B_R, \\ F_L, \\ F_R) =$$ $$F_L + F_R + fits\\_P_LB_R(P_L, \\ B_R) + fits\\_P_RB_L(P_R, \\ B_L)$$</div><div><br></div><div><b>Algorithm 1</b>&nbsp;$fits\\_P_LB_R(P_L, \\ B_R)$</div><div>To find the matches between lists $P_L$ and $B_R$ (sorted by ascending order of width with lengths $n$ and $m$ respectively) look&nbsp;at some product $p_i$ &nbsp;and check to see that it will fit within some box $b_j$ where $i = 0$ and $j = 0$ initially;&nbsp;if $p_i$ fits in $b_j$ it will fit<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;in all the proceeding boxes, a counter is adjusted accordingly&nbsp;</span>($fits+=m−j$<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">)</span>&nbsp;and we repeat by looking at the next product i.e. $i$++; if pi does not fit in bj then we repeat by looking at the next box i.e. $j$++. This process is repeated until there are either no boxes or products to look at.</div><div><br></div><div><b>Algorithm 2</b>&nbsp;$fits\\_P_RB_L(P_R, \\ B_L)$</div><div>To find the matches between <span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">lists</span>&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$P_R$</span>&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">and</span>&nbsp;$B_L$ search $P_R$ for the minimum length and $B_L$ for the maximum length, if they are the same then that value is $D$ otherwise there are no fits.&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">Construct new lists </span>$P_R'$<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;and </span>$B_L′$<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> from </span>$P_R$<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> and </span>$B_L$<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;respectively with only elements that have length </span>$D$.&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">Using algorithm 1&nbsp;the total fits can be found.&nbsp;</span></div><div><br></div>",
+                      "type": "rich-text"
+                    },
+                    "length": 2,
+                    "type": "section-row"
+                  },
+                  "1": {
+                    "0": {
+                      "content": "ii",
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "0": {
+                        "content": "<b>Proof for Algorithm 1</b>",
+                        "type": "rich-text"
+                      },
+                      "1": {
+                        "content": "<div>It is given that for any product $p_i$ in $P_L$ and $b_i$ in $B_R$ that $$length(p_i) \\le length(b_i)$$</div><div>$$width(p_i) \\le width(p_{i+1})$$</div><div>$$width(b_i) \\le width(b_{i+1})$$</div><div><br></div><div>At $p_0$ and $b_0$ there are no previous boxes or products.</div><div>Assume for some product $p_i$&nbsp;and box $b_j$ that all the fits between previous boxes and products have been accounted for.</div><div><br></div>",
+                        "type": "rich-text"
+                      },
+                      "2": {
+                        "0": {
+                          "class": {
+                            "wide": true
+                          },
+                          "content": "<div>Case:&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$width(p_i)&gt;width(b_j)$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;</span></div><div>All other preceding products will be as wide or wider than $p_i$ and hence wider than $b_j$. There will be no fits in $b_j$&nbsp;with $p_i$ and the proceeding products ($|P_L| - i$). The next unaccounted box is $b_{j+1}$.</div>",
+                          "type": "rich-text"
+                        },
+                        "1": {
+                          "class": {
+                            "wide": true
+                          },
+                          "content": "<div>Case:&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$width(p_i)≤width(b_j)$</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"></span>All preceding boxes are as wide or wider than $b_j$ and hence wider than $p_i$. $p_i$ will fit in $b_j$&nbsp;and all proceeding boxes ($|B_R| - j$). The next unaccounted product is $p_{i+1}$.</div>",
+                          "type": "rich-text"
+                        },
+                        "length": 2,
+                        "type": "section-row"
+                      },
+                      "3": {
+                        "content": "<div><br></div><div>In both cases all fits between either the $p_i$ or $b_j$ can be fully accounted for. This can be repeated on the next unaccounted box and product until all the fits between boxes and products have been accounted for.</div><div><br></div>",
+                        "type": "rich-text"
+                      },
+                      "4": {
+                        "content": "<b>Proof for Algorithm 2</b>",
+                        "type": "rich-text"
+                      },
+                      "5": {
+                        "content": "<div>It is given that for any product&nbsp;$p_i$&nbsp;in&nbsp;$P_R$&nbsp;and&nbsp;$b_i$&nbsp;in&nbsp;$B_L$&nbsp;that $$length(p_i) \\ge D \\ge length(b_i)$$</div><div>$D$ is the minimum length a product in $P_R$ can have.&nbsp;On the other hand <span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$D$</span> is the maximum length a box in&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$B_L$</span>&nbsp;can have. If <span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$minLength(P_R) = maxLength(B_L)$</span> then that length must be <span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$D$</span>.</div><div><br></div><div>$p_i$&nbsp;fits in&nbsp;$b_i$&nbsp;if&nbsp;$length(p_i) = D = length(b_i)$&nbsp;and&nbsp;$width(p_i) \\le width(b_i)$.</div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div>If $P_R'$ and $B_L$′ are constructed with only elements of length $D$ then $P_R′$ and $B_L′$ will meet the conditions for the inputs of algorithm 1.</div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div>",
+                        "type": "rich-text"
+                      },
+                      "length": 6,
+                      "type": "section"
+                    },
+                    "length": 2,
+                    "type": "section-row"
+                  },
+                  "2": {
+                    "0": {
+                      "content": "iii",
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "0": {
+                        "content": "<b>Time Complexity of Algorithm 1</b><div>On each step of the algorithm, all fits with either a product or box can be accounted for in $O(1)$ time. This will repeat until all fits between all products and boxes have been accounted for and will hence run in $O(n)$ time where $n$ is the number of boxes and products.</div><div><br></div>",
+                        "type": "rich-text"
+                      },
+                      "1": {
+                        "content": "<b>Time Complexity of Algorithm 2</b><div>Finding the minimum and maximum lengths of $P_R$ and $B_L$ runs in $O(n)$ time.</div><div><br></div><div>To construct the new input lists $P_R'$ and $B_L'$, for&nbsp;all $n$ element's $e_i$ in $P_R$ and $B_L$&nbsp;if $length(e_i) == D$&nbsp;then we will add it to the respective new input list in $O(1)$ time. As such this operation will take a total of $O(n)$ time.</div><div>&nbsp;</div><div>Finally algorithm 1 is used on the new input lists, this runs in $O(n)$ time as shown above.&nbsp;</div><div><br></div><div>Hence the upper bound time complexity for algorithm 2 is $O(n)$ time.</div><div><br></div>",
+                        "type": "rich-text"
+                      },
+                      "length": 2,
+                      "type": "section"
+                    },
+                    "length": 2,
+                    "type": "section-row"
+                  },
+                  "class": {
+                    "wide": true
+                  },
+                  "length": 3,
+                  "type": "section"
+                },
+                "length": 2,
+                "type": "section-row"
+              },
+              "1": {
+                "0": {
+                  "content": "b",
+                  "type": "rich-text"
+                },
+                "1": {
+                  "0": {
+                    "0": {
+                      "content": "i",
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "0": {
+                        "content": "<div><b>Pre-processing</b></div>Initially an array $S$ of both products and boxes is sorted by ascending length using merge sort.&nbsp;<div><br></div><div><b>Recursion</b></div><div>A recursive function $recurse(C)$ is used where the&nbsp;input is an array $C \\subset S$ and the output is the number of fits between all boxes and products in $C$.&nbsp;</div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div>If the length of $C$ is 1 then there will be no fits o<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">therwise $C$&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">is split by its center into two halves, each half is recursed on to find the fits for either side ($F_L$ and $F_R$).&nbsp;</span></div><div>After recursing each half of $C$ is now sorted by width separately.</div><div><div><br></div><div>For each element in the left half of $C$, if it is a product add it to $P_L$ otherwise add it to $B_L$ and vice versa for the right half of $C$.</div></div><div><br></div><div>Using the <i>combine fits</i> algorithm of question 2.a with the inputs constructed above the total fits of $C$ is solved.</div><div><br></div><div>Using the merge sort combine function sorted halves of $C$ are combined such that $C$ is entirely sorted by width.</div><div><br></div><div>Finally the fits are returned by the recursive function.</div><div><br></div>",
+                        "type": "rich-text"
+                      },
+                      "length": 1,
+                      "type": "section"
+                    },
+                    "length": 2,
+                    "type": "section-row"
+                  },
+                  "1": {
+                    "0": {
+                      "content": "ii",
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "0": {
+                        "content": "<b>Proof of&nbsp;Correctness</b><div>Base case if&nbsp;$len(C) = 1$&nbsp;then there are no fits, this is trivial.</div><div><br></div><div></div><div>$C$ is initially sorted by ascending length (pre-processing merge sort).&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">Therefore if we split </span>C<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> into two halves </span>Cleft<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> and </span>Cright<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> then </span>all the elements in <span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$C_{left}$</span> will be no longer than all elements in&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$C_{right}$</span>.</div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div>After both recursive function calls return,&nbsp;$C_{left}$&nbsp;and&nbsp;$C_{right}$&nbsp;will be individually sorted by ascending width (from merge sort combine step of the recursive call). As sorted elements in $C_{left}$ and $C_{right}$ are yet to be combined they will still contain the same elements as before. All products added to $P_L$ from $C_{left}$ and all products added to $P_R$ from $C_{right}$&nbsp;will be added in ascending order of width. Furthermore all the products in $P_L$ will be no longer than all the products in $P_R$. The same will apply to the boxes added to $B_L$ and $B_R$.</div><div><br></div><div></div><div>As all the conditions for the inputs of the $combine\\_fits$ algorithm have been met then it will return all fits&nbsp; (as proven in question 2.a.ii).</div><div><br></div><div>Merge sort combine step is proven in lectures.</div><div><br></div>",
+                        "type": "rich-text"
+                      },
+                      "length": 1,
+                      "type": "section"
+                    },
+                    "length": 2,
+                    "type": "section-row"
+                  },
+                  "2": {
+                    "0": {
+                      "content": "iii",
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "0": {
+                        "content": "<b>Time Complexity</b>",
+                        "type": "rich-text"
+                      },
+                      "1": {
+                        "content": "Given input $S$ with length $N$.<div><br><div>Pre-processing performs a merge sort, this runs in&nbsp;$O(N\\log N)$&nbsp;time&nbsp;(as shown in lectures).&nbsp;</div></div><div><br></div>",
+                        "type": "rich-text"
+                      },
+                      "2": {
+                        "content": "<div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"></span>Say each recursive step runs in&nbsp;$T(n)$&nbsp;time&nbsp;given the input&nbsp;$C$&nbsp;with length&nbsp;$n$.</div><div><br></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">Each half of the input array is recursed on which runs in </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$2T(\\frac{n}{2})$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">.</span><br></div><div><br><div>Constructing the <i>combine fits</i> input lists $P_L$, $B_L$, $P_R$ and $B_R$&nbsp;performs an $O(1)$ operation for every element in $C$ in $O(n)$ time.</div><div><br></div><div>The <i>combine fits</i> step takes $O(n)$ time (as shown in 2.a.iii).</div><div><br></div><div>Finally the merge sort combine step takes $O(n)$ time (as shown in lectures).</div></div><div><br></div><div>Therefore the upper bound recursive time can be expressed as&nbsp;$T(n) = 2T(\\frac{n}{2}) + O(n) = O(n\\log n)$.</div><div><br></div>",
+                        "type": "rich-text"
+                      },
+                      "3": {
+                        "content": "Hence the upper bound time complexity of the algorithm is $O(N\\log N)$",
+                        "type": "rich-text"
+                      },
+                      "length": 4,
+                      "type": "section"
+                    },
+                    "length": 2,
+                    "type": "section-row"
+                  },
+                  "length": 3,
+                  "type": "section"
+                },
+                "length": 2,
+                "type": "section-row"
+              },
+              "class": {
+                "wide": true
+              },
+              "length": 2,
+              "type": "section"
+            },
+            "length": 2,
+            "type": "section-row"
+          },
+          "length": 1,
+          "type": "section"
+        },
+        "length": 2,
+        "type": "section"
+      },
+      "-MyjDAdNn95GnoSaCPkp": {
+        "0": {
+          "0": {
+            "content": "1",
+            "type": "rich-text"
+          },
+          "1": {
+            "class": {
+              "wide": true
+            },
+            "content": "In an&nbsp;<i>open loop</i>&nbsp;system input is set initially to a constant value. In a closed loop system the input is dependant on the output of the system.",
+            "type": "rich-text"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "1": {
+          "0": {
+            "content": "2",
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "content": "$T\\dot y(t) + y(t) = u$<div>$\\dot y + \\frac{1}{T}y = \\frac{1}{T}u$</div><div>$y(t) = (y_0 - u)e^{-\\frac{t}{T}} + u$</div>",
+              "styles": {
+                "text-align": "center"
+              },
+              "type": "rich-text"
+            },
+            "1": {
+              "0": {
+                "content": "a",
+                "type": "rich-text"
+              },
+              "1": {
+                "class": {
+                  "wide": true
+                },
+                "content": "$y(t)$ is stable as $T &gt; 0$ it will converge<div><br></div>",
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "2": {
+              "0": {
+                "content": "b",
+                "type": "rich-text"
+              },
+              "1": {
+                "class": {
+                  "wide": true
+                },
+                "content": "$u(t) = 2$ and $y(0) = 0$<div>$y(t) = 2 (1 - e^{-\\frac{t}{T}}&nbsp;)$</div><div>$y(\\infty) = 2$</div><div>$2p =&nbsp;2 (1 - e^{-\\frac{t_p}{T}}&nbsp;)$</div><div>$e^{-\\frac{t_p}{T}}&nbsp;=&nbsp; (1 -&nbsp;p)$</div><div>$t_p = -Tlog(1 - p)$</div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$rise (0.1y(\\infty), \\ 0.9y(\\infty)) = T(-log(0.1) + log(0.9))$</span></div><div>$rise = Tlog(9)$</div><div>$settle(0.98y(\\infty)) = -Tlog(0.98)$</div><div><br></div>",
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "3": {
+              "0": {
+                "content": "c",
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "0": {
+                    "content": "i",
+                    "type": "rich-text"
+                  },
+                  "1": {
+                    "class": {
+                      "wide": true
+                    },
+                    "content": "<div></div><div>$\\dot y + y = K_p(r - y)$</div><div>$\\dot y + (1 + K_p)y = K_pr$</div><div>$y(t) = (y_0 - \\frac{K_pr}{1 + K_p})e^{-(1 + K_p)t} + \\frac{K_pr}{1 + K_p}$</div><div>$y(t) = \\frac{K_pr}{1 + K_p}(1 - e^{-(1 + K_p)t})$</div><div>$y(\\infty) = \\frac{K_pr}{1 + K_p}$</div><div>$p = (1 - e^{-(1 + K_p)t_{settle}})$</div><div>$t_{settle} = -\\cfrac{log(1 - p)}{(1 + K_p)}$&nbsp;</div><div>for $p = 0.98$ and $K_p = 0.2$</div><div>$t_{settle} =&nbsp;1.42s$</div><div>for $K_p = 8$</div><div>$t_{settle} =&nbsp;0.188s$</div><div><br></div>",
+                    "type": "rich-text"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "1": {
+                  "0": {
+                    "content": "ii",
+                    "type": "rich-text"
+                  },
+                  "1": {
+                    "class": {
+                      "wide": true
+                    },
+                    "content": "$\\dot y_d + y_d = -K_py + d$<div>$\\dot y_d + (1 + K_p)y_d = d$</div><div>$y_d(t) = \\frac{d}{1 + K_p}(1 - e^{-(1 + K_p)t})$</div><div>$y_d(\\infty) = \\frac{d}{1 + K_p}$</div><div>hence for $d = 4$ when $K_p = 0.2$&nbsp;then $y_d(\\infty) = 3.33$ and when $K_p = 8$ then $y_d(\\infty) = 0.444$</div><div><br></div>",
+                    "type": "rich-text"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "2": {
+                  "0": {
+                    "content": "iii",
+                    "type": "rich-text"
+                  },
+                  "1": {
+                    "class": {
+                      "wide": true
+                    },
+                    "content": "<div></div><div></div><div>$\\dot y_n + y_n = -K_py_n -K_pn$</div><div>$\\dot y_n + (1 + K_p)y_n = -K_pn$</div><div>$y_n(t) = \\frac{-K_pn}{1 + K_p}(1 - e^{-(1 + K_p)t})$</div><div>$y_n(\\infty) = \\frac{-K_pn}{1 + K_p}$&nbsp;</div><div>hence for $n = 0.2$ when $K_p = 0.2$ then $y_n(\\infty) = -0.0333$ and when $K_p = 8$ then $y_n(\\infty) = -0.177$</div>",
+                    "type": "rich-text"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "class": {
+                  "wide": true
+                },
+                "length": 3,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "class": {
+              "wide": true
+            },
+            "length": 4,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "length": 2,
+        "type": "section"
+      },
+      "-Myo9etMTKSA_EVrlAF2": {
+        "0": {
+          "content": "<div>$J = 2.09 \\times 10^{-5}$</div><div>$D = 1.78 \\times 10^{-4}$</div><div>$Dx_\\infty = k_mu_0$</div><div>$k_m =&nbsp;4.13\\times 10^{-3}$</div><div>$K_p = 1$</div><div>$ x_\\infty = 46.45$</div><div><br></div>$D\\dot x + Jx = k_mu(t)$<div><br></div><div>for closed loop $u(t) = r - x(t)$</div><div><br><div>$\\dot x + \\frac{J}{D}x = \\frac{k_m}{D}K_p(r - x)$</div><div><br></div><div>$\\dot x + (\\frac{J}{D} +&nbsp;\\frac{k_m}{D}K_p)x = \\frac{k_m}{D}K_pr$</div><div><br></div><div>when $\\dot x = 0$ i.e. steady state response</div><div><br></div><div>$&nbsp;(J+ k_mK_p)x = k_mK_pr$</div><div><br></div><div>$ x_\\infty = 46.45 = \\cfrac{k_mr}{J+ k_m}$</div><div>$ r = \\cfrac{x_\\infty (J + k_m)}{k_m}$</div><div>$ r = 46.68$</div></div>",
+          "type": "rich-text"
+        },
+        "length": 1,
+        "type": "section"
+      },
+      "-MzDmufHrLL-EehFi5-l": {
+        "0": {
+          "0": {
+            "content": "<b>1 Introduction<br></b>",
+            "styles": {
+              "--font-size-pt": "22",
+              "text-align": "left"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "content": "<div><br></div><div>Consider taking the body of the mercedes benz 300SL&nbsp; W198 with properties$^{[1]}$</div><div>$m = 1420(kg)$</div><div>$A = 1.757(m^2)$</div><div>$c_D = 0.389$</div><div>$l_r = l_f = 1.2 (m)$</div><div>$\\text{Wheel Radius }(w_r)=0.34(m)$</div><div>undefined</div><div>$\\text{Peak Torque } (\\tau_{MAX}) = 460(N\\cdot m)$.</div>",
+              "type": "rich-text"
+            },
+            "1": {
+              "class": {
+                "wide": true
+              },
+              "type": "section-image",
+              "url": "https://www.brabus.com/_Resources/Persistent/e/e/d/8/eed88abb8d633e1ebdc6f4da56bf50521f317d3d/C4S_034C%20%287%29.jpg?bust=eed88abb"
+            },
+            "length": 2,
+            "type": "section-row"
+          },
+          "2": {
+            "content": "<div>To get a total maximum output of&nbsp;$$u_{MAX} = \\tau_{MAX} * 2 / w_r = 2.7kN$$A control system in order to maintain constant speed (cruise control) and change lanes will be implemented in the vehicle. The cruise control system must operate between 20km/h to 120km/h within a tolerance of $\\pm$2.5% the desired speed, which it will reach in no more than 20s. The lane changing mechanism must operate by steering the car into the correct lane with a tolerance of $\\pm$0.025(m) and should do so in 5s - 10s.</div>",
+            "type": "rich-text"
+          },
+          "length": 3,
+          "type": "section"
+        },
+        "1": {
+          "0": {
+            "content": "<div><b><br></b></div><div><b>2 Cruise Control<br></b></div>",
+            "styles": {
+              "--font-size-pt": "22"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "content": "<b>2.1 Lineariziation</b>",
+              "styles": {
+                "--font-size-pt": "18"
+              },
+              "type": "rich-text"
+            },
+            "1": {
+              "content": "<div>$$m \\dot v + \\frac{1}{2} A \\rho c_D v^2 = u$$<br></div><div>Let $\\dot v = f(v, u) = \\frac{1}{m}u - \\frac{1}{2m}A \\rho c_D v^2$<br><br></div>",
+              "type": "rich-text"
+            },
+            "2": {
+              "content": "<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div>Using the taylor expansion approximation method i.e. $$f(v, u) \\approx f(v_e, u_e) - \\cfrac{\\partial f}{\\partial v}(v_e, u_e) (v - v_e) + \\cfrac{\\partial f}{\\partial u}(u - u_e)$$</div><div>We can linearize the system to the form</div><div>$\\dot v = f(v, u) \\approx (\\frac{1}{m})(u - u_e) - (\\frac{1}{m}A\\rho c_D v_e)(v - v_e) $</div><div>Which can be rewritten as&nbsp;$$\\dot \\delta_v + a\\delta_v = b\\delta_u$$Where $a = \\frac{1}{m} A \\rho c_d v_e, \\quad b = \\frac{1}{m}, \\quad \\delta_v = v - v_e, \\ and \\ \\delta_u = u - u_e$</div><div><br></div><div>For the case where the input is a step response ($u(t) = r \\mathbf{1}(t)$) we can write the equation of velocity as.</div><div>$$\\delta_v(t) = ({\\delta_v}_0 - \\frac{b}{a}r) e ^{-at} + \\frac{b}{a}r$$ Where $\\delta_v(0) = {\\delta_v}_0$</div><div><br></div>",
+              "styles": {
+                "text-align": "left"
+              },
+              "type": "rich-text"
+            },
+            "3": {
+              "content": "The following equilibrium pairs where selected based on usual car speeds and $r$ selected as the $u_e$",
+              "type": "rich-text"
+            },
+            "4": {
+              "0": {
+                "content": "<div>$v_e = 30(m/s), u_e = 450 A \\rho c_D (N)$</div><div>$v_e = 15(m/s),&nbsp; \\ u_e = 112.5 A \\rho c_D (N)$</div><div>$v_e = 5(m/s), \\ u_e = 12.5 A \\rho c_D (N)$</div><div><br></div><div></div>",
+                "type": "rich-text"
+              },
+              "1": {
+                "class": {
+                  "wide": true
+                },
+                "content": "$18km/h$<div>$54km/h$</div><div>$108km/h$</div>",
+                "styles": {
+                  "text-align": "right"
+                },
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "5": {
+              "0": {
+                "type": "section-image",
+                "url": "https://lh3.google.com/u/0/d/13KH__IysLs-sCbLpSp8btvuylGb9GoMB=w2880-h1577-iv1"
+              },
+              "1": {
+                "class": {
+                  "wide": true
+                },
+                "content": "For every equilibrium pair ($v_e, \\ u_e$) trajectories starting at $v_0 = v_e + 1$ and $v_0 = v_e - 1$ have been obtained. All trajectories appear stable as they all converge to the equilibrium velocity (both starting from above or below $v_e$). The smaller the equilibrium velocity the longer the settling time of the trajectory. This is because $v_e$ directly scales time in the exponential term $e^{-\\frac{A \\rho c_D}{m}v_et}$ in doing so larger values of $v_e$ will cause faster rate of change and quicker settling time of the linearized model.",
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "6": {
+              "0": {
+                "content": "Hello world how are you $x^2$",
+                "styles": {
+                  "--font-size-pt": "15"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "content": "Some more text",
+                  "type": "rich-text"
+                },
+                "length": 1,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "length": 7,
+            "type": "section"
+          },
+          "2": {
+            "0": {
+              "content": "<b>2.2 Controller Design</b>",
+              "styles": {
+                "--font-size-pt": "18"
+              },
+              "type": "rich-text"
+            },
+            "1": {
+              "content": "<div><br></div><div>Taking the linearized model ($v_e = 15$) as<br></div><div>$$\\dot v + a v = bu$$</div><div>I will introduce a PI controller where $$u = K_P(r(t) - v(t)) + K_I\\int (r(\\tau) - v(\\tau)) d\\tau$$such that $\\dot u = K_P(\\dot r(t) - \\dot v(t)) + K_I(r(t) - v(t))$</div><div>Substituting into the differentiated model gives</div><div>$\\ddot v + a\\dot v = b (K_P(\\dot r - \\dot v) +&nbsp; K_I(r - v))$</div><div>$\\ddot v + (bK_P + a)\\dot v + bK_Iv = b(K_P\\dot r + K_Ir)$</div><div>If we consider $r(t) = r\\mathbf{1}(t)$ then $\\dot r = 0$ and hence we get</div><div>$$\\ddot v + (bK_P + a)\\dot v + bK_Iv = bK_Ir$$</div><div>Where the poles are&nbsp;$$\\lambda_1, \\ \\lambda_2 = \\cfrac{-(bK_P + a) \\pm \\sqrt{(bK_P + a)^2 - 4bK_I}}{2}$$</div><div>Furthermore if those poles are complex ($(bK_P + a)^2 - 4bK_I &lt; 0$) we can express them as&nbsp;$$\\sigma = \\cfrac{bK_P + a}{2}$$&nbsp;$$\\omega_d = \\cfrac{\\sqrt{4bK_I - (bK_P + a)^2}}{2}$$ $$\\omega_n = \\sqrt{bK_I}$$&nbsp;$$\\zeta = \\cfrac{bK_P + a}{2\\sqrt{bK_I}}$$</div><div>Using the following equation's gain constants can be derived in order to meet system requirements.&nbsp;</div><div>$$M_p = 0.025 = e^{-\\frac{\\sigma}{\\omega_d}\\pi}$$</div><div>$$t_s = 20 \\approx \\cfrac{4}{\\sigma}$$&nbsp;</div>",
+              "type": "rich-text"
+            },
+            "2": {
+              "0": {
+                "class": {
+                  "wide": true
+                },
+                "content": "<div>Finding $K_P$ based on settling time $t_s$</div><div>$t_s = \\cfrac{8}{bK_P + a}$</div><div>$K_P&nbsp; = \\cfrac{\\frac{8}{t_s} - a}{b} = 555$</div><div><br></div><div></div>",
+                "styles": {
+                  "text-align": "center"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "class": {
+                  "wide": true
+                },
+                "content": "<div>Finding $K_I$ in terms of&nbsp;</div><div>maximum overshoot $M_p$ and $K_P$</div><div>$-\\cfrac{log(M_p)}{\\pi} \\omega_d = \\sigma$</div><div>let $c_1 = -\\cfrac{log(M_p)}{\\pi}$<br></div><div>$K_I = \\cfrac{(bK_P + a)^2(1 + c_1^2)}{4bK_P c_1^2} = 89$</div><div><br></div>",
+                "styles": {
+                  "text-align": "center"
+                },
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "3": {
+              "0": {
+                "class": {
+                  "wide": true
+                },
+                "type": "section-image",
+                "url": "http://127.0.0.1:58741/Model%20for%20varing%20reference%20speeds.svg"
+              },
+              "1": {
+                "class": {
+                  "wide": true
+                },
+                "content": "Numerical tests of the controller where performed using the linear model for varying speeds within the working range. The results (to the left) show great success with settle time and maximum overshoot not exceeding the design constraints for the chosen gain values.",
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "length": 4,
+            "type": "section"
+          },
+          "3": {
+            "0": {
+              "content": "<b>2.3 Validations</b>",
+              "styles": {
+                "--font-size-pt": "18"
+              },
+              "type": "rich-text"
+            },
+            "1": {
+              "0": {
+                "class": {
+                  "wide": true
+                },
+                "content": "",
+                "type": "rich-text"
+              },
+              "1": {
+                "class": {
+                  "wide": true
+                },
+                "type": "section-image",
+                "url": "http://127.0.0.1:58741/FBD diagram.svg"
+              },
+              "2": {
+                "class": {
+                  "wide": true
+                },
+                "content": "",
+                "type": "rich-text"
+              },
+              "length": 3,
+              "type": "section-row"
+            },
+            "2": {
+              "class": {
+                "wide": true
+              },
+              "content": "<div><br></div><div>Consider the free body diagram above. Take the sum of forces in the direction of velocity.</div><div>undefined</div><div>$ma = u - \\frac{1}{2} A \\rho c_D v^2 - mg\\sin(\\theta)$</div><div>Which can be written as</div><div>$$m\\dot v + \\frac{1}{2}A \\rho c_D v^2 = u + d$$</div><div>Where $d = -mg\\sin(\\theta) \\approx -2kN$ for a slope of 15%.</div><div><br></div>",
+              "type": "rich-text"
+            },
+            "3": {
+              "0": {
+                "class": {
+                  "wide": true
+                },
+                "content": "Comparing results from the numeric linear model and the non linear simulated model show large discrepancies (as shown below). Overshoot in the nonlinear simulation drastically exceeds the required tolerance band and hence more work in choosing gain values was required.<div><br></div>",
+                "type": "rich-text"
+              },
+              "length": 1,
+              "type": "section-row"
+            },
+            "4": {
+              "0": {
+                "type": "section-image",
+                "url": "http://127.0.0.1:58741/Model%20vs%20Simulation.svg"
+              },
+              "1": {
+                "type": "section-image",
+                "url": "http://127.0.0.1:58741/output.svg"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "5": {
+              "class": {
+                "wide": true
+              },
+              "content": "<div>Looking at the output of the simulated non linear model (as shown above) it can be seen that the force output $u(t)$ exceeds the maximum output of $2.7kN$, even when reaching speeds of 20km/h. This would not be possible for the car to output. Hence I propose applying a bound on controller output $u(t)$ such that $$u_{MIN} \\le u(t) \\le u_{MAX}$$&nbsp;<br></div>",
+              "type": "rich-text"
+            },
+            "6": {
+              "class": {
+                "wide": true
+              },
+              "content": "<div>By simulating different values for $K_P$ and $K_I$ and looking at the resultant overshoot and settling time the values $K_P = 20000$ and $K_I = 15$ where chosen.&nbsp;As can be seen below, the controller reaches the desired reference speed within a $\\pm 2.5\\%$ tolerance in less than 20s. When a $2kN$ disturbance is applied the controller adjusts to compensate the change and keep the velocity within the desired speed range. The controller is able to operate within the required range.</div>",
+              "type": "rich-text"
+            },
+            "7": {
+              "0": {
+                "class": {
+                  "wide": true
+                },
+                "type": "section-image",
+                "url": "http://127.0.0.1:58741/validation.svg"
+              },
+              "1": {
+                "class": {
+                  "wide": true
+                },
+                "type": "section-image",
+                "url": "http://127.0.0.1:58741/v2.svg"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "length": 8,
+            "type": "section"
+          },
+          "length": 4,
+          "type": "section"
+        },
+        "2": {
+          "0": {
+            "content": "<div><b><br></b></div><div><b>3 Lateral Control</b></div>",
+            "styles": {
+              "--font-size-pt": "22"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "content": "<b>3.1 Linearization</b>",
+              "styles": {
+                "--font-size-pt": "18"
+              },
+              "type": "rich-text"
+            },
+            "1": {
+              "content": "Using small angle approximations i.e. $\\psi \\approx 0$, $\\beta \\approx 0$, $\\delta_f \\approx 0$ and assuming $v(t) \\approx v_0$<div>undefinedundefinedundefined</div>",
+              "type": "rich-text"
+            },
+            "2": {
+              "content": "(3) into (1)<div>$\\dot y = v_0(\\psi + \\cfrac{l_r}{l_r + l_f}\\delta_f)$</div><div>Differentiate both sides with respect to time</div><div>$\\ddot y = v_0(\\dot \\psi + \\cfrac{l_r}{l_r + l_f}\\dot \\delta_f) \\quad \\quad (4)$&nbsp;</div><div>(3) into (2)</div><div>$\\dot \\psi = \\cfrac{v_0}{l_r + l_f}\\delta_f \\quad \\quad (5)$</div><div>(5) into (4)</div><div>$\\ddot y = v_0(\\cfrac{v_0}{l_r + l_f}\\delta_f + \\cfrac{l_r}{l_r + l_f}\\dot \\delta_f)$</div><div>$$\\ddot y = \\cfrac{v_0l_r}{l_r + l_f}\\dot \\delta_f + \\cfrac{v_0^2}{l_r + l_f}\\delta_f$$</div><div>Hence the transfer function will be</div><div>$$G(s) = \\cfrac{As + B}{s^2}$$</div><div>Where $A = \\cfrac{v_0l_r}{l_r + l_f}$ and $B = \\cfrac{v_0^2}{l_r + l_f}$</div><div>Taking $l_r = l_f = 1.2\\text{m}$ and $v_0 = 20\\text{m/s}$ we get $A = 10$ and $B = 166.7$</div>",
+              "type": "rich-text"
+            },
+            "length": 3,
+            "type": "section"
+          },
+          "2": {
+            "0": {
+              "content": "<div><b><br></b></div><div><b>3.2 Controller Design</b></div>",
+              "styles": {
+                "--font-size-pt": "18"
+              },
+              "type": "rich-text"
+            },
+            "1": {
+              "content": "I will introduce a PD controller such that<div>$$\\delta_f = K_P(r - y) + K_D(\\dot r - \\dot y)$$</div><div>Deriving $\\delta_f$ gives $\\dot \\delta_f = K_P(\\dot r - \\dot y) + K_D(\\ddot r -\\ddot y)$.</div><div>Substituting back into the linear differential equation gives</div><div>$\\ddot y + \\cfrac{AK_P + BK_D}{AK_D}\\dot y + \\cfrac{BK_P}{AK_D}y = \\cfrac{BK_P}{AK_D}y_r$</div><div><br></div><div>$\\ddot y + (\\cfrac{K_P}{K_D} + \\cfrac{B_1v_0}{A_1})\\dot y + \\cfrac{B_1v_0K_P}{A_1K_D}y = \\cfrac{B_1v_0K_P}{A_1K_D}y_r$</div><div><br></div><div>$\\ddot y + (K_F + C_1v_0)\\dot y + K_FC_1v_0y = K_FC_1v_0y_r \\quad \\quad C_1 = \\frac{1}{l_r} \\quad K_F = \\cfrac{K_P}{K_D}$</div><div><br></div><div><br></div><div>Where $r = y_r\\mathbf{1}(t)$ and such $\\dot r = 0$</div><div>Which can be written in the form&nbsp;</div><div>$$\\ddot y + Q\\dot y + Py = Py_r$$</div><div>When $t \\rightarrow \\infty$ then $\\dot y = 0$,&nbsp;$\\ddot y = 0$ and $y = y_{ss}$</div><div>From this we get $Py_{ss} = Py_r$</div><div>$$y_{ss} = y_r$$</div><div>Hence the vehicle's $y$ position will tend to reference position over time with no steady state error. As the $y$ position is relative to the lane position, this controller will ensure that the vehicle moves to the desired lane.</div><div><br></div>",
+              "type": "rich-text"
+            },
+            "length": 2,
+            "type": "section"
+          },
+          "3": {
+            "0": {
+              "content": "<div><br></div><div>\n\n\n<b>3.3&nbsp;Validations</b></div>",
+              "styles": {
+                "--font-size-pt": "18"
+              },
+              "type": "rich-text"
+            },
+            "1": {
+              "content": "Plotted below are the $y(t)$ trajectories of the simulated controller for the speeds in the forward working range (with gain values $K_D = 30/v_0^2$, $K_P = 1\\times 10^{-6}$). It can be seen that all trajectories converge to exactly to the reference of 3(m) without any overshoot. The settling time occurs before 10s as required. From the linear model it can be seen that all design constraints are met.&nbsp;",
+              "type": "rich-text"
+            },
+            "2": {
+              "type": "section-image",
+              "url": "http://127.0.0.1:58741/lin_model.svg"
+            },
+            "3": {
+              "content": "When negative values for $v_0$ are used, the trajectories for $y(t)$ run off to negative infinity. This is because if we look at $A$ and $B$&nbsp;from the transfer function. If $v_0 &lt; 0$ then $A &lt; 0$ and $B &gt; 0$, this will cause an initial kick in the opposite direction of the steady state response, as seen below.",
+              "type": "rich-text"
+            },
+            "4": {
+              "type": "section-image",
+              "url": "http://127.0.0.1:58741/neg_v0.svg"
+            },
+            "length": 5,
+            "type": "section"
+          },
+          "length": 4,
+          "type": "section"
+        },
+        "3": {
+          "0": {
+            "content": "<div><i><br></i></div><i>Reference</i>",
+            "styles": {
+              "--font-size-pt": "15"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "content": "<div><div>$[1]$https://group-media.mercedes-benz.com/marsMediaSite/en/instance/ko/Historical-SLs-in-the-wind-tunnel.xhtml?oid=9917897</div></div><div><div>$[2]$https://evwest.com/support/remy250.pdf</div></div>",
+            "type": "rich-text"
+          },
+          "length": 2,
+          "type": "section"
+        },
+        "length": 4,
+        "type": "section"
+      },
+      "-MzJh7KYaW81o_hT4dX2": {
+        "0": {
+          "0": {
+            "content": "<b>1</b>",
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "content": "<div><b>a</b></div>$G(s) = \\cfrac{70}{(s + 10)(s^2 + 3s + 100)}$<div>The poles will exist at <span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$(s + 10)(s^2 + 3s + 100) = 0$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> hence the poles are&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$\\lambda_1 = -10$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">, </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$\\lambda_2 = -3 + j\\sqrt{391}$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> and </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$\\lambda_3 = -3 - j\\sqrt{391}$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">.&nbsp;</span></div>",
+              "type": "rich-text"
+            },
+            "1": {
+              "content": "<div><b>b</b></div>As all the real parts of every pole are negative then every homogeneous solution will tend to zero and hence the system is stable.",
+              "type": "rich-text"
+            },
+            "length": 2,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "1": {
+          "0": {
+            "content": "<b>2</b>",
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "content": "<b>a</b>",
+              "type": "rich-text"
+            },
+            "1": {
+              "content": "$$\\dot \\omega + a\\omega = bV_a$$<div>where $\\omega = \\dot \\theta$, $a = \\frac{1}{J}(B + \\cfrac{K_bK_T}{R_a})$ and $b = \\cfrac{K_T}{JR_a}$&nbsp;</div><div>$V_a = K(\\theta_r - \\theta)$</div><div>$\\dot \\omega + a\\omega = bK(\\theta_r - \\theta)$</div><div>$$\\dot \\omega + a\\omega + b K\\theta = bK\\theta_r$$<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;transfer function is </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$G(0) = \\cfrac{1}{bK}$</span></div>",
+              "type": "rich-text"
+            },
+            "2": {
+              "content": "<b>b</b>",
+              "type": "rich-text"
+            },
+            "3": {
+              "content": "From the homogenious solution $\\theta (t) = C_1e^{\\lambda_1 t} + C_2e^{\\lambda_2 t} + G(0)bK\\theta_re^{0t}$<div>$$\\theta(t) = C_1e^{\\lambda_1 t} + C_2 e^{\\lambda_2 t} + \\theta_r$$</div><div>Where $\\lambda_1, \\ \\lambda_2 = \\cfrac{-a \\pm \\sqrt{a^2 - 4bK}}{2}$</div><div>As $a^2 - 4bK &lt; 0$ for values some values of $K$&nbsp;consider $\\lambda_1$ and $\\lambda_2$ are complex</div><div>let $\\lambda_1 = -\\sigma + j\\epsilon$ and $\\lambda_2 = -\\sigma - j\\epsilon$</div><div>$\\theta(t) = C_1 e ^ {-\\sigma t} (\\cos(\\epsilon t) + j \\sin(\\epsilon t)) + C_2 e^{-\\sigma t} (\\cos(\\epsilon t ) + j\\sin(\\epsilon t)) + \\theta_r$</div><div>Looking at real part of $\\theta(t)$</div><div>$\\theta(t) = C_3e^{-\\sigma t} \\cos(\\epsilon t) + \\theta_r$</div><div>say $\\theta(0) = 0$ then $C_3 = -\\theta_r$</div><div>$$\\theta(t) = (1 - e^{-\\sigma t} \\cos(\\epsilon t) )\\theta_r$$</div><div><br></div><div>From looking at a plot of $\\theta(t) = 1 - e^{-\\sigma t} \\cos(\\epsilon t)$ it can be seen that rise time is independent of&nbsp;&nbsp;$K$&nbsp;and rises in about $42s$. Decreasing $K$ will lower the overshoot with $K = 0.04$ causing no more than $10\\%$ overshoot.</div>",
+              "type": "rich-text"
+            },
+            "4": {
+              "content": "<b>c</b>",
+              "type": "rich-text"
+            },
+            "5": {
+              "content": "Consider $V_a = \\dot \\omega + a \\omega = bV_a$ where $V_a = K_P(\\theta_r - \\theta) + K_I(\\omega_r - \\omega)$<div>As we want to stop eventually $\\omega_r = 0$</div><div>$\\dot\\omega + \\omega (a + bK_I) + bK_P\\theta = bK_P\\theta_r$</div><div>Transfer function will be $G(0) = \\cfrac{1}{bK_P}$</div><div>hence homogeneous solution will be $\\theta(t) = C_4e^{-\\sigma t}\\cos(\\epsilon t) + \\theta_r$</div><div>Where $\\sigma = \\cfrac{a + bK_I}{2}$ and $\\epsilon = \\cfrac{\\sqrt{|(a + bK_I)^2 - 4bK_P}|}{2}$ and are from the complex roots of the characteristic equation.</div><div>looking at the exponential term $t_{rise} = \\cfrac{2\\log(9)}{a + bK_I}$</div><div>We can get $K_I = \\cfrac{2\\log(9) - at_{rise}}{bt_{rise}}$ hence $K_I &gt; 6.8$</div><div>the maximum overshoot will occur when $\\cos(\\epsilon t_{ov}) = -1$ and hence when $t_{ov} = \\frac{\\pi}{\\epsilon}$&nbsp;</div><div>$p_{ov} = e^{-\\cfrac{\\sigma \\pi}{\\epsilon}}$</div><div>There should exist some $K_P$ that satisfies this condition.</div>",
+              "type": "rich-text"
+            },
+            "6": {
+              "content": "$\\epsilon = \\sqrt{|d - 4bK_p|}/2$<div>$d - 4bK_p &gt; 0$</div><div>$K_p &lt; \\frac{d}{4b}$</div>",
+              "type": "rich-text"
+            },
+            "length": 7,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "length": 2,
+        "type": "section"
+      },
+      "-MzMooVn7b6VDliNuyj-": {
+        "0": {
+          "content": "Hello world how are <b>you going </b><i style=\"font-weight: bold;\">needy </i>really",
+          "type": "rich-text"
+        },
+        "1": {
+          "content": "<div></div><div></div><div></div><div></div>",
+          "type": "rich-text"
+        },
+        "length": 2,
+        "type": "section"
+      },
+      "-MzniUqIFyTL21n1mem1": {
+        "0": {
+          "0": {
+            "content": "<b>1</b>",
+            "styles": {
+              "--font-size-pt": "18"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "length": 0,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "1": {
+          "0": {
+            "content": "<b>2</b>",
+            "styles": {
+              "--font-size-pt": "18"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "0": {
+                "content": "a",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "content": "<div><br></div>Consider some grid $G$ of size $n\\times n$ and a limit of sharp turns that can be taken $S$. Define&nbsp;$OPT(x, \\ y, \\ s)$&nbsp;to be the maximum profit that can be scored on a path starting at column $x$ and row $y$ with $s$ sharp turns allowed to the bottom right corner $(n - 1, \\ n - 1)$.&nbsp;<div><br><div>Where $0 \\le x \\le n, \\ \\&nbsp; 0 \\le y \\le n$ and $-1 \\le s \\le S$.&nbsp;</div><div><br><div>Furthermore define $OPT_L(x, y, s)$ to be the optimal solution with the restriction that the block $(x, \\ y)$ was approached from the left and similarly $OPT_A(x, y, s)$ from above. Such that $OPT(x, y, s)$ is the maximum of both $OPT_L(x, y, s)$ and $OPT_A(x, y, s)$ and hence the maximum without any restriction.</div><div><br></div><div>hello $x^2$<br><div><br></div></div></div></div>",
+                "styles": {
+                  "text-align": "center"
+                },
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "1": {
+              "0": {
+                "content": "b",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "class": {
+                    "wide": true
+                  },
+                  "content": "<div></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">Recursive definition:</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$$OPT(x, \\ y, \\ s) = max \\left(\\begin{array}{ll}OPT_{L}(x, \\ y, \\ s) \\\\ OPT_{A}(x, \\ y, \\ s)\\end{array}\\right)$$&nbsp;</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$$OPT_{L}(x, \\ y, \\ s) = G(x, \\ y) + max \\left( \\begin{array}{ll} OPT_{L}(x + 1,\\ y, \\ s) \\\\ OPT(x + 1, \\ y+ 1, \\ s) \\\\ OPT_A(x, \\ y + 1, \\ s - 1)\\end{array} \\right)$$</span></div><div><br></div><div>$$OPT_{A}(x, \\ y, \\ s) = G(x, \\ y) + max \\left(\\begin{array}{ll}OPT_{A}(x, \\ y + 1, \\ s) \\\\ OPT(x + 1, \\ y + 1, \\ s) \\\\ OPT_L(x + 1, \\ y, \\ s-1)\\end{array}\\right)$$</div><div><br></div>",
+                  "styles": {
+                    "text-align": "left"
+                  },
+                  "type": "rich-text"
+                },
+                "class": {
+                  "wide": true
+                },
+                "length": 1,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "2": {
+              "0": {
+                "content": "c",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "content": "<div><b style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></b></div><div><b style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">Base Case</b><br></div>",
+                  "type": "rich-text"
+                },
+                "1": {
+                  "class": {
+                    "wide": true
+                  },
+                  "content": "<div></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">If $s = -1, \\ x = n$ or $y = n$</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$\\quad OPT_A, \\ OPT_L, \\ OPT(x, \\ y, \\ s) = -\\infty$</span></div>",
+                  "type": "rich-text"
+                },
+                "class": {
+                  "wide": true
+                },
+                "length": 2,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "3": {
+              "0": {
+                "content": "d",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "content": "<div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">The most value achieved is in the subproblem </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$OPT(0, 0, S)$</span><br></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div>",
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "4": {
+              "0": {
+                "content": "e",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "content": "<div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">A path from the end to the end will obviously only score the profit of that block or </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$0$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> in our case, no matter how many sharp turns are allowed and hence this case is sufficient.</span><br></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div>The profit of a path that starts outside of the grid $x = n$ or $y = n$ or when $s = -1$ will be $-\\infty$ and hence will never be favoured over a valid path. As such this base case should be sufficient to make sure the solution path never exceeds the parameters.</div><div><br></div>",
+                  "type": "rich-text"
+                },
+                "1": {
+                  "content": "<div></div><div>Say&nbsp;$S(x, y, s)$&nbsp;is the optimal solution for a path starting at&nbsp;$b_i = (x, y)$,&nbsp;with&nbsp;$s$&nbsp;remaining sharp turns and, with the next block in path $b_{i+1}$.&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">The position of&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_{i+1}$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;may be restricted if&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_i$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;was approached from the left or above and hence&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$S(x, \\ y, \\ s)$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;will depend on the direction&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_i$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;was approached from. As such I will introduce&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$S_L(x, \\ y, \\ s)$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;as the optimal solution with the restriction that&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_i$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;was approached from left and&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$S_A(x, \\ y, \\ s)$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;as the optimal solution approached from above.&nbsp;</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">In general we say $S'(b_i) = \\{b_i\\} \\cup S'(b_{i+1})$ &nbsp;</span></div><div><br></div>",
+                  "styles": {
+                    "text-align": "justify"
+                  },
+                  "type": "rich-text"
+                },
+                "2": {
+                  "0": {
+                    "0": {
+                      "type": "section-image",
+                      "url": "http://127.0.0.1:56008/fig-03.svg"
+                    },
+                    "1": {
+                      "content": "<i>Approached from the left</i><div><i><br></i></div>",
+                      "styles": {
+                        "--font-size-pt": "11",
+                        "text-align": "center"
+                      },
+                      "type": "rich-text"
+                    },
+                    "length": 2,
+                    "type": "section"
+                  },
+                  "1": {
+                    "0": {
+                      "content": "<div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">Consider&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_i$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> was approached from the left and hence $S_L(x, \\ y, \\ s)$ will be the optimal solution.</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">If the next block is to the right then the optimal solution for </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_{i + 1}$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> will be </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$S_L(x + 1, \\ y, \\ s)$.</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;</span><br></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">If the next</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;block is below, then the path has made a sharp turn and the optimal solution for $b_{i + 1}$ must be $S_A(x, \\ y + 1,&nbsp; \\ s - 1)$ as the following path cannot contain more than $s - 1$ sharp turns</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">.&nbsp;</span><br></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">Finally if the next block in the solution path is diagonal of </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_i$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> then its solution will be </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$S(x + 1, \\ y + 1, \\ s)$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">.&nbsp;</span><br></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">The next block in the path must have the greatest solution to maximise $S_L(x, \\ y, \\ s)$, hence.</span></div><div><br></div>",
+                      "styles": {
+                        "text-align": "justify"
+                      },
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "content": "<div>$$S_L(x, \\ y, \\ s) = G(x, y) + max \\left( \\begin{array}{l} S_L(x + 1, y, s) \\\\ S_A(x, \\ y + 1,&nbsp; \\ s - 1) \\\\ S(x + 1, \\ y + 1, \\ s) \\end{array} \\right)$$</div><div><br></div><div><br></div>",
+                      "type": "rich-text"
+                    },
+                    "class": {
+                      "wide": true
+                    },
+                    "length": 2,
+                    "type": "section"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "3": {
+                  "0": {
+                    "0": {
+                      "type": "section-image",
+                      "url": "http://127.0.0.1:56008/fig-02.svg"
+                    },
+                    "1": {
+                      "content": "<i>Approached from above</i><div><i><br></i></div>",
+                      "styles": {
+                        "--font-size-pt": "11",
+                        "text-align": "center"
+                      },
+                      "type": "rich-text"
+                    },
+                    "length": 2,
+                    "type": "section"
+                  },
+                  "1": {
+                    "0": {
+                      "content": "<div>If&nbsp;$b_i$&nbsp;was approached from above, the next block in the path could be right, diagonal or below. If the block is to the right then the path has made a sharp turn and as such the path that starts from&nbsp;$b_{i+1}$&nbsp;can only have&nbsp;$s - 1$&nbsp;sharp turns.</div>",
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "content": "<div>$$S_A(x, \\ y, \\ s) = G(x, y) + max \\left( \\begin{array}{l} S_L(x + 1, y, s - 1) \\\\ S_A(x, \\ y + 1,&nbsp; \\ s) \\\\ S(x + 1, \\ y + 1, \\ s) \\end{array} \\right)$$</div>",
+                      "type": "rich-text"
+                    },
+                    "class": {
+                      "wide": true
+                    },
+                    "length": 2,
+                    "type": "section"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "4": {
+                  "0": {
+                    "0": {
+                      "type": "section-image",
+                      "url": "http://127.0.0.1:56008/fig-04.svg"
+                    },
+                    "1": {
+                      "content": "<i>Approached diagonally</i><div><br></div>",
+                      "styles": {
+                        "--font-size-pt": "11",
+                        "text-align": "center"
+                      },
+                      "type": "rich-text"
+                    },
+                    "length": 2,
+                    "type": "section"
+                  },
+                  "1": {
+                    "0": {
+                      "class": {
+                        "wide": true
+                      },
+                      "content": "<div></div><div>Consider $b_i$&nbsp;was approached diagonally, $S(x, \\ y, \\ s)$ will be the optimal solution, this will . If $b_{i+1}$ is to the right then its optimal solution will be $S_L(x + 1, \\ y, \\ s)$. If it is below then its solution will be $S_A(x, \\ y + 1, \\ s)$. If it is diagonal then its solution will be $S(x + 1, y + 1, z)$. The next block in the path must have the greatest solution to maximise the solution of $S(x, \\ y, \\ s)$, hence.</div><div>$$S(x, \\ y, \\ s) = G(x, y) + max \\left[ \\begin{array}{l} S_L(x + 1, y, s) \\\\ S_A(x, \\ y + 1,&nbsp; \\ s) \\\\ S(x + 1, \\ y + 1, \\ s) \\end{array} \\right]$$</div><div><br></div>",
+                      "type": "rich-text"
+                    },
+                    "class": {
+                      "wide": true
+                    },
+                    "length": 1,
+                    "type": "section"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "length": 5,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "5": {
+              "0": {
+                "content": "f",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "content": "Creating the $s &lt; 0$ base will require constructing a $n \\times n$ array and setting those values to $-1$ in $O(1)$ time for a total of $O(n^2)$ time.<div>For each value of $s$ an array of size $n \\times n$ must be constructed and all its values set either to constants (base cases) or from array lookup in $O(1)$ time and hence will take $S$ operations of $O(n^2)$ time for a total of $O(n^2S)$. Hence the largest growing term and the time complexity of the algorithm is $O(n^2S)$.</div>",
+                  "type": "rich-text"
+                },
+                "length": 1,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "length": 6,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "length": 2,
+        "type": "section"
+      },
+      "-Mzr7GVSxx4tB9yCCOqF": {
+        "0": {
+          "content": "If $A = \\left[ \\begin{matrix} 1 &amp; 2 &amp; 3 \\\\ 9 &amp; 8 &amp; 7 \\end{matrix} \\right]$ then $A$ has size $2 \\times 3$ where size is expressed as $\\text{rows} \\times \\text{columns}$<div><br></div>",
+          "type": "rich-text"
+        },
+        "1": {
+          "content": "<div>Say $A$&nbsp;is a matrix with size $m \\times n$ and $B$ is a matrix with size $o \\times p$</div><div><br></div>",
+          "type": "rich-text"
+        },
+        "2": {
+          "0": {
+            "class": {
+              "wide": true
+            },
+            "content": "<div>$A = \\left[ \\begin{matrix} A_{11} &amp; A_{12} &amp; ... &amp; A_{1n} \\\\ A_{21} &amp; A_{22} &amp; ... &amp; A_{2n} \\\\ &amp;&amp;... \\\\ A_{m1} &amp; A_{m2} &amp; ... &amp; A_{mn} \\end{matrix} \\right]$</div>",
+            "styles": {
+              "text-align": "center"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "class": {
+              "wide": true
+            },
+            "content": "<div>$B = \\left[ \\begin{matrix} B_{11} &amp; B_{12} &amp; ... &amp; B_{1p} \\\\ B_{21} &amp; B_{22} &amp; ... &amp; B_{2p} \\\\ &amp;&amp;... \\\\ B_{o1} &amp; A_{o2} &amp; ... &amp; A_{op} \\end{matrix} \\right]$</div>",
+            "styles": {
+              "text-align": "center"
+            },
+            "type": "rich-text"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "3": {
+          "content": "<div><br></div>$A \\times B$ is possible if $n = o$ and the result will be<div><br></div>",
+          "type": "rich-text"
+        },
+        "4": {
+          "content": "Where $A = \\left[ \\begin{matrix} A_{11} &amp; 0 &amp; 0 &amp; 0&amp; 0\\\\ 0 &amp; A_{22} &amp; 0 &amp; 0 &amp; 0\\\\ 0 &amp; 0 &amp; A_{33} &amp; 0 &amp; 0\\\\0&amp;0&amp;0&amp; ... &amp;0\\\\ 0&amp;0&amp;0&amp;0&amp; A_{nn}\\end{matrix} \\right]$",
+          "type": "rich-text"
+        },
+        "5": {
+          "content": "If $A\\beta = \\lambda A$ where $\\beta$ is a vector and $\\lambda \\in \\mathbb{C}$&nbsp;then $\\beta$ is an eigenvector and $\\lambda$ the eigenvalue. Hello world",
+          "styles": {
+            "text-align": "center"
+          },
+          "type": "rich-text"
+        },
+        "6": {
+          "content": "$$e^{A} = \\sum_{k = 0}^{\\infty} \\cfrac{A^k}{k!} = 1 + A + \\cfrac{A^2}{2!} + \\cfrac{A^3}{3!} + ... $$",
+          "type": "rich-text"
+        },
+        "7": {
+          "content": "<div>$e^{A} = \\left[ \\begin{matrix} e^{A_{11}} &amp; 0 &amp; 0 &amp; 0&amp; 0\\\\ 0 &amp; e^{A_{22}} &amp; 0 &amp; 0 &amp; 0\\\\ 0 &amp; 0 &amp; e^{A_{33}} &amp; 0 &amp; 0\\\\0&amp;0&amp;0&amp; ... &amp;0\\\\ 0&amp;0&amp;0&amp;0&amp; e^{A_{nn}}\\end{matrix} \\right]$</div>",
+          "styles": {
+            "text-align": "center"
+          },
+          "type": "rich-text"
+        },
+        "8": {
+          "content": "$e^{A + B} = e^{A}e^{B}$ if and only if $AB = BA$",
+          "type": "rich-text"
+        },
+        "9": {
+          "content": "$\\cfrac{d}{dt}e^{At} = Ae^{At}$",
+          "type": "rich-text"
+        },
+        "10": {
+          "content": "$\\mathbf{\\dot x} = A \\mathbf{x} + B u$",
+          "type": "rich-text"
+        },
+        "11": {
+          "content": "$z = T\\mathbf{x}$&nbsp;<div>then $\\dot z = T\\mathbf{\\dot x} = T(A\\mathbf{x} + Bu)$</div><div>$ = TA\\mathbf{x} + TBu$</div><div>$ TAT^{-1}z + TBu$</div><div>$=\\tilde{A}z + \\tilde{B}z$</div><div>$$\\tilde{A} = \\left[ \\begin{matrix} -a_1 &amp; -a_2 &amp; ... &amp; -a_n \\\\ 1 &amp; 0 &amp; ... &amp; 0 \\\\ 0 &amp; 1 &amp; ... &amp; 0 \\\\ 0 &amp; 0 &amp; 1 &amp;0 \\end{matrix} \\right]$$</div>",
+          "type": "rich-text"
+        },
+        "length": 12,
+        "type": "section"
+      },
+      "-MzrCrxcUJNsED5jgEqB": {
+        "0": {
+          "content": "<b>Problem Set 6</b><div><b><br></b></div>",
+          "type": "rich-text"
+        },
+        "1": {
+          "0": {
+            "0": {
+              "0": {
+                "content": "<b>1</b>",
+                "styles": {
+                  "--font-size-pt": "14"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "content": "$k = 24, \\quad b = 14$&nbsp;and $m = 2$",
+                  "type": "rich-text"
+                },
+                "1": {
+                  "0": {
+                    "content": "<b>a</b>",
+                    "type": "rich-text"
+                  },
+                  "1": {
+                    "class": {
+                      "wide": true
+                    },
+                    "content": "$\\Sigma F_x = -xk -b\\dot x \\quad$ where $k = 24(N/m)$ and $b = 14(Ns/m)$<div>$\\Sigma F_x = m\\ddot x$ where $m = 2(kg)$</div><div>Therefore $m\\ddot x = -xk - b\\dot x$ which can be expressed as</div><div>$$\\ddot x = - \\frac{b}{m}\\dot x - \\frac{k}{m}x$$</div><div><br></div>",
+                    "type": "rich-text"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "2": {
+                  "0": {
+                    "content": "<b>b</b>",
+                    "type": "rich-text"
+                  },
+                  "1": {
+                    "class": {
+                      "wide": true
+                    },
+                    "content": "From the following characteristic equation of the system $\\lambda^2 + \\frac{b}{m}\\lambda + \\frac{k}{m} = 0$&nbsp;<div>$$\\lambda^2 + 7\\lambda + 12$$<br><div>the poles of the system can be expressed as $\\lambda_1, \\ \\lambda_2 = \\cfrac{-b \\pm \\sqrt{b^2 - 4km} }{2m}$</div><div>$$\\lambda_1 = -3 \\quad \\quad \\lambda_2 = -4$$</div><div><br></div></div>",
+                    "type": "rich-text"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "3": {
+                  "0": {
+                    "content": "<b>c</b>",
+                    "type": "rich-text"
+                  },
+                  "1": {
+                    "0": {
+                      "content": "Consider $x_1 = x $ and $x_2 = \\dot x$<div><br><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">we know $\\begin{array}{ll}\\dot x_1 = x_2 \\\\ \\dot x_2 = -\\frac{k}{m}x_1 - \\frac{b}{m}x_2\\end{array}$</span></div></div>",
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "content": "Which can be represented as the state space matrix equation<div>$\\left[ \\begin{matrix} \\dot x_1 \\\\ \\dot x_2 \\end{matrix} \\right] = \\left[ \\begin{matrix} 0 &amp; 1 \\\\ -\\frac{k}{m} &amp; -\\frac{b}{m} \\end{matrix} \\right] \\left[ \\begin{matrix} x_1 \\\\ x_2 \\end{matrix} \\right]$</div><div>or simply $$\\mathbf{\\dot x} = A\\mathbf{x}$$</div><div>Where</div>",
+                      "type": "rich-text"
+                    },
+                    "2": {
+                      "0": {
+                        "class": {
+                          "wide": true
+                        },
+                        "content": "<div>$\\mathbf{x} = \\left[ \\begin{matrix} x_1 \\\\ x_2 \\end{matrix} \\right]$</div><div><br></div>",
+                        "styles": {
+                          "text-align": "center"
+                        },
+                        "type": "rich-text"
+                      },
+                      "1": {
+                        "class": {
+                          "wide": true
+                        },
+                        "content": "<div>$\\mathbf{\\dot x} = \\left[ \\begin{matrix} \\dot x_1 \\\\ \\dot x_2 \\end{matrix} \\right]$</div>",
+                        "styles": {
+                          "text-align": "center"
+                        },
+                        "type": "rich-text"
+                      },
+                      "2": {
+                        "class": {
+                          "wide": true
+                        },
+                        "content": "<div>$A = \\left[ \\begin{matrix} 0 &amp; 1 \\\\ -12 &amp; -7 \\end{matrix} \\right]$</div>",
+                        "styles": {
+                          "text-align": "center"
+                        },
+                        "type": "rich-text"
+                      },
+                      "length": 3,
+                      "type": "section-row"
+                    },
+                    "class": {
+                      "wide": true
+                    },
+                    "length": 3,
+                    "type": "section"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "4": {
+                  "0": {
+                    "content": "<b>d</b>",
+                    "type": "rich-text"
+                  },
+                  "1": {
+                    "0": {
+                      "content": "Given $A\\beta = \\lambda \\beta$ where $\\beta = \\left[ \\begin{matrix} \\beta_1 \\\\ \\beta_2 \\end{matrix} \\right]$ is the eigenvector and $\\lambda$ is the eigenvalue (a scaler).<div><br></div>",
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "content": "<div>\n</div><div>$\\left[ \\begin{matrix} \\beta_2 \\\\ -12\\beta_1 -7\\beta_2 \\end{matrix}\\right] =\\left[\\begin{matrix} \\lambda \\beta_1 \\\\ \\lambda \\beta_2 \\end{matrix} \\right]$</div><div>\n\n\n</div>",
+                      "type": "rich-text"
+                    },
+                    "2": {
+                      "content": "<div>\n</div><div>From this we can derive $\\lambda^2\\beta_1 + 7\\lambda \\beta_1 + 12\\beta_1 = 0$</div><div>and hence $$\\lambda^2 + 7\\lambda + 12 = 0$$</div><div>Which is also the characteristic equation. Hence the eigenvalues are the poles of the system $\\lambda_1 = -3,\\quad \\lambda_2 = -4$.</div><div><br></div><div>\n\n\n</div>",
+                      "type": "rich-text"
+                    },
+                    "length": 3,
+                    "type": "section"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "class": {
+                  "wide": true
+                },
+                "length": 5,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "length": 1,
+            "type": "section"
+          },
+          "1": {
+            "0": {
+              "0": {
+                "content": "<b>2</b>",
+                "styles": {
+                  "--font-size-pt": "14"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "content": "Equation of motion for $\\mathbf{x_1}$ where $m_1 = 2$<div>$$m_1 \\ddot x_1 = k_s(x_2 - x_1) + k_d(\\dot x_2 - \\dot x_1)$$</div><div>Equation of motion for $\\mathbf{x_2}$ where $m_2 = 3$</div><div>$$m_2 \\ddot x_2 = -k_s(x_2 - x_1)&nbsp; -k_d(\\dot x_2 - \\dot x_1)$$</div>",
+                  "type": "rich-text"
+                },
+                "1": {
+                  "content": "<div><br></div>Introducing $$a_1 = x_1 \\quad a_2 = \\dot x_1 \\quad a_3 = x_2 \\quad a_4 = \\dot x_2$$<div>and $$c_s = \\frac{k_s}{m_1} \\quad c_d = \\frac{k_d}{m_1} \\quad e_s = \\frac{k_s}{m_2} \\quad e_d = \\frac{k_d}{m_2}$$</div>",
+                  "type": "rich-text"
+                },
+                "2": {
+                  "content": "<div>we can derive the following system of equations</div>$\\dot a_1 = a_2$<div>$\\dot a_2 = - c_s a_1 - c_d a_2 + c_s a_3 + c_d a_4$</div><div>$\\dot a_3 = a_4$</div><div>$\\dot a_4 = e_s a_1 + e_d a_2 - e_s a_3 - e_d a_4$</div><div><br></div><div>Which can be expressed as the state space formulation</div>",
+                  "type": "rich-text"
+                },
+                "3": {
+                  "content": "$\\left[ \\begin{matrix} \\dot a_1 \\\\ \\dot a_2 \\\\ \\dot a_3 \\\\ \\dot a_4 \\end{matrix}\\right] = \\left[\\begin{matrix} 0 &amp; 1 &amp; 0 &amp; 0 \\\\ -c_s &amp; -c_d &amp; c_s &amp; c_d\\\\0&amp;0&amp;0&amp;1\\\\e_s &amp; e_d &amp; -e_s &amp; -e_d \\end{matrix}\\right] \\left[\\begin{matrix} a_1 \\\\ a_2 \\\\ a_3 \\\\ a_4 \\end{matrix}\\right]$<div>equivalent to</div><div>$$\\mathbf{\\dot a} = A \\mathbf{a}$$</div>",
+                  "type": "rich-text"
+                },
+                "class": {
+                  "wide": true
+                },
+                "length": 4,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "class": {
+              "wide": true
+            },
+            "length": 1,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "length": 2,
+        "type": "section"
+      },
+      "-N-5Yxc6w9xF3vXAJB4J": {
+        "0": {
+          "0": {
+            "content": "<b>1</b>",
+            "styles": {
+              "--font-size-pt": "18"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "class": {
+              "wide": true
+            },
+            "type": "section-image",
+            "url": "http://127.0.0.1:56008/fig-05.svg"
+          },
+          "2": {
+            "content": "As can be seen to the left, the maximum block of $100$ can never be reached without taking sharp turns.",
+            "type": "rich-text"
+          },
+          "length": 3,
+          "type": "section-row"
+        },
+        "1": {
+          "content": "&nbsp; &nbsp;",
+          "type": "rich-text"
+        },
+        "2": {
+          "0": {
+            "content": "<b>2</b>",
+            "styles": {
+              "--font-size-pt": "18"
+            },
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "0": {
+                "content": "a",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "content": "<div><br></div>Consider some grid $G$ of size $n\\times n$ and a limit of sharp turns that can be taken $S$. Define&nbsp;$OPT(x, \\ y, \\ s)$&nbsp;to be the maximum profit that can be scored on a path starting at column $x$ and row $y$ with $s$ sharp turns allowed to the bottom right corner $(n - 1, \\ n - 1)$.&nbsp;<div><br><div>Where $0 \\le x \\le n, \\ \\&nbsp; 0 \\le y \\le n$ and $-1 \\le s \\le S$.&nbsp;</div><div><br><div>Furthermore define $OPT_L(x, y, s)$ to be the optimal solution with the restriction that the block $(x, \\ y)$ was approached from the left and similarly $OPT_A(x, y, s)$ from above.</div></div></div><div><br></div>",
+                "styles": {
+                  "text-align": "justify"
+                },
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "1": {
+              "0": {
+                "content": "b",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "class": {
+                    "wide": true
+                  },
+                  "content": "<div></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><b>Recursive Definition:</b></span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$$OPT(x, \\ y, \\ s) = max \\left(\\begin{array}{ll}OPT_{L}(x, \\ y, \\ s) \\\\ OPT_{A}(x, \\ y, \\ s)\\end{array}\\right)$$&nbsp;</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$$OPT_{L}(x, \\ y, \\ s) = G(x, \\ y) + max \\left( \\begin{array}{ll} OPT_{L}(x + 1,\\ y, \\ s) \\\\ OPT(x + 1, \\ y+ 1, \\ s) \\\\ OPT_A(x, \\ y + 1, \\ s - 1)\\end{array} \\right)$$</span></div><div><br></div><div>$$OPT_{A}(x, \\ y, \\ s) = G(x, \\ y) + max \\left(\\begin{array}{ll}OPT_{A}(x, \\ y + 1, \\ s) \\\\ OPT(x + 1, \\ y + 1, \\ s) \\\\ OPT_L(x + 1, \\ y, \\ s-1)\\end{array}\\right)$$</div><div><br></div>",
+                  "styles": {
+                    "text-align": "left"
+                  },
+                  "type": "rich-text"
+                },
+                "class": {
+                  "wide": true
+                },
+                "length": 1,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "2": {
+              "0": {
+                "content": "c",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "content": "<div><b style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></b></div><div><b style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">Base Cases</b><br></div>",
+                  "type": "rich-text"
+                },
+                "1": {
+                  "content": "If $x = n - 1$ and $y = n - 1$ where $s \\ge 0$<div>$\\quad OPT_A, \\ OPT_L, \\ OPT(x, \\ y, \\ s) = G(x, \\ y) = 0$</div>",
+                  "type": "rich-text"
+                },
+                "2": {
+                  "class": {
+                    "wide": true
+                  },
+                  "content": "<div></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">If $s = -1, \\ x = n$ or $y = n$</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$\\quad OPT_A, \\ OPT_L, \\ OPT(x, \\ y, \\ s) = -\\infty$</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div>",
+                  "type": "rich-text"
+                },
+                "class": {
+                  "wide": true
+                },
+                "length": 3,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "3": {
+              "0": {
+                "content": "d",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "content": "<div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">The most value achieved is in the subproblem </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$OPT(0, 0, S)$</span><br></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div><br></div>",
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "4": {
+              "0": {
+                "content": "e",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "content": "<div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><br></span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"><b>Proof of Correctness</b></span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">The&nbsp;</span>solution for a subproblem with input $(x, \\ y, \\ s)$<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;will always require the subproblems of the blocks below, diagonal,</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;right of and or with one less sharp turns allowed. Hence the the recursive function will always reach either the bottom edge </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$y = n$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">, rightmost edge </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$x = n$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\"> or when </span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$s = -1$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">. The optimal solution for these regions is set to $-\\infty$ as these moves are not possible. Hence the optimal solution will always end at the base case whose value is $&gt; -\\infty$, which is the base case for $(n - 1, \\ n - 1)$ which is&nbsp; set to $0 &gt; -\\infty$. As such the base cases should be sufficient.</span><br></div><div><br></div>",
+                  "styles": {
+                    "text-align": "justify"
+                  },
+                  "type": "rich-text"
+                },
+                "1": {
+                  "content": "<div></div><div>Say&nbsp;$S(x, y, s)$&nbsp;is the optimal solution for a path from $b_i = (x, y)$ to $(n - 1, \\ n - 1)$ with&nbsp;$s$&nbsp;sharp turns allowed. Consider the next block in the solution path $b_{i+1}$.&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">The position of&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_{i+1}$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;may be restricted if&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_i$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;was approached from the left or above and hence&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$S(x, \\ y, \\ s)$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;will depend on the direction&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_i$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;was approached from. As such I will introduce&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$S_L(x, \\ y, \\ s)$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;as the optimal solution with the restriction that&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$b_i$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;was approached from the left and&nbsp;</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$S_A(x, \\ y, \\ s)$</span><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">&nbsp;as the optimal solution approached from above. The solution for the subproblem at $b_i$ will include the solution of the subproblem at $b_{i+1}$. Furthermore the position of $b_{i+1}$ will be such that its subproblem is the maximum of all other possible positions.</span></div><div><br></div>",
+                  "styles": {
+                    "text-align": "justify"
+                  },
+                  "type": "rich-text"
+                },
+                "2": {
+                  "0": {
+                    "0": {
+                      "type": "section-image",
+                      "url": "http://127.0.0.1:56008/fig-03.svg"
+                    },
+                    "1": {
+                      "content": "<i>Approached from the left</i><div><i><br></i></div>",
+                      "styles": {
+                        "--font-size-pt": "11",
+                        "text-align": "center"
+                      },
+                      "type": "rich-text"
+                    },
+                    "length": 2,
+                    "type": "section"
+                  },
+                  "1": {
+                    "0": {
+                      "content": "If $b_i$ was approached from the left then the position of $b_{i+1}$ can be to the right, diagonal or below $b_i$. If $b_{i+1}$ is below $b_i$,&nbsp;the subproblem at $b_{i+1}$ must be restricted to one less sharp turn, as getting to it would require taking a sharp turn. Hence the solution of $b_i$ will include the maximum possible subproblem of $b_{i+1}$&nbsp;",
+                      "styles": {
+                        "text-align": "justify"
+                      },
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "content": "<div>$$S_L(x, \\ y, \\ s) = \\{G(x, \\ y)\\} \\cup max \\left( \\begin{array}{l} S_L(x + 1, y, s) \\\\ S_A(x, \\ y + 1,&nbsp; \\ s - 1) \\\\ S(x + 1, \\ y + 1, \\ s) \\end{array} \\right)$$</div><div><br></div><div><br></div>",
+                      "type": "rich-text"
+                    },
+                    "class": {
+                      "wide": true
+                    },
+                    "length": 2,
+                    "type": "section"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "3": {
+                  "0": {
+                    "0": {
+                      "type": "section-image",
+                      "url": "http://127.0.0.1:56008/fig-02.svg"
+                    },
+                    "1": {
+                      "content": "<i>Approached from above</i><div><i><br></i></div>",
+                      "styles": {
+                        "--font-size-pt": "11",
+                        "text-align": "center"
+                      },
+                      "type": "rich-text"
+                    },
+                    "length": 2,
+                    "type": "section"
+                  },
+                  "1": {
+                    "0": {
+                      "content": "If $b_i$ was approached from above then the position of $b_{i+1}$ can be to the right, diagonal or below $b_i$. If $b_{i+1}$ is to the right of $b_i$, the subproblem at $b_{i+1}$ must be restricted to one less sharp turn.",
+                      "styles": {
+                        "text-align": "justify"
+                      },
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "content": "<div>$$S_A(x, \\ y, \\ s) = \\{G(x, y)\\} \\cup max \\left( \\begin{array}{l} S_L(x + 1, y, s - 1) \\\\ S_A(x, \\ y + 1,&nbsp; \\ s) \\\\ S(x + 1, \\ y + 1, \\ s) \\end{array} \\right)$$</div>",
+                      "type": "rich-text"
+                    },
+                    "class": {
+                      "wide": true
+                    },
+                    "length": 2,
+                    "type": "section"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "4": {
+                  "0": {
+                    "0": {
+                      "type": "section-image",
+                      "url": "http://127.0.0.1:56008/fig-04.svg"
+                    },
+                    "1": {
+                      "content": "<i>Approached diagonally</i><div><br></div>",
+                      "styles": {
+                        "--font-size-pt": "11",
+                        "text-align": "center"
+                      },
+                      "type": "rich-text"
+                    },
+                    "length": 2,
+                    "type": "section"
+                  },
+                  "1": {
+                    "0": {
+                      "content": "If $b_i$ was approached from the diagonal then the position of $b_{i+1}$ can be to the right, diagonal or below $b_i$ without any restriction.",
+                      "styles": {
+                        "text-align": "justify"
+                      },
+                      "type": "rich-text"
+                    },
+                    "1": {
+                      "class": {
+                        "wide": true
+                      },
+                      "content": "<div></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$$S(x, \\ y, \\ s) = \\{G(x, y)\\} \\cup max \\left( \\begin{array}{l} S_L(x + 1, y, s) \\\\ S_A(x, \\ y + 1,&nbsp; \\ s) \\\\ S(x + 1, \\ y + 1, \\ s) \\end{array} \\right)$$</span></div>",
+                      "type": "rich-text"
+                    },
+                    "2": {
+                      "content": "Which will be equivalent to maximum of either $S_A(x, \\ y, \\ s)$ or $S_L(x, \\ y, \\ s)$.",
+                      "styles": {
+                        "text-align": "justify"
+                      },
+                      "type": "rich-text"
+                    },
+                    "class": {
+                      "wide": true
+                    },
+                    "length": 3,
+                    "type": "section"
+                  },
+                  "length": 2,
+                  "type": "section-row"
+                },
+                "5": {
+                  "content": "As $OPT, \\ OPT_L$ and $OPT_A$ encompass all these possible cases they will always provide the optimal solution.<div><br></div>",
+                  "type": "rich-text"
+                },
+                "length": 6,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "5": {
+              "0": {
+                "content": "f",
+                "styles": {
+                  "--font-size-pt": "16"
+                },
+                "type": "rich-text"
+              },
+              "1": {
+                "0": {
+                  "content": "<div><br></div><div><b>Time Complexity</b></div>Creating the $s = -1$ base will require constructing a $(n + 1) \\times (n + 1)$ array and setting those values to $-\\infty$ in $O(1)$ time for a total of $O((n + 1)^2) = O(n^2) + O(2n) + O(1) = O(n^2)$&nbsp;time.<div><br><div>For each value of $0 \\le s \\le S$ an array of size $(n + 1) \\times (n + 1)$ must be constructed and all its values set either to constants (base cases $-\\infty$) or from array lookup in $O(1)$ time and hence will take $S$ operations of $O(n^2)$ time for a total of $O(n^2S)$.&nbsp;</div><div><br></div><div>Hence the largest growing term and the time complexity of the algorithm is $O(n^2S)$.</div></div>",
+                  "type": "rich-text"
+                },
+                "length": 1,
+                "type": "section"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "length": 6,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "length": 3,
+        "type": "section"
+      },
+      "-N-QxAk8N2a0umzlWexh": {
+        "0": {
+          "0": {
+            "content": "<div>1</div>",
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "0": {
+                "class": {
+                  "wide": true
+                },
+                "content": "$\\dot x = Ax + Bu$ where $A = \\mat{0.4 &amp; -3 \\\\ 0.7 &amp; 0}, \\quad B = \\mat{6 \\\\ 0}, \\quad x = \\mat{x_1 \\\\ x_2}$",
+                "type": "rich-text"
+              },
+              "1": {
+                "content": "<b>Gabriel Ralph</b><div><b>470205736</b></div>",
+                "styles": {
+                  "--font-size-pt": "10",
+                  "text-align": "right"
+                },
+                "type": "rich-text"
+              },
+              "length": 2,
+              "type": "section-row"
+            },
+            "1": {
+              "content": "$\\det (A - \\lambda I) = \\left[\\begin{matrix} &nbsp;0.4 - \\lambda &amp; - 3 \\\\ 0.7 &amp; -\\lambda \\end{matrix} \\right] = 0$<div>$0 = (0.4 - \\lambda)(-\\lambda) - (0.7)(-3)$<br><div>$0 = \\lambda^2 -0.4\\lambda + 2.1$</div></div><div>$\\lambda = \\cfrac{0.4 \\pm \\sqrt{0.4^2 - 4*2.1}}{2}$</div><div>$$\\lambda_1 = 0.2 + 1.44j,\\quad \\lambda_2 = 0.2 - 1.44j \\quad (\\text{2&nbsp; d.p.})$$</div><div>As the real parts of the poles are positive, the open loop state is unstable.</div><div><br></div>",
+              "type": "rich-text"
+            },
+            "class": {
+              "wide": true
+            },
+            "length": 2,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "1": {
+          "0": {
+            "content": "2",
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "content": "First we must calculate the reachability matrix $W_r = \\mat{B &amp; AB}$",
+              "type": "rich-text"
+            },
+            "1": {
+              "content": "$W_r = \\mat{B&nbsp; &amp; AB} = \\mat{6 &amp; (0.3 * 6 -3 * 0) \\\\ 0 &amp;( 0.7 * 6 + 0 * 0)}$<div>$W_r = \\mat{6 &amp; 2.4 \\\\ 0 &amp; 4.2}$</div><div>As can be seen, intuitively, $W_r$ has full rank as each column is linearly independent and $\\det(W_r) =&nbsp; 25.2 \\ne 0$ therefore the system is reachable.</div><div><br></div>",
+              "type": "rich-text"
+            },
+            "length": 2,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "2": {
+          "0": {
+            "content": "3",
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "content": "$u = -Fx$ where $x = \\mat{x_1 \\\\ x_2}$ and $F = \\mat{\\gamma_1 &amp; \\gamma_2}$",
+              "type": "rich-text"
+            },
+            "1": {
+              "content": "$\\dot x = Ax - BFx$<div>$\\dot x = (A - BF)x$</div><div>$\\dot x = \\left(\\mat{0.4 &amp; -3 \\\\ 0.7 &amp; 0} - \\mat{6 \\\\ 0}\\mat{\\gamma_1 &amp; \\gamma_2}\\right) x$</div>",
+              "type": "rich-text"
+            },
+            "2": {
+              "content": "$$\\dot x = \\mat{0.4 - 6\\gamma_1 &amp; -3 -6\\gamma_2 \\\\ 0.7 &amp; 0}x$$<div>From which we can derive the following characteristic equation:<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$$\\lambda^2 + (6\\gamma_1 - 0.4)\\lambda + (3 + 6\\gamma_2)(0.7) = 0$$</span></div>",
+              "type": "rich-text"
+            },
+            "3": {
+              "class": {
+                "wide": true
+              },
+              "content": "<div></div><div>As we know the coefficient of&nbsp;$\\lambda$&nbsp;in the characteristic equation&nbsp;directly correlates to the real part of the poles.</div><div>$real(\\lambda) = -\\cfrac{6\\gamma_1 - 0.4}{2}$</div><div>Of which must be negative in order for the system to be stable and hence&nbsp;<span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$-\\cfrac{6\\gamma_1 - 0.4}{2} &gt; 0$.</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$6\\gamma_1 &lt; 0.4$</span></div>",
+              "type": "rich-text"
+            },
+            "4": {
+              "class": {
+                "wide": true
+              },
+              "content": "<div><br></div><div>If the poles are not complex, for stability it must hold that.</div><div>$\\sqrt{(6\\gamma_1-0.4)^2 - 4*0.7*(3 + 6\\gamma_2)} - (6\\gamma_1 - 0.4) &lt; 0$</div><div>Otherwise one of the poles will be positive.</div><div><br></div><div>$(6\\gamma_1-0.4)^2 - 4*0.7*(3 + 6\\gamma_2) &lt; (6\\gamma_1 - 0.4)^2$</div><div>$-4*0.7*(3 + 6\\gamma_2) &lt; 0$</div><div>$-8.4 - 16.8\\gamma_2 &lt; 0$</div><div>$-8.4 &lt; 16.8\\gamma_2$</div>",
+              "type": "rich-text"
+            },
+            "5": {
+              "content": "<div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">Hence for stability $\\gamma_1$ and $\\gamma_2$ must be in the range.</span></div><div><span style=\"font-size: calc(var(--font-size-pt) * var(--pt)) ;\">$$\\gamma_1 &lt; 0.066 \\quad \\text{&amp;}&nbsp; \\quad \\gamma_2 &gt; -0.5$$</span><br></div>",
+              "styles": {
+                "text-align": "center"
+              },
+              "type": "rich-text"
+            },
+            "class": {
+              "wide": true
+            },
+            "length": 6,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "3": {
+          "0": {
+            "content": "4",
+            "type": "rich-text"
+          },
+          "1": {
+            "0": {
+              "content": "Suppose $u = Ue^{st}$ for $U \\in \\mathbb{C}$&nbsp;and that $x(t) = X(s)Ue^{st}$&nbsp;is a solution of $\\dot x = Ax + Bu$ where $X(s)$ is the transfer function of the system ($X| \\mathbb{C} \\rightarrow \\mathbb{R}^{n}$).<div>From the solution of $x(t)$ we can derive $\\dot x = sX(s)Ue^{st}$</div><div>Substituting back into original system</div><div>$sX(s)Ue^{st} = AX(s)Ue^{st} + BUe^{st}$</div><div>$sX(s) = AX(s) + B$</div><div>$(sI - A)X(s) = B$</div><div>$$X(s) = (sI - A)^{-1}B$$</div>",
+              "type": "rich-text"
+            },
+            "class": {
+              "wide": true
+            },
+            "length": 1,
+            "type": "section"
+          },
+          "length": 2,
+          "type": "section-row"
+        },
+        "length": 4,
+        "type": "section"
+      },
+      "-N-VbYf9wAttaLHUjJBd": {
+        "0": {
+          "content": "$J\\ddot q(t) + d\\dot q(t) + kq(t) = k_m u(t)$",
+          "type": "rich-text"
+        },
+        "1": {
+          "content": "$x(t) = \\mat{q(t) \\\\ \\dot q(t)}$ $r(t) = \\mat{r_o \\\\ 0}$",
+          "type": "rich-text"
+        },
+        "2": {
+          "content": "$\\ddot q = -\\frac{d}{J} \\dot q - \\frac{k}{J} q + k_m u$",
+          "type": "rich-text"
+        },
+        "3": {
+          "content": "$\\dot x = \\mat{\\dot q \\\\ \\ddot q}$&nbsp;",
+          "type": "rich-text"
+        },
+        "4": {
+          "content": "$\\mat{\\dot q \\\\ \\ddot q} = \\mat{0 &amp; 1 \\\\ -\\frac{k}{J} &amp; -\\frac{d}{J} } \\mat{q \\\\ \\dot q} + \\mat{0 \\\\ k_m} u$",
+          "type": "rich-text"
+        },
+        "5": {
+          "content": "<div></div><div>$$\\mat{\\dot q \\\\ \\ddot q} = \\mat{0 &amp; 1 \\\\ -\\frac{k}{J} &amp; -\\frac{d}{J} } \\mat{q \\\\ \\dot q}&nbsp; + \\mat{0 \\\\ k_m} \\mat {K_1 &amp; K_2} (\\mat{r_0 \\\\ 0} - \\mat{q \\\\ \\dot q})$$</div><div><br></div>",
+          "type": "rich-text"
+        },
+        "6": {
+          "content": "<div>$\\mat{\\dot q \\\\ \\ddot q} = \\mat{0 &amp; 1 \\\\ -\\frac{k}{J} &amp; -\\frac{d}{J} } \\mat{q \\\\ \\dot q}&nbsp; + \\mat{0 &amp; 0 \\\\ k_mK_1 &amp; k_mK_2} (\\mat{r_0 \\\\ 0} - \\mat{q \\\\ \\dot q})$</div>",
+          "type": "rich-text"
+        },
+        "7": {
+          "content": "<div>$$\\mat{\\dot q \\\\ \\ddot q} = \\mat{0 &amp; 1 \\\\ - k_mK_1 - \\frac{k}{J} &amp; -k_mK_2 -\\frac{d}{J} } \\mat{q \\\\ \\dot q}&nbsp; + \\mat{0 &amp; 0 \\\\ k_mK_1 &amp; k_mK_2} \\mat{r_0 \\\\ 0} $$</div>",
+          "type": "rich-text"
+        },
+        "8": {
+          "content": "<div>$B_{CL} = \\mat{0 &amp; 0 \\\\ k_mK_1 &amp; k_mK_2}$</div>",
+          "type": "rich-text"
+        },
+        "9": {
+          "content": "<div>$A_{CL} = \\mat{0 &amp; 1 \\\\ - k_mK_1 - \\frac{k}{J} &amp; -k_mK_2 -\\frac{d}{J} } = \\mat{0 &amp; 1 \\\\ c_1 &amp; c_2}$</div>",
+          "type": "rich-text"
+        },
+        "10": {
+          "content": "Characteristic Equation<div>$(-\\lambda)(c_2 - \\lambda) - c_1 = 0$</div><div>$\\lambda^2 -c_2\\lambda - c_1 = 0$</div><div><br></div><div>$\\lambda = \\cfrac{c_2 \\pm \\sqrt{c_2^2 + 4c_1}}{2}$</div>",
+          "type": "rich-text"
+        },
+        "11": {
+          "content": "$c_2 &lt; 0$<div>$-k_mK_2 &lt; \\frac{d}{J}$</div><div>$$K_2 &gt; -\\cfrac{d}{k_m J}$$</div>",
+          "type": "rich-text"
+        },
+        "12": {
+          "content": "$4c_1 &lt; 0$<div>$-4k_mK_1 -4\\frac{k}{J} &gt; 0$</div><div>$-k_mK_1 &gt; \\frac{k}{J}$</div><div>$$K_1 &lt; -\\cfrac{k}{k_m J}$$</div>",
+          "type": "rich-text"
+        },
+        "13": {
+          "content": "$0 = c_1 q + k_mK_1 r_0$<div>$(k_mK_1 + \\frac{k}{J})q = k_mK_1 r_0$&nbsp;</div><div>$$q = \\cfrac{Jk_mK_1 r_0}{k_mK_1 + k}$$</div><div>$q(k_mK_1 + k) = Jk_mK_1r_0$</div><div>$k = (Jk_mr_0 - qk_m)/q$</div>",
+          "type": "rich-text"
+        },
+        "length": 14,
+        "type": "section"
+      },
+      "-N-ffQzR2ODEzUnMAA20": {
+        "0": {
+          "content": "A Quaternion is a $4D$&nbsp; vector in space (i.e. $q \\in \\mathbb{R}^4$ ).<div>$$\\eq{q = \\mat{w \\\\ x \\\\ y \\\\ z}}{mtx}$$</div><div>or expressed in imaginary space</div><div>$$\\eq{q = w + xi + yj + zk}{img}$$</div><div>A quaternion can also be expressed as a scaler $w \\in \\mathbb{R}$ and $3D$ vector $\\mathbf{v} \\in \\mathbb{R}^3$.</div><div>$$\\eq{q = (w, \\mathbf{v})}{sve}$$</div>",
+          "type": "rich-text"
+        },
+        "1": {
+          "content": "The <b>product</b> of two quaternions<i> </i>(from \\eqref{img} expressed in form \\eqref{mtx}).<div>$$pq = \\mat{p_wq_w - p_xq_x - p_yq_y - p_zq_z \\\\ p_wq_x + p_xq_w + p_yq_z - p_zq_y \\\\ p_wq_y + p_yq_w - p_xq_z + p_zq_x \\\\ p_wq_z + p_zq_w + p_xq_y - p_yq_x}$$</div>",
+          "type": "rich-text"
+        },
+        "2": {
+          "content": "Quaternion to <b>rotation matrix</b><div>$$R = \\mat{1 - 2(y^2 + z^2) &amp; 2(xy - wz) &amp; 2(xz + wy) \\\\ 2(xy + wz) &amp; 1 - 2(x^2 + z^2) &amp; 2(yz - wx) \\\\ 2(xz - wy) &amp; 2(yz + wx) &amp; 1 - 2(x^2 + y^2)}$$</div>",
+          "type": "rich-text"
+        },
+        "3": {
+          "content": "Given some vector $\\mathbf{u}$ and $\\mathbf{v}$&nbsp;<div><div>$$q = (|\\mathbf{u}||\\mathbf{v}| + \\mathbf{u} \\cdot \\mathbf{v}, \\mathbf{u} \\times \\mathbf{v})$$</div></div><div>is the quaternion (in the form of \\eqref{sve})&nbsp;whose unit vector $\\hat{q}$ will rotate $\\mathbf{u}$ to $\\mathbf{v}$.</div>",
+          "type": "rich-text"
+        },
+        "length": 4,
+        "type": "section"
+      }
+    }
+  }
+}

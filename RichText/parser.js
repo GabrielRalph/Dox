@@ -1,0 +1,5 @@
+function parseRichText(){
+
+}
+
+export {parseRichText}

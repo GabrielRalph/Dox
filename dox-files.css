@@ -1,0 +1,64 @@
+body {
+  --beige: #cdcac5;
+  --r: 0.4em;
+}
+
+dox-files {
+  display: block;
+  --margin: 0.5em;
+  --spacing: 0.3em;
+  --padding: 0.2em;
+}
+
+dox-files .tools {
+  margin-bottom: var(--spacing);
+  padding: var(--spacing);
+  border-bottom: 1px solid #cdcac566;
+}
+
+dox-files .tools > div {
+  display: inline-block;
+  position: relative;
+}
+
+dox-files .tools img {
+  height: calc(1.3em + 2 * var(--padding));
+  position: absolute;
+  top: 0;
+  right: calc(-1.3em + -2 * var(--padding));
+  cursor: pointer;
+}
+
+input {
+  border-radius: var(--r);
+  border: 1px solid var(--beige);
+  color: var(--beige);
+  font-size: 1em;
+  background: #fff0;
+  outline: none;
+}
+
+dox-files .tools input {
+  padding: var(--padding);
+  font-size: 1em;
+  min-width: 15em;
+}
+
+dox-files .file {
+  margin: var(--spacing);
+  padding: var(--padding);
+  border: 1px solid #cdcac566;
+  border-radius: var(--r);
+  color: var(--beige);
+  background: #2e2c2a22;
+}
+
+dox-files .file span {
+  cursor: pointer;
+}
+
+dox-files .file img {
+  height: 1.3em;
+  float: right;
+  cursor: pointer;
+}

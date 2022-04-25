@@ -1,0 +1,266 @@
+/* h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  min-height: 1em;
+} */
+
+dox-app > *:not([show]) {
+  display: none;
+}
+
+fire-files {
+  margin: 1.5vh;
+  position: absolute;
+  top: 6vh;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.file-tools {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4.5vh;
+  margin: 1.5vh;
+  display: flex;
+  align-items: center;
+  background: #fdfcfb;
+  border-radius: 1em;
+}
+.file-tools > div {
+  display: flex;
+  align-items: center;
+}
+.file-tools img {
+  height: 1em;
+  margin-left: 0.5em;
+}
+.file-tools input {
+  outline: none;
+  border: none;
+  background: #fff4;
+  border-bottom: 1px solid grey;
+}
+
+
+h1[contenteditable="true"],
+h2[contenteditable="true"],
+h3[contenteditable="true"],
+h4[contenteditable="true"],
+h5[contenteditable="true"],
+h6[contenteditable="true"] {
+  outline: none;
+}
+[contenteditable] {
+  outline: none;
+}
+[contenteditable="true"] {
+  outline: none;
+}
+
+
+dox-editor {
+  display: block;
+  position: relative;
+  width: var(--width);
+  height: 100%;
+  --element-padding: 2px;
+  --element-margin: 2px;
+  --icon-size: 1.3em;
+  --r: 0.4em;
+  overflow: scroll;
+  margin: auto;
+}
+
+dox-editor[edit] .dox-node {
+  cursor: pointer;
+  position: relative;
+  padding: var(--element-padding);
+  border: 1px solid black;
+  border-radius: var(--r);
+  min-height: 1em;
+  margin: calc(var(--element-margin) + 1px);
+}
+dox-editor[edit] .dox-node[selected] {
+  border-width: 2px;
+  margin: var(--element-margin);
+}
+
+dox-editor[edit] section.dox-node {
+  border-color: #7373db5e;
+}
+dox-editor[edit] section.dox-node[selected] {
+  border-color: #7373dbAe;
+}
+
+dox-editor[edit] section-row.dox-node {
+  border-color: #d95d0d4d;
+}
+dox-editor[edit] section-row.dox-node[selected] {
+  border-color: #d95d0d9d;
+}
+
+dox-editor[edit] rich-text.dox-node {
+  border-color: #0c910c45;
+}
+dox-editor[edit] rich-text.dox-node[selected] {
+  border-color: #0c910c95;
+}
+
+dox-editor > .dox-container {
+  margin: var(--element-margin);
+  height: 100%;
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+
+  margin-right: -7px;
+  padding-right: 7px;
+}
+.dox-container > section, dox-editor[edit] > .dox-container > section, dox-editor[edit] > .dox-container > section[selected] {
+  margin-top: 2em;
+  margin-bottom: 5em;
+  padding: 2em;
+}
+
+.dox-container > section {
+  background: white;
+}
+
+dox-tools {
+  --bg: #54535174;
+  display: flex;
+  justify-content: space-between;
+  height: var(--icon-size);
+  position: fixed;
+  margin: 0.3em;
+  padding: var(--element-padding);
+  top: 0;
+  left: 0;
+  right: 7px;
+  z-index: 100;
+  background: var(--bg);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: var(--r);
+  box-shadow: 0px -3px 3px 5px var(--bg);;
+}
+
+dox-tools div{
+  display: flex;
+  align-items: center;
+}
+
+dox-tools img {
+  height: var(--icon-size);
+  cursor: pointer;
+}
+
+dox-tools img[valid="highlight"] {
+  opacity: 0.5;
+}
+
+/* dox-tools div img:first-of-type {
+  margin-left: 0;
+}
+dox-tools div img:last-of-type{
+  margin-right: 0;
+} */
+
+img[hidden] + img.sp5 {
+  border: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+dox-tools .text-field[hidden] {
+  display: none;
+}
+
+dox-tools > div > div:nth-of-type(n+2) {
+}
+
+dox-tools > div > .sp2 {
+  margin-left: 0.2em;
+  padding-left: 0.2em;
+  /* border-left: 1px solid #2a282370; */
+}
+dox-tools > div > .sp5 {
+  margin-left: 0.5em;
+  padding-left: 0.5em;
+  border-left: 1px solid #2a282370;
+}
+
+dox-tools .text-field{
+  margin: 0.1em;
+}
+
+dox-tools .text-field > * {
+  height: 1em;
+  padding: 0.25em 0.25em;
+  font-size: 0.65em;
+  line-height: 1em;
+  border: 1px solid #262421;
+}
+
+dox-tools .text-field span {
+  border-radius: var(--r) 0 0 var(--r);
+  background: #262421;
+  color: var(--beige);
+  cursor: w-resize;
+}
+
+dox-tools .text-field input {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-left: none;
+  background: var(--bg);
+}
+
+/* dox-tools .text-field > * {
+  height: 1em;
+  padding: 0.25em 0.25wem;
+  font-size: 0.65em;
+  line-height: 1em;
+  border: 1px solid #262421;
+} */
+
+dox-tools .text-field[small] span {
+  border-radius: var(--r);
+  cursor: e-resize;
+}
+
+dox-tools .text-field[small] input {
+  display: none;
+}
+
+section section{
+  break-inside: avoid;
+}
+section-row {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+@media print {
+  dox-tools {
+    display: none;
+  }
+  section-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  dox-editor {
+    overflow: hidden;
+    position: relative;
+  }
+  .dox-container {
+    position: relative;;
+  }
+  .dox-container > section {
+    margin: white;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+
+}

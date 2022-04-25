@@ -1,0 +1,47 @@
+The rich text input field can contain
+multiple lines. On each line formatted text
+can be created and given a set of properties.
+
+- rich-text
+   - get value
+   - props
+   - lines
+     - props
+     - children
+       - formatted text
+          - data
+          - props
+       - plain text
+          - data
+
+No formatted text inside another formatted text.
+
+The rich text field can parse html or text into
+valid lines and paste it into any selection.
+
+The rich text field can switch between a display
+and edit mode. When switching to display a markdown
+can be applied in order to display things such as
+math text.
+
+At any point the rich text field will return a string
+representation of it and its contents, without markdown.
+
+Properties for both line and format can be set at any time.
+
+  Single selection
+    changes made to line are instant,
+    changes made to format take effect only if
+    preceeding a text character key press.
+
+  Ranged selection
+    changes made to line are instant
+    chages made to format are instant
+
+    Ranged selection between multiple lines
+      changes made to all lines
+      changes made to format are instant
+
+
+
+Other smart tools like auto delim and maybe more
