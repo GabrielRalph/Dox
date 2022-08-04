@@ -1,3 +1,9 @@
 [submodule "FileTree"]
 	path = FileTree
 	url = https://github.com/GabrielRalph/FileTree
+[submodule "SvgPlus"]
+	path = SvgPlus
+	url = https://github.com/GabrielRalph/SvgPlus.git
+[submodule "FireUser"]
+	path = FireUser
+	url = https://github.com/GabrielRalph/FireUser.git
