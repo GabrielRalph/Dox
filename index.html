@@ -5,27 +5,31 @@
     <meta name="viewport" content="width=230mm, initial-scale=1mm">
     <title>DoX</title>
     <!-- <link rel="stylesheet" href="https://arcms.w4v.es//Assets/Supreme/stylesheet.css"> -->
-    <link href = "./dox.css" rel = "stylesheet" />
-    <link href = "./FileTree/fire-files.css" rel = "stylesheet" />
-    <link href = "./dox-editor.css" rel = "stylesheet" />
-    <link href = "./pages.css" rel = "stylesheet" />
+    <link href = "./Dox/dox.css" rel = "stylesheet" />
+    <link href = "./Dox/dox-editor.css" rel = "stylesheet" />
+    <link href = "./FileTree/styles.css" rel = "stylesheet" />
     <link href = "./LoveHeart/styles.css" rel = "stylesheet" />
-    <script type = "module" src = "./LoveHeart/love-heart.js"></script>
-    <script type = "module" src = "./DoxEditor.js"></script>
-    <script type = "module" src = "./FileTree/fire-files.js"></script>
-    <script type = "module" src = "./DoxApp.js"></script>
-    <script type = "module" src = "./pages.js"></script>
+    <link href = "./FireUser/styles.css" rel = "stylesheet"/>
 
-    <link rel = "stylesheet" href = "./FireUser/styles.css"/>
+    <script type = "module" src = "./LoveHeart/love-heart.js"></script>
     <script type = "module" src = "./FireUser/fire-user.js"></script>
+    <script type = "module" src = "./Dox/DoxApp.js"></script>
+    <script type = "module" src = "./Pages/pages.js"></script>
     <script>
+
       MathJax = {
+        loader: {load: ['[tex]/color']},
         tex: {
+          packages: {'[+]': ['color']},
           inlineMath: [['$', '$'], ['\\(', '\\)']],
           macros: {
             trans: `\\underset{heat}{\\overset{cool}{\\rightleftharpoons}}`,
             mat: ["\\left[ \\begin{matrix} #1 \\end{matrix} \\right]", 1],
-            eq: ["\\begin{equation} #1 \\label{#2} \\end{equation}", 2]
+            eq: ["\\begin{equation} #1 \\label{#2} \\end{equation}", 2],
+            dpar: ["\\cfrac{\\partial #1}{\\partial #2}", 2],
+            hl: ["{\\color{WildStrawberry} #1}", 1],
+            red: ["{\\color{BrickRed} {#1}_1}", 1],
+            blue: ["{\\color{RoyalBlue} {#1}_2}", 1],
           },
           tags: "ams",
         },
@@ -38,7 +42,7 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
   <body>
-    <fire-user users-ref = "doxs/users/" load-delay = "3000" config = '{
+    <fire-user users-ref = "doxs/users/" config = '{
         "apiKey": "AIzaSyAwKRqxNdoO05hLlGZwb5AgWugSBzruw6A",
         "authDomain": "myaccounts-4a6c7.firebaseapp.com",
         "databaseURL": "https://myaccounts-4a6c7-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -67,8 +71,8 @@
               <span signout style = "float:right;">Logout</span>
             </h1>
 
-            <fire-files root = "fileRoot" file-ref = "files">
-            </fire-files>
+            <fire-tree>
+            </fire-tree>
           </div>
           <dox-editor edit>
             <dox-tools>
@@ -127,14 +131,22 @@
   <script type = "module">
     let fire = document.querySelector("fire-user");
     fire.addEventListener("leave", () => {
+      console.log('leven');
       fire.loaded = true;
     })
-    // fire.addEventListener("user", () )
+
+    fire.addEventListener("user", () => {
+      console.log('x');
+    })
     // let files = document.querySelector("fire-files");
   </script>
   <script>
   </script>
   <style>
+
+  .btn {
+    font-size: 3em;
+  }
 
     body {
       font-family: 'Supreme LL TT';

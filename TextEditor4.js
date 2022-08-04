@@ -1,7 +1,0 @@
-class TextEditor {
-
-
-  get value(){
-
-  }
-}

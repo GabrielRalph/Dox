@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://arcms.w4v.es//Assets/Supreme/stylesheet.css">
+    <link href = "./doxD.css" rel = "stylesheet" />
+    <!-- <link href = "./pages.css" rel = "stylesheet" />
+    <script type = "module" src = "./pages.js"></script> -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type = "module">
+      import {Section} from "./DoxNodesD.js"
+      let section = new Section();
+      section.json = {
+      	"0": {
+      		"0": {
+      			"type": "rich-text",
+      			"styles": {
+      				"--font-size-pt": "22",
+      				"text-align": "left"
+      			},
+      			"class": {},
+      			"content": "<b>1 Introduction<br></b>"
+      		},
+      		"1": {
+      			"0": {
+      				"type": "rich-text",
+      				"class": {},
+      				"content": "<div><br></div><div>Consider taking the body of the mercedes benz 300SL&nbsp; W198 with properties$^{[1]}$</div><div>$m = 1420(kg)$</div><div>$A = 1.757(m^2)$</div><div>$c_D = 0.389$</div><div>$l_r = l_f = 1.2 (m)$</div><div>$\\text{Wheel Radius }(w_r)=0.34(m)$</div><div>undefined</div><div>$\\text{Peak Torque } (\\tau_{MAX}) = 460(N\\cdot m)$.</div>"
+      			},
+      			"1": {
+      				"type": "section-image",
+      				"class": {
+      					"wide": true
+      				},
+      				"url": "https://www.brabus.com/_Resources/Persistent/e/e/d/8/eed88abb8d633e1ebdc6f4da56bf50521f317d3d/C4S_034C%20%287%29.jpg?bust=eed88abb"
+      			},
+      			"type": "section-row",
+      			"class": {},
+      			"length": 2
+      		},
+      		"2": {
+      			"type": "rich-text",
+      			"class": {},
+      			"content": "<div>To get a total maximum output of&nbsp;$$u_{MAX} = \\tau_{MAX} * 2 / w_r = 2.7kN$$A control system in order to maintain constant speed (cruise control) and change lanes will be implemented in the vehicle. The cruise control system must operate between 20km/h to 120km/h within a tolerance of $\\pm$2.5% the desired speed, which it will reach in no more than 20s. The lane changing mechanism must operate by steering the car into the correct lane with a tolerance of $\\pm$0.025(m) and should do so in 5s - 10s.</div>"
+      		},
+      		"type": "section",
+      		"class": {},
+      		"length": 3
+      	},
+      	"1": {
+      		"0": {
+      			"type": "rich-text",
+      			"styles": {
+      				"--font-size-pt": "22"
+      			},
+      			"class": {},
+      			"content": "<div><b><br></b></div><div><b>2 Cruise Control<br></b></div>"
+      		},
+      		"1": {
+      			"0": {
+      				"type": "rich-text",
+      				"styles": {
+      					"--font-size-pt": "18"
+      				},
+      				"class": {},
+      				"content": "<b>2.1 Lineariziation</b>"
+      			},
+      			"1": {
+      				"type": "rich-text",
+      				"class": {},
+      				"content": "<div>$$m \\dot v + \\frac{1}{2} A \\rho c_D v^2 = u$$<br></div><div>Let $\\dot v = f(v, u) = \\frac{1}{m}u - \\frac{1}{2m}A \\rho c_D v^2$<br>undefined</div><div><br></div>"
+      			},
+      			"2": {
+      				"type": "rich-text",
+      				"styles": {
+      					"text-align": "left"
+      				},
+      				"class": {},
+      				"content": "<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div>Using the taylor expansion approximation method i.e. $$f(v, u) \\approx f(v_e, u_e) - \\cfrac{\\partial f}{\\partial v}(v_e, u_e) (v - v_e) + \\cfrac{\\partial f}{\\partial u}(u - u_e)$$</div><div>We can linearize the system to the form</div><div>$\\dot v = f(v, u) \\approx (\\frac{1}{m})(u - u_e) - (\\frac{1}{m}A\\rho c_D v_e)(v - v_e) $</div><div>Which can be rewritten as&nbsp;$$\\dot \\delta_v + a\\delta_v = b\\delta_u$$Where $a = \\frac{1}{m} A \\rho c_d v_e, \\quad b = \\frac{1}{m}, \\quad \\delta_v = v - v_e, \\ and \\ \\delta_u = u - u_e$</div><div><br></div><div>For the case where the input is a step response ($u(t) = r \\mathbf{1}(t)$) we can write the equation of velocity as.</div><div>$$\\delta_v(t) = ({\\delta_v}_0 - \\frac{b}{a}r) e ^{-at} + \\frac{b}{a}r$$ Where $\\delta_v(0) = {\\delta_v}_0$</div><div><br></div>"
+      			},
+      			"3": {
+      				"type": "rich-text",
+      				"class": {},
+      				"content": "The following equilibrium pairs where selected based on usual car speeds and $r$ selected as the $u_e$"
+      			},
+      			"4": {
+      				"0": {
+      					"type": "rich-text",
+      					"class": {},
+      					"content": "<div>$v_e = 30(m/s), u_e = 450 A \\rho c_D (N)$</div><div>$v_e = 15(m/s),&nbsp; \\ u_e = 112.5 A \\rho c_D (N)$</div><div>$v_e = 5(m/s), \\ u_e = 12.5 A \\rho c_D (N)$</div><div><br></div><div></div>"
+      				},
+      				"1": {
+      					"type": "rich-text",
+      					"styles": {
+      						"text-align": "right"
+      					},
+      					"class": {
+      						"wide": true
+      					},
+      					"content": "$18km/h$<div>$54km/h$</div><div>$108km/h$</div>"
+      				},
+      				"type": "section-row",
+      				"class": {},
+      				"length": 2
+      			},
+      			"5": {
+      				"0": {
+      					"type": "section-image",
+      					"class": {},
+      					"url": "https://lh3.google.com/u/0/d/13KH__IysLs-sCbLpSp8btvuylGb9GoMB=w2880-h1577-iv1"
+      				},
+      				"1": {
+      					"type": "rich-text",
+      					"class": {
+      						"wide": true
+      					},
+      					"content": "For every equilibrium pair ($v_e, \\ u_e$) trajectories starting at $v_0 = v_e + 1$ and $v_0 = v_e - 1$ have been obtained. All trajectories appear stable as they all converge to the equilibrium velocity (both starting from above or below $v_e$). The smaller the equilibrium velocity the longer the settling time of the trajectory. This is because $v_e$ directly scales time in the exponential term $e^{-\\frac{A \\rho c_D}{m}v_et}$ in doing so larger values of $v_e$ will cause faster rate of change and quicker settling time of the linearized model."
+      				},
+      				"type": "section-row",
+      				"class": {},
+      				"length": 2
+      			},
+      			"type": "section",
+      			"class": {},
+      			"length": 6
+      		},
+      		"2": {
+      			"0": {
+      				"type": "rich-text",
+      				"styles": {
+      					"--font-size-pt": "18"
+      				},
+      				"class": {},
+      				"content": "<b>2.2 Controller Design</b>"
+      			},
+      			"1": {
+      				"type": "rich-text",
+      				"class": {},
+      				"content": "<div><br></div><div>Taking the linearized model ($v_e = 15$) as<br></div><div>$$\\dot v + a v = bu$$</div><div>I will introduce a PI controller where $$u = K_P(r(t) - v(t)) + K_I\\int (r(\\tau) - v(\\tau)) d\\tau$$such that $\\dot u = K_P(\\dot r(t) - \\dot v(t)) + K_I(r(t) - v(t))$</div><div>Substituting into the differentiated model gives</div><div>$\\ddot v + a\\dot v = b (K_P(\\dot r - \\dot v) +&nbsp; K_I(r - v))$</div><div>$\\ddot v + (bK_P + a)\\dot v + bK_Iv = b(K_P\\dot r + K_Ir)$</div><div>If we consider $r(t) = r\\mathbf{1}(t)$ then $\\dot r = 0$ and hence we get</div><div>$$\\ddot v + (bK_P + a)\\dot v + bK_Iv = bK_Ir$$</div><div>Where the poles are&nbsp;$$\\lambda_1, \\ \\lambda_2 = \\cfrac{-(bK_P + a) \\pm \\sqrt{(bK_P + a)^2 - 4bK_I}}{2}$$</div><div>Furthermore if those poles are complex ($(bK_P + a)^2 - 4bK_I &lt; 0$) we can express them as&nbsp;$$\\sigma = \\cfrac{bK_P + a}{2}$$&nbsp;$$\\omega_d = \\cfrac{\\sqrt{4bK_I - (bK_P + a)^2}}{2}$$ $$\\omega_n = \\sqrt{bK_I}$$&nbsp;$$\\zeta = \\cfrac{bK_P + a}{2\\sqrt{bK_I}}$$</div><div>Using the following equation's gain constants can be derived in order to meet system requirements.&nbsp;</div><div>$$M_p = 0.025 = e^{-\\frac{\\sigma}{\\omega_d}\\pi}$$</div><div>$$t_s = 20 \\approx \\cfrac{4}{\\sigma}$$&nbsp;</div>"
+      			},
+      			"2": {
+      				"0": {
+      					"type": "rich-text",
+      					"styles": {
+      						"text-align": "center"
+      					},
+      					"class": {
+      						"wide": true
+      					},
+      					"content": "<div>Finding $K_P$ based on settling time $t_s$</div><div>$t_s = \\cfrac{8}{bK_P + a}$</div><div>$K_P&nbsp; = \\cfrac{\\frac{8}{t_s} - a}{b} = 555$</div><div><br></div><div></div>"
+      				},
+      				"1": {
+      					"type": "rich-text",
+      					"styles": {
+      						"text-align": "center"
+      					},
+      					"class": {
+      						"wide": true
+      					},
+      					"content": "<div>Finding $K_I$ in terms of&nbsp;</div><div>maximum overshoot $M_p$ and $K_P$</div><div>$-\\cfrac{log(M_p)}{\\pi} \\omega_d = \\sigma$</div><div>let $c_1 = -\\cfrac{log(M_p)}{\\pi}$<br></div><div>$K_I = \\cfrac{(bK_P + a)^2(1 + c_1^2)}{4bK_P c_1^2} = 89$</div><div><br><br /><br /></div>"
+      				},
+      				"type": "section-row",
+      				"class": {},
+      				"length": 2
+      			},
+      			"3": {
+      				"0": {
+      					"type": "section-image",
+      					"class": {
+      						"wide": true
+      					},
+      					"url": "http://127.0.0.1:58741/Model%20for%20varing%20reference%20speeds.svg"
+      				},
+      				"1": {
+      					"type": "rich-text",
+      					"class": {
+      						"wide": true
+      					},
+      					"content": "Numerical tests of the controller where performed using the linear model for varying speeds within the working range. The results (to the left) show great success with settle time and maximum overshoot not exceeding the design constraints for the chosen gain values."
+      				},
+      				"type": "section-row",
+      				"class": {},
+      				"length": 2
+      			},
+      			"type": "section",
+      			"class": {},
+      			"length": 4
+      		},
+      		"3": {
+      			"0": {
+      				"type": "rich-text",
+      				"styles": {
+      					"--font-size-pt": "18"
+      				},
+      				"class": {},
+      				"content": "<b>2.3 Validations</b>"
+      			},
+      			"1": {
+      				"0": {
+      					"type": "rich-text",
+      					"class": {
+      						"widen": true
+      					},
+      					"content": ""
+      				},
+      				"1": {
+      					"type": "section-image",
+      					"class": {
+      						"wide": true
+      					},
+      					"url": "http://127.0.0.1:58741/FBD diagram.svg"
+      				},
+      				"2": {
+      					"type": "rich-text",
+      					"class": {
+      						"widen": true
+      					},
+      					"content": ""
+      				},
+      				"type": "section-row",
+      				"class": {},
+      				"length": 3
+      			},
+      			"2": {
+      				"type": "rich-text",
+      				"class": {
+      					"wide": true
+      				},
+      				"content": "<div><br></div><div>Consider the free body diagram above. Take the sum of forces in the direction of velocity.</div><div>undefined</div><div>$ma = u - \\frac{1}{2} A \\rho c_D v^2 - mg\\sin(\\theta)$</div><div>Which can be written as</div><div>$$m\\dot v + \\frac{1}{2}A \\rho c_D v^2 = u + d$$</div><div>Where $d = -mg\\sin(\\theta) \\approx -2kN$ for a slope of 15%.</div><div><br></div>"
+      			},
+      			"3": {
+      				"0": {
+      					"type": "rich-text",
+      					"class": {
+      						"wide": true
+      					},
+      					"content": "<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />Comparing results from the numeric linear model and the non linear simulated model show large discrepancies (as shown below). Overshoot in the nonlinear simulation drastically exceeds the required tolerance band and hence more work in choosing gain values was required.<div><br></div>"
+      				},
+      				"type": "section-row",
+      				"class": {},
+      				"length": 1
+      			},
+      			"4": {
+      				"0": {
+      					"type": "section-image",
+      					"class": {wide:true},
+      					"url": "http://127.0.0.1:58741/Model%20vs%20Simulation.svg"
+      				},
+      				"1": {
+      					"type": "section-image",
+      					"class": {wide:true},
+      					"url": "http://127.0.0.1:58741/output.svg"
+      				},
+      				"type": "section-row",
+      				"class": {},
+      				"length": 2
+      			},
+      			"5": {
+      				"type": "rich-text",
+      				"class": {
+      					"wide": true
+      				},
+      				"content": "<div>Looking at the output of the simulated non linear model (as shown above) it can be seen that the force output $u(t)$ exceeds the maximum output of $2.7kN$, even when reaching speeds of 20km/h. This would not be possible for the car to output. Hence I propose applying a bound on controller output $u(t)$ such that $$u_{MIN} \\le u(t) \\le u_{MAX}$$&nbsp;<br></div>"
+      			},
+      			"6": {
+      				"type": "rich-text",
+      				"class": {
+      					"wide": true
+      				},
+      				"content": "<div>By simulating different values for $K_P$ and $K_I$ and looking at the resultant overshoot and settling time the values $K_P = 20000$ and $K_I = 15$ where chosen.&nbsp;As can be seen below, the controller reaches the desired reference speed within a $\\pm 2.5\\%$ tolerance in less than 20s. When a $2kN$ disturbance is applied the controller adjusts to compensate the change and keep the velocity within the desired speed range. The controller is able to operate within the required range.</div>"
+      			},
+      			"7": {
+      				"0": {
+      					"type": "section-image",
+      					"class": {
+      						"wide": true
+      					},
+      					"url": "http://127.0.0.1:58741/validation.svg"
+      				},
+      				"1": {
+      					"type": "section-image",
+      					"class": {
+      						"wide": true
+      					},
+      					"url": "http://127.0.0.1:58741/v2.svg"
+      				},
+      				"type": "section-row",
+      				"class": {},
+      				"length": 2
+      			},
+      			"type": "section",
+      			"class": {},
+      			"length": 8
+      		},
+      		"type": "section",
+      		"class": {},
+      		"length": 4
+      	},
+      	"2": {
+      		"0": {
+      			"type": "rich-text",
+      			"styles": {
+      				"--font-size-pt": "22"
+      			},
+      			"class": {},
+      			"content": "<div><b><br><br /></b></div><div><b>3 Lateral Control</b></div>"
+      		},
+      		"1": {
+      			"0": {
+      				"type": "rich-text",
+      				"styles": {
+      					"--font-size-pt": "18"
+      				},
+      				"class": {},
+      				"content": "<b>3.1 Linearization</b>"
+      			},
+      			"1": {
+      				"type": "rich-text",
+      				"class": {},
+      				"content": "<br />Using small angle approximations i.e. $\\psi \\approx 0$, $\\beta \\approx 0$, $\\delta_f \\approx 0$ and assuming $v(t) \\approx v_0$<div>undefinedundefinedundefined</div>"
+      			},
+      			"2": {
+      				"type": "rich-text",
+      				"class": {},
+      				"content": "(3) into (1)<div>$\\dot y = v_0(\\psi + \\cfrac{l_r}{l_r + l_f}\\delta_f)$</div><div>Differentiate both sides with respect to time</div><div>$\\ddot y = v_0(\\dot \\psi + \\cfrac{l_r}{l_r + l_f}\\dot \\delta_f) \\quad \\quad (4)$&nbsp;</div><div>(3) into (2)</div><div>$\\dot \\psi = \\cfrac{v_0}{l_r + l_f}\\delta_f \\quad \\quad (5)$</div><div>(5) into (4)</div><div>$\\ddot y = v_0(\\cfrac{v_0}{l_r + l_f}\\delta_f + \\cfrac{l_r}{l_r + l_f}\\dot \\delta_f)$</div><div>$$\\ddot y = \\cfrac{v_0l_r}{l_r + l_f}\\dot \\delta_f + \\cfrac{v_0^2}{l_r + l_f}\\delta_f$$</div><div>Hence the transfer function will be</div><div>$$G(s) = \\cfrac{As + B}{s^2}$$</div><div>Where $A = \\cfrac{v_0l_r}{l_r + l_f}$ and $B = \\cfrac{v_0^2}{l_r + l_f}$</div><div>Taking $l_r = l_f = 1.2\\text{m}$ and $v_0 = 20\\text{m/s}$ we get $A = 10$ and $B = 166.7$</div>"
+      			},
+      			"type": "section",
+      			"class": {},
+      			"length": 3
+      		},
+      		"2": {
+      			"0": {
+      				"type": "rich-text",
+      				"styles": {
+      					"--font-size-pt": "18"
+      				},
+      				"class": {},
+      				"content": "<div><b><br></b></div><div><b>3.2 Controller Design</b></div>"
+      			},
+      			"1": {
+      				"type": "rich-text",
+      				"class": {},
+      				"content": "<br />I will introduce a PD controller such that<div>$$\\delta_f = K_P(r - y) + K_D(\\dot r - \\dot y)$$</div><div>Deriving $\\delta_f$ gives $\\dot \\delta_f = K_P(\\dot r - \\dot y) + K_D(\\ddot r -\\ddot y)$.</div><div>Substituting back into the linear differential equation gives</div><div>$\\ddot y + \\cfrac{AK_P + BK_D}{AK_D}\\dot y + \\cfrac{BK_P}{AK_D}y = \\cfrac{BK_P}{AK_D}y_r$</div><div><br></div><div>$\\ddot y + (\\cfrac{K_P}{K_D} + \\cfrac{B_1v_0}{A_1})\\dot y + \\cfrac{B_1v_0K_P}{A_1K_D}y = \\cfrac{B_1v_0K_P}{A_1K_D}y_r$</div><div><br></div><div>$\\ddot y + (K_F + C_1v_0)\\dot y + K_FC_1v_0y = K_FC_1v_0y_r \\quad \\quad C_1 = \\frac{1}{l_r} \\quad K_F = \\cfrac{K_P}{K_D}$</div><div><br></div><div><br></div><div>Where $r = y_r\\mathbf{1}(t)$ and such $\\dot r = 0$</div><div>Which can be written in the form&nbsp;</div><div>$$\\ddot y + Q\\dot y + Py = Py_r$$</div><div>When $t \\rightarrow \\infty$ then $\\dot y = 0$,&nbsp;$\\ddot y = 0$ and $y = y_{ss}$</div><div>From this we get $Py_{ss} = Py_r$</div><div>$$y_{ss} = y_r$$</div><div>Hence the vehicle's $y$ position will tend to reference position over time with no steady state error. As the $y$ position is relative to the lane position, this controller will ensure that the vehicle moves to the desired lane.</div><div><br></div>"
+      			},
+      			"type": "section",
+      			"class": {},
+      			"length": 2
+      		},
+      		"3": {
+      			"0": {
+      				"type": "rich-text",
+      				"styles": {
+      					"--font-size-pt": "18"
+      				},
+      				"class": {},
+      				"content": "<div><br></div><div>\n\n\n<b>3.3&nbsp;Validations</b></div>"
+      			},
+      			"1": {
+      				"type": "rich-text",
+      				"class": {},
+      				"content": "<br />Plotted below are the $y(t)$ trajectories of the simulated controller for the speeds in the forward working range (with gain values $K_D = 30/v_0^2$, $K_P = 1\\times 10^{-6}$). It can be seen that all trajectories converge to exactly to the reference of 3(m) without any overshoot. The settling time occurs before 10s as required. From the linear model it can be seen that all design constraints are met.&nbsp;"
+      			},
+      			"2": {
+      				"type": "section-image",
+      				"class": {mid: true},
+      				"url": "http://127.0.0.1:58741/lin_model.svg"
+      			},
+      			"3": {
+      				"type": "rich-text",
+      				"class": {},
+      				"content": "<br /><br /><br /><br /><br /><br /><br /><br />When negative values for $v_0$ are used, the trajectories for $y(t)$ run off to negative infinity. This is because if we look at $A$ and $B$&nbsp;from the transfer function. If $v_0 &lt; 0$ then $A &lt; 0$ and $B &gt; 0$, this will cause an initial kick in the opposite direction of the steady state response, as seen below."
+      			},
+      			"4": {
+      				"type": "section-image",
+      				"class": {mid: true},
+      				"url": "http://127.0.0.1:58741/neg_v0.svg"
+      			},
+      			"type": "section",
+      			"class": {},
+      			"length": 5
+      		},
+      		"type": "section",
+      		"class": {},
+      		"length": 4
+      	},
+      	"3": {
+      		"0": {
+      			"type": "rich-text",
+      			"styles": {
+      				"--font-size-pt": "15"
+      			},
+      			"class": null,
+      			"content": "<div><i><br></i></div><i>Reference</i>"
+      		},
+      		"1": {
+      			"type": "rich-text",
+      			"class": null,
+      			"content": "<div><div>$[1]$https://group-media.mercedes-benz.com/marsMediaSite/en/instance/ko/Historical-SLs-in-the-wind-tunnel.xhtml?oid=9917897</div></div><div><div>$[2]$https://evwest.com/support/remy250.pdf</div></div>"
+      		},
+      		"type": "section",
+      		"class": null,
+      		"length": 2
+      	},
+      	"type": "section",
+      	"class": {},
+      	"length": 4
+      }
+      document.body.innerHTML = section.innerHTML;
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .mid {
+        width: 70%;
+        margin: auto;
+      }
+      @page {
+        --margin-left-mm: 17.5;
+        --margin-right-mm: 17.5;
+        --margin-top-mm: 17.5;
+        --margin-bottom-mm: 17.5;
+        margin-right: calc(var(--margin-right-mm) * 1mm);
+        margin-left: calc(var(--margin-left-mm) * 1mm);
+        margin-top: calc(var(--margin-top-mm) * 1mm);
+        margin-bottom: calc(var(--margin-bottom-mm) * 1mm);
+      }
+      :root {
+        /* User editable properties */
+        --bg: white;
+        --margin-left-mm: 17.5;
+        --margin-right-mm: 17.5;
+        --margin-top-mm: 17.5;
+        --margin-bottom-mm: 17.5;
+        --width-mm: 210;
+        --font-size-pt: 12;
+
+      /* width computed */
+        --width: min(210mm, calc(100vw));
+
+      /* derived variables */
+        --mm: calc(var(--width) / var(--width-mm));
+        --pt: calc(var(--mm) * 0.352778);
+        --margin-left: calc(var(--margin-left-mm) * var(--mm));
+        --margin-right: calc(var(--margin-right-mm) * var(--mm));
+        --margin-top: calc(var(--margin-top-mm) * var(--mm));
+        --margin-bottom: calc(var(--margin-bottom-mm) * var(--mm));
+      }
+      .widen {width: 45%;}
+      body {
+        width: calc(var(--width) - var(--margin-left) - var(--margin-right));
+        font-size: calc(var(--pt) * var(--font-size-pt));
+        margin-left: var(--margin-left);
+        margin-right: var(--margin-right);
+        margin-top: var(--margin-top);
+        margin-bottom: var(--margin-bottom);
+        background: var(--bg);
+        font-family: 'Supreme LL TT';
+        font-weight: 300;
+      }
+
+      @media print {
+        :root {
+          --width: 210mm;
+        }
+        body {
+          margin: 0;
+        }
+        .section {
+          position: relative;
+        }
+        .section .section {
+          page-break-inside: avoid;
+          break-inside: avoid;
+          position: relative;
+        }
+
+        .rich-text {
+          page-break-inside: avoid;
+          break-inside: avoid;
+          position: relative;
+        }
+
+        .image {
+          page-break-inside: avoid;
+          break-inside: avoid;
+          position: relative;
+        }
+
+        .row {
+          -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+          break-inside: avoid;
+          position: relative;
+        }
+        .break {
+          page-break-inside: always;
+        }
+      }
+    </style>
+
+  </head>
+  <body>
+
+  </body>
+
+
+
+
+  <style>
+
+
+    input {
+      font-family: 'Supreme LL TT';
+      font-weight: 300;
+    }
+
+    dox-editor {
+      width: 100%;
+      height: 100%;
+    }
+    mjx-container {
+      pointer-events: none;
+    }
+  </style>
+</html>
