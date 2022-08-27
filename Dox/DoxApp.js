@@ -33,6 +33,9 @@ class DoxApp extends SvgPlus {
   // dox editor
   async openDoxFile(key) {
     console.log("opening " + key + "...");
+    this.show();
+    if (fireUser != null) fireUser.loaded = false;
+
     let data = await this.editor.openFile(key);
     if (data != null) {
       this.show(this.editor);

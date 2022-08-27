@@ -515,6 +515,7 @@ class DoxEditor extends SvgPlus {
         this.content = update;
       })
     } catch(e) {
+      console.log(e);
       data = null;
     }
     return data;

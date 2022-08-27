@@ -53,11 +53,26 @@ function getNewFileKey(type = "dox"){
   return fileRef.key + "_" + type;
 }
 
+async function isPublic(fileKey) {
+  let data = await get(ref(Database, FILES_REF + fileKey + "/public"));
+  return data.val();
+}
+
+async function getAdminStatus(fileKey) {
+  let value = null;
+  if (UserUID != null) {
+    let path = FILES_REF + fileKey + "/users/" + UserUID;
+    console.log(path);
+    let data = await get(ref(Database, path));
+    value = data.val();
+  }
+  return value;
+}
+
 async function exists(fileKey) {
   let res = false;
   try {
-    let data = await get(ref(Database, FILES_REF + fileKey + "/public"));
-    res = data.val() !== null;
+    res = await isPublic(fileKey) !== null;
   } catch (e) {
     console.log(e);
   }
@@ -102,16 +117,22 @@ async function open(fileKey, updateCallback) {
       close();
     }
 
+    if (!(await exists(fileKey))) {
+      throw "non existant";
+    }
     openFileKey = fileKey;
 
-    if (await exists(fileKey)) {
+    let adminStatus = await getAdminStatus(fileKey);
+    let ispb = await isPublic(fileKey);
+
+    if (ispb == true || (adminStatus != null && adminStatus.match(/^(spectator|contributor|owner)$/))) {
       return new Promise((resolve, reject) => {
         let path = FILES_REF + fileKey + "/content";
 
         cancelUpdateListener = onValue(ref(Database, path),
         (e) => {
           let data = e.val();
-          console.log("data  ",data);
+          // console.log("data  ",data);
           if (data == null) {
             data = {};
           } else {
@@ -121,13 +142,17 @@ async function open(fileKey, updateCallback) {
               close();
             }
           }
-          resolve(data);
+          resolve(true);
         });
       });
+    } else {
+      if (UserUID != null) {
+        await set(ref(Database, FILES_REF + fileKey + "/users/" + UserUID), "inquiry");
+      }
+      throw "permission denied"
     }
-
-    return null;
   }
+  return true;
 }
 
 function close(){
