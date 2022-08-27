@@ -124,7 +124,7 @@ async function open(fileKey, updateCallback) {
 
     let adminStatus = await getAdminStatus(fileKey);
     let ispb = await isPublic(fileKey);
-    if (UserUID != null && !adminStatus.match(/^(contributor|owner)$/)) {
+    if (UserUID != null && (adminStatus == null || !adminStatus.match(/^(contributor|owner)$/))) {
       await set(ref(Database, FILES_REF + fileKey + "/users/" + UserUID), "inquiry");
       console.log("enquiry");
     }
@@ -149,13 +149,10 @@ async function open(fileKey, updateCallback) {
           resolve(true);
         });
       });
-    }
-
-
+    } else {
       throw "permission denied"
     }
   }
-  return true;
 }
 
 function close(){
