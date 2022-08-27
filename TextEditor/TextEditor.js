@@ -1,4 +1,4 @@
-import {SvgPlus} from "./4.js"
+import {SvgPlus} from "../SvgPlus/4.js"
 import {pasteInputParser} from "./Paste.js"
 import {getRichText, getRichLines} from "./RichText.js"
 

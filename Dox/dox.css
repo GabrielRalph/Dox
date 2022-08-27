@@ -9,7 +9,7 @@ body {
   overflow: hidden;
   margin: 0;
   --width-mm: 210;
-  --width: min(210mm, 97vw);
+  --width: min(280mm, 97vw);
   --mm: calc(var(--width) / var(--width-mm));
   --font-size-pt: 12;
   --pt: calc(var(--mm) * 0.352778);

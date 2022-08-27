@@ -1,4 +1,4 @@
-import {SvgPlus} from "./4.js";
+import {SvgPlus} from "../SvgPlus/4.js";
 import {makeEditor} from "../TextEditor/TextEditor.js";
 
 class DoxNode extends SvgPlus {
@@ -63,6 +63,7 @@ class DoxNode extends SvgPlus {
     this.addClassCat("dox-node", "nodes");
   }
 
+  // OVERWRITTABLE methods
   serialize(){
     let data = {
       type: this.tagName.toLowerCase().replace("_", "-"),
@@ -89,7 +90,6 @@ class DoxNode extends SvgPlus {
 
   get json(){return this.serialize();}
   set json(data){this.deserialize(data);}
-
   get path(){
     let parent = this.parentNode;
     let path = "";
@@ -99,7 +99,6 @@ class DoxNode extends SvgPlus {
     }
     return path;
   }
-
   get editor(){
     let node = this;
     while (node && node.tagName != "DOX-EDITOR") node = node.parentNode;
@@ -107,10 +106,9 @@ class DoxNode extends SvgPlus {
   }
 
   update(key) {
-    let editor = this.editor;
+    let {editor} = this;
     if (editor) {
       editor.update_node(this, key);
-      editor.push_update();
     }
   }
 }
@@ -140,20 +138,10 @@ class DoxContainer extends DoxNode {
     super.deserialize(data);
     for (let i = 0; i < data.length; i++) {
       let ne = data[i];
-      let el = this.children[i];
-      if (!el && ne.type in DOX_NODE_NAMES) {
+      if (ne.type in DOX_NODE_NAMES) {
         let node = new DOX_NODE_NAMES[ne.type]();
         node.json = ne;
         this.appendChild(node);
-      } else {
-        let ol = el.json;
-        if (ol.type != ne.type && ne.type in DOX_NODE_NAMES) {
-          let node = new DOX_NODE_NAMES[ne.type]();
-          node.json = ne;
-          this.replaceChild(node, el);
-        } else {
-          el.json = ne;
-        }
       }
     }
   }
@@ -178,11 +166,6 @@ class DoxTextNode extends DoxNode {
     if ("content" in data) {
       this.value = data.content;
     }
-    // let spans = this.getElementsByTagName("SPAN");
-    // for (let span of spans) {
-    //   let text = document.createTextNode(span.textContent);
-    //   span.parentNode.replaceChild(text, span);
-    // }
   }
 }
 
@@ -216,7 +199,7 @@ class SectionHeader extends DoxTextNode{
 class SectionImage extends DoxNode {
   constructor(){
     super("section-image");
-    this._url = null;
+    this._url = "";
     this.img = this.createChild("img");
     this.figure = this.createChild("figcaption")
   }
@@ -224,16 +207,19 @@ class SectionImage extends DoxNode {
   get url() {
     return this._url;
   }
-  set url(v){
-    this._url = v;
+  set url(url){
+    if (typeof url !== "string") url = "";
+    this._url = url;
     this.img.props = {
-      src: v,
+      src: url,
     }
+    this.update("url");
   }
 
   serialize() {
     let data = super.serialize();
     data.url = this.url;
+    console.log(this.url);
     return data;
   }
 

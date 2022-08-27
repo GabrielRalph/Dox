@@ -10,6 +10,7 @@ import {DOX_NODE_NAMES,
         SectionImage
 } from "./DoxNodes.js"
 
+import {open, save} from "./DoxFirebase.js"
 
 const isDoxContainer = (e) => SvgPlus.is(e.selected, DoxContainer);
 const isDoxNode = (e) => SvgPlus.is(e.selected, DoxNode);
@@ -27,14 +28,16 @@ const alignValidate = (e, name) => {
   return false;
 }
 
-const ICONS = {
+const TOOLS = {
   trash: {
     method: (e) => e.trash(),
     validate: (e) => isDoxNode(e) && e.mainSection != e.selected,
   },
 
   up: {
-    method: (e) => e.move(-1),
+    method: (e) => {
+      e.move(-1)
+    },
     validate: notOnly,
   },
   down: {
@@ -167,12 +170,58 @@ const ICONS = {
     }
   }
 }
+const TOOL_TEMPLATE = `<dox-tools>
+  <!-- left tools -->
+  <div>
+    <!-- <div> -->
+      <img name = "trash" />
+      <img name = "up" />
+      <img name = "down" />
+    <!-- </div>
+    <div> -->
+      <img class = sp5 name = "section" />
+      <img name = "row" />
+      <img name = "text" />
+      <img name = "image" />
+    <!-- </div>
+    <div> -->
+      <div small class = "text-field sp5" name = "image_url">
+        <span onclick="parentNode.toggleAttribute('small')">url</span>
+        <input placeholder="https://"/>
+      </div>
+
+      <div small class = "text-field" name = "image_url">
+        <span >upload</span>
+      </div>
+    <!-- </div>
+    <div> -->
+      <img class = sp5 name = "align_left" />
+      <img name = "align_center" />
+      <img name = "align_right" />
+      <img name = "align_justify" />
+      <div class = "text-field" name = "font_size">
+        <span>P<span style = "font-size: 0.7em; padding-left:0.2em;">P</span></span>
+        <input value = "12" style = 'width: 1.5em; text-align: center'/>
+      </div>
+    <!-- </div>
+    <div> -->
+      <img class = sp5 name = "expand" />
+      <img class = sp5 name = "collapse" />
+    <!-- </div> -->
+  </div>
+
+  <!-- right tools -->
+  <div>
+    <img name = "preview" />
+    <img name = "edit" />
+  </div>
+</dox-tools>`
 
 function iconFilename(icon) {
   return `icons/i_${icon}.svg`
 }
 
-class Icon extends SvgPlus {
+class ToolIcon extends SvgPlus {
   constructor(el){
     super(el);
     this.show = false;
@@ -192,7 +241,7 @@ class Icon extends SvgPlus {
   }
 
   set iname(name){
-    if (name in ICONS) {
+    if (name in TOOLS) {
       if (this.tagName == "IMG") {
         this.props = {
           src: iconFilename(name)
@@ -208,8 +257,8 @@ class Icon extends SvgPlus {
   get validate(){
     let name = this.iname;
     let res = () => {}
-    if (name in ICONS) {
-      let validate = ICONS[name].validate;
+    if (name in TOOLS) {
+      let validate = TOOLS[name].validate;
       if (validate instanceof Function) {
         res = validate;
       }
@@ -219,8 +268,8 @@ class Icon extends SvgPlus {
   get method(){
     let name = this.iname;
     let res = () => {}
-    if (name in ICONS) {
-      let method = ICONS[name].method;
+    if (name in TOOLS) {
+      let method = TOOLS[name].method;
       if (method instanceof Function) {
         res = method;
       }
@@ -266,35 +315,27 @@ function getTarget(e) {
   return target;
 }
 
-class DoxEditorBase extends SvgPlus {
+class DoxEditor extends SvgPlus {
   constructor(el){
     super(el);
-    this.build_tools();
-    let rel = this.createChild("div", {class: "dox-container"});
-    let main = this.make_node("section");
-    rel.appendChild(main);
-    this.mainSection = main;
     window.addEventListener('beforeprint', (e) => {
       this.edit = false;
-    })
+    });
     window.addEventListener('afterprint', (e) => {
       this.edit = true;
-    })
+    });
+    this._data = {type: "section", length: 0, class: null};
   }
-  set edit(v){
-    this.toggleAttribute("edit", v);
-    this.update_tools();
+  onconnect(){
+    this.build();
   }
-  get edit(){
-    return this.getAttribute("edit") != null
-  }
+
   onmousedown(e) {
     let target = getTarget(e);
     if (target !== "tools") {
       this.selected = target;
     }
   }
-
   oncontextmenu(e){
     let target = getTarget(e);
     if (target !== null && target !== "tools") {
@@ -304,22 +345,27 @@ class DoxEditorBase extends SvgPlus {
     }
   }
 
+  // User methods
+  set edit(v){
+    this.toggleAttribute("edit", v);
+    this.update_tools();
+  }
+  get edit(){
+    return this.getAttribute("edit") != null;
+  }
+
   add(name, parent = this.selected) {
     let child = this.make_node(name);
     parent.appendChild(child);
     this.update_node(child);
     this.update_node(parent, "length");
-    this.push_update();
   }
-
   trash(node = this.selected) {
     let parent = node.parentNode;
     parent.removeChild(node);
     this.selected = null;
     this.update_node(parent);
-    this.push_update();
   }
-
   move(dir, node = this.selected) {
     let parent = node.parentNode;
     let children = [... parent.children];
@@ -342,10 +388,8 @@ class DoxEditorBase extends SvgPlus {
     if (child_a != null && child_b != null) {
       this.update_node(child_a);
       this.update_node(child_b);
-      this.push_update();
     }
   }
-
   place(target = this.selected, node = this.lastSelected){
     let valid = target && node &&
                 (target != node) &&
@@ -362,12 +406,11 @@ class DoxEditorBase extends SvgPlus {
         this.update_node(parent);
         this.update_node(target);
       }
-      this.push_update();
+
     }
 
     return valid;
   }
-
   setWide(value, node = this.selected) {
     if (value) {
       node.addClassCat("wide");
@@ -376,14 +419,11 @@ class DoxEditorBase extends SvgPlus {
     }
     this.update_tools();
     this.update_node(node, "class");
-    this.push_update();
   }
-
   setStyles(styles, node = this.selected){
     node.styles = styles;
     this.update_tools();
     this.update_node(node, "styles");
-    this.push_update();
   }
 
   set selected(element){
@@ -396,26 +436,43 @@ class DoxEditorBase extends SvgPlus {
     if (SvgPlus.is(element, DoxNode)) {
       element.props = {selected: ""};
       this._selected = element;
+    } else if (typeof element === "string") {
+      console.log(element);
     } else {
       this._selected = null;
     }
+    console.log(this._selected != null ? "selected" : "unsulect");
     this.update_tools();
   }
-
   get selected(){
     return this._selected;
   }
+  get fireUser() {return document.querySelector()}
 
+  build(){
+    this.build_tools();
+    let rel = this.createChild("div", {class: "dox-container"});
+    let main = this.make_node("section");
+    rel.appendChild(main);
+    this.mainSection = main;
+  }
   build_tools(){
+    this.innerHTML = "" + TOOL_TEMPLATE
     let icons = this.querySelectorAll("dox-tools img[name]");
+    for (let icon of icons) {
+      icon.src = "./icons/i_" + icon.getAttribute("name") + ".svg";
+    }
     let text = this.querySelectorAll("dox-tools div.text-field[name]");
     let tools = [... icons].concat([... text]);
     for (let tool of tools){
-      tool = new Icon(tool);
+      tool = new ToolIcon(tool);
       tool.update(this);
     }
-    this.update_tools = () => {
-      for (let tool of tools) {
+    this._tools = tools;
+  }
+  update_tools(){
+    if (Array.isArray(this._tools)) {
+      for (let tool of this._tools) {
         tool.update(this);
       }
     }
@@ -428,102 +485,68 @@ class DoxEditorBase extends SvgPlus {
     }
     return node;
   }
-
   update_node(node, key) {
-    console.log(node.path, key);
-  }
+    let path = node.path;
 
-  push_update(){
-  }
-}
-
-class DoxEditor extends DoxEditorBase {
-  constructor(el) {
-    super(el);
-    let buffer = [];
-    this.update_node = (node, key) => {
-      let path = this.root + node.path;
-      let data = node.json;
-      if (key != null){
-        path += "/" + key;
-        data = data[key];
-      }
-      buffer.push([path, data]);
+    let value = node.json;
+    if (key && key != "") {
+      value = value[key];
+      path = path + "/" + key;
     }
 
-    this.update_firebase = async () => {
-      let user = this.user;
-      if (user) {
-        this._sync_pause = true;
-        while (buffer.length > 0) {
-          let [path, data] = buffer.shift()
-          await user.set(path, data);
+    save(value, path);
+  }
+
+  getDoxNodeByPath(path) {
+    let node = this.mainSection;
+    for (let key of path.split('/')) {
+      if (key in node.children) {
+        node = node.children[key];
+      }
+    }
+    return node;
+  }
+
+
+  async openFile(key){
+    let data = null;
+    try {
+      data = await open(key, (update) => {
+        this.content = update;
+      })
+    } catch(e) {
+      data = null;
+    }
+    return data;
+  }
+
+  set content(data) {
+    let oldData = JSON.stringify(this.mainSection.json);
+    let newData = JSON.stringify(data);
+    if (newData === oldData) {
+      console.log("no change");
+      return;
+    }
+
+    console.log("content");
+    this.__content = data;
+    console.log(data);
+
+    if (!this._updating) {
+      this._updating = true;
+      window.requestAnimationFrame(() => {
+        let selectedPath = "";
+        if (this.selected != null) {
+          selectedPath = this.selected.path;
         }
-        this._sync_pause = false;
-      }
+        console.log(this.__content);
+        this._updating = false;
+        this.mainSection.json = this.__content;
+        this.selected = this.getDoxNodeByPath(selectedPath);
+      })
     }
-
-    this.push_update = this.update_firebase;
-  }
-
-  get sync_pause(){
-    return !!this._sync_pause;
-  }
-
-  get user() {
-    let user = document.querySelector("fire-user")
-    if (user.user == null) user = null;
-    return user;
-  }
-
-  set root(root) {
-    console.log(root);
-    this.sync(root);
-  }
-
-  get root(){
-    return this._root;
-  }
-
-  async sync(root = this.root){
-    this.stopSync();
-    // console.log("dox-editor synced to " + root);
-    this._root = root;
-    let user = this.user;
-    if (user) {
-      // this._sync = user.onValue(root, (e) => {
-      //   this.sync_update(e)
-      //   user.loaded = true;
-      // })
-      this.sync_update(await user.get(root))
-      user.loaded = true;
-    } else {
-      this._sync = null;
-    }
-  }
-
-  async sync_update(e){
-    // console.log('sync update');
-    if (!this.sync_pause) {
-      if (e.val() == null) {
-        this.update_node(this.mainSection);
-        this.push_update();
-      } else {
-        // console.log('setting update');
-        this.mainSection.json = e.val();
-      }
-    }
-  }
-
-  stopSync(){
-    if (this._sync instanceof Function) {
-      this._sync();
-      console.log("sync stoped");
-    }
-    this._sync = null;
   }
 }
-
 
 SvgPlus.defineHTMLElement(DoxEditor);
 export {DoxEditor}

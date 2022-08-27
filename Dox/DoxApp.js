@@ -1,8 +1,14 @@
 import {SvgPlus} from "../SvgPlus/4.js";
 import {Files, Path} from "../FileTree/file-tree.js";
+import {fireUser} from "../FireUser/fire-user.js";
 import {DoxEditor} from "./DoxEditor.js"
+import {close, remove, create} from "./DoxFirebase.js"
 
-const FILEROOT = "files/"
+const FILEROOT = "files/";
+
+
+// class DoxFiles extends FireFiles {
+// }
 
 class DoxApp extends SvgPlus {
   constructor(el){
@@ -10,73 +16,59 @@ class DoxApp extends SvgPlus {
     window.onpopstate = () => {
       this.updateLocation();
     }
-    this.updateLocation();
-
-    let files = document.querySelector("fire-files");
-    // files.ondblclick = (e) => {
-    //   let target = files.getTarget(e);
-    //   if (files.isLeaf(target)) {
-    //     let key = files.get(target);
-    //     this.gotoEditor(key);
-    //   }
-    // }
-
+  }
+  updateLocation(l = window.location) {
+    let key = l.search.replace("?", "");
+    this.openDoxFile(key)
   }
 
   onconnect(){
-    let files = document.querySelector("fire-files");
-    files.addEventListener("open", (e) => {
-      this.gotoEditor(e.key);
-      document.title = e.fileName;
-    })
+    let editor = SvgPlus.make('dox-editor');
+    this.appendChild(editor);
+    this.show(editor);
+    this.editor = editor;
+    this.updateLocation();
   }
 
-  get user() {return document.querySelector("fire-user");}
-  get editor() {return this.querySelector("dox-editor");}
-  get files() {return this.querySelector("div[files]");}
-  get pages() {return this.querySelector("dox-pages");}
-
-  set preview(v) {
-    if (v) {
-      this.pages.content = this.editor.mainSection.outerHTML;
-      this.show(this.pages);
+  // dox editor
+  async openDoxFile(key) {
+    console.log("opening " + key + "...");
+    let data = await this.editor.openFile(key);
+    if (data != null) {
+      this.show(this.editor);
+      if (fireUser != null) {
+        fireUser.loaded = true;
+      }
+      console.log("opened " + key);
     } else {
-      this.show(this.editor);
+      this.show();
+      console.log("failed to open " + key);
     }
   }
-
-  updateLocation(l = window.location) {
-    let s = l.search.replace("?", "");
-    if (s) {
-      this._showEditor(s)
-    }
-    else {
-      this.show(this.files)
-    }
+  closeDoxFile(){
+    close();
+    this.show(null);
   }
 
-  _showEditor(key) {
-    if (this.user) this.user.loaded = false;
-    setTimeout(() => {
-      let fileRoot = FILEROOT + key;
-      this.editor.setAttribute("root", fileRoot);
-      this.show(this.editor);
-    }, 500)
+  // file tree
+  async createDoxFile(path){
+
+    let key = await create();
+    console.log(key);
+  }
+  deleteDoxFile(path){
+
   }
 
-  gotoEditor(key) {
-    this._showEditor(key);
-    this.setPath(key);
-  }
 
-  setPath(path) {
-    window.history.pushState(
-      {},
-      path,
-      window.location.origin + "?" + path
-    )
-  }
-
+  // setPath(path) {
+  //   window.history.pushState(
+  //     {},
+  //     path,
+  //     window.location.origin + "?" + path
+  //   )
+  // }
+  //
   show(node) {
     for (let child of this.children) {
       if (child != node) child.removeAttribute("show");

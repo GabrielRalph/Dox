@@ -1,0 +1,61 @@
+<dox-app>
+  <div files show>
+    <h1>
+      Hello {{displayName}}
+      <span signout style = "float:right;">Logout</span>
+    </h1>
+
+    <fire-tree>
+    </fire-tree>
+  </div>
+  <dox-editor edit>
+    <dox-tools>
+      <!-- left tools -->
+      <div>
+        <!-- <div> -->
+          <img name = "trash" />
+          <img name = "up" />
+          <img name = "down" />
+        <!-- </div>
+        <div> -->
+          <img class = sp5 name = "section" />
+          <img name = "row" />
+          <img name = "text" />
+          <img name = "image" />
+        <!-- </div>
+        <div> -->
+          <div small class = "text-field sp5" name = "image_url">
+            <span onclick="parentNode.toggleAttribute('small')">url</span>
+            <input placeholder="https://"/>
+          </div>
+
+          <div small class = "text-field" name = "image_url">
+            <span >upload</span>
+          </div>
+        <!-- </div>
+        <div> -->
+          <img class = sp5 name = "align_left" />
+          <img name = "align_center" />
+          <img name = "align_right" />
+          <img name = "align_justify" />
+          <div class = "text-field" name = "font_size">
+            <span>P<span style = "font-size: 0.7em; padding-left:0.2em;">P</span></span>
+            <input value = "12" style = 'width: 1.5em; text-align: center'/>
+          </div>
+        <!-- </div>
+        <div> -->
+          <img class = sp5 name = "expand" />
+          <img class = sp5 name = "collapse" />
+        <!-- </div> -->
+      </div>
+
+      <!-- right tools -->
+      <div>
+        <img name = "preview" />
+        <img name = "edit" />
+      </div>
+    </dox-tools>
+    <!-- <dox-pages>
+    </dox-pages> -->
+  </dox-editor>
+</dox-app>

@@ -1,4 +1,4 @@
-import {SvgPlus, Vector} from "./4.js"
+import {SvgPlus, Vector} from "../SvgPlus/4.js"
 // import {makeEditor} from "./TextEditor.js"
 
 class Page extends SvgPlus{
