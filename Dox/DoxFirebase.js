@@ -124,8 +124,9 @@ async function open(fileKey, updateCallback) {
 
     let adminStatus = await getAdminStatus(fileKey);
     let ispb = await isPublic(fileKey);
-    if (UserUID != null && !adminStatus.match(/^(spectator|contributor|owner)$/)) {
+    if (UserUID != null && !adminStatus.match(/^(contributor|owner)$/)) {
       await set(ref(Database, FILES_REF + fileKey + "/users/" + UserUID), "inquiry");
+      console.log("enquiry");
     }
 
     if (ispb == true || (adminStatus != null && adminStatus.match(/^(spectator|contributor|owner)$/))) {
