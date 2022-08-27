@@ -124,6 +124,9 @@ async function open(fileKey, updateCallback) {
 
     let adminStatus = await getAdminStatus(fileKey);
     let ispb = await isPublic(fileKey);
+    if (UserUID != null && !adminStatus.match(/^(spectator|contributor|owner)$/)) {
+      await set(ref(Database, FILES_REF + fileKey + "/users/" + UserUID), "inquiry");
+    }
 
     if (ispb == true || (adminStatus != null && adminStatus.match(/^(spectator|contributor|owner)$/))) {
       return new Promise((resolve, reject) => {
@@ -145,10 +148,9 @@ async function open(fileKey, updateCallback) {
           resolve(true);
         });
       });
-    } else {
-      if (UserUID != null) {
-        await set(ref(Database, FILES_REF + fileKey + "/users/" + UserUID), "inquiry");
-      }
+    }
+
+
       throw "permission denied"
     }
   }
