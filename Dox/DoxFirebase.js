@@ -1,6 +1,6 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js'
 import {getDatabase, child, push, ref, update, get, onValue, onChildAdded, onChildChanged, onChildRemoved, set, off} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js'
-import {getAuth, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js'
+import {getAuth, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged, signOut} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js'
 
 const CONFIG = {
     "apiKey": "AIzaSyAwKRqxNdoO05hLlGZwb5AgWugSBzruw6A",
@@ -18,15 +18,43 @@ const App = initializeApp(CONFIG);
 const Database = getDatabase(App);
 const Auth = getAuth();
 
-let UserUID = null;
+let UserUID, User;
 let openFileKey = null;
 let cancelUpdateListener = null;
+let listenerCount = 0;
+
+let onuserscallbacks = {};
+export function addUserListener(callback) {
+  let detatch = null;
+  if (callback instanceof Function) {
+    let lc = listenerCount;
+    onuserscallbacks[lc] = callback;
+    detatch = function () {
+      delete onuserscallbacks[lc];
+    }
+    listenerCount++;
+  }
+  return detatch;
+}
+
+export function signout(){
+  signOut(Auth);
+}
+
+function userUpdate(user){
+  for (let id in onuserscallbacks) {
+    onuserscallbacks[id](user);
+  }
+}
 
 onAuthStateChanged(Auth, (userData) => {
   UserUID = null;
+  User = userData;
   if (userData != null) {
     UserUID = userData.uid;
   }
+
+  userUpdate(User);
 });
 
 function emptyFile(){

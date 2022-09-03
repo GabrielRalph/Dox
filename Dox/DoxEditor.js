@@ -510,14 +510,9 @@ class DoxEditor extends SvgPlus {
 
   async openFile(key){
     let data = null;
-    try {
-      data = await open(key, (update) => {
-        this.content = update;
-      })
-    } catch(e) {
-      console.log(e);
-      data = null;
-    }
+    data = await open(key, (update) => {
+      this.content = update;
+    })
     return data;
   }
 
