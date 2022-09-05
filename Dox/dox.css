@@ -67,7 +67,7 @@ section-row > .wide {
     page-break-inside: avoid;
   }
 
-  .dox-container > section{
-    page-break-before: always;
+  .dox-container > section > section{
+    page-break-after: always;
   }
 }
