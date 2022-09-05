@@ -1,12 +1,12 @@
 body {
   --bg: #545351;
   background: var(--bg);
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: hidden;
+  overflow: scroll; */
   margin: 0;
   --width-mm: 210;
   --width: min(280mm, 97vw);
@@ -60,5 +60,14 @@ section-row > .wide {
     width: 210mm;
     position: relative;
     background: white;
+  }
+
+  section {
+    display: block;
+    page-break-inside: avoid;
+  }
+
+  .dox-container > section{
+    page-break-before: always;
   }
 }
