@@ -108,7 +108,7 @@ class DoxNode extends SvgPlus {
   update(key) {
     let {editor} = this;
     if (editor) {
-      editor.update_node(this, key);
+      editor._update_node(this, key);
     }
   }
 }

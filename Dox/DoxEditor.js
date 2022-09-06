@@ -10,8 +10,6 @@ import {DOX_NODE_NAMES,
         SectionImage
 } from "./DoxNodes.js"
 
-import {open, save} from "./DoxFirebase.js"
-
 const isDoxContainer = (e) => SvgPlus.is(e.selected, DoxContainer);
 const isDoxNode = (e) => SvgPlus.is(e.selected, DoxNode);
 const notOnly = (e) => isDoxNode(e) && e.selected.parentNode.children.length > 1;
@@ -357,14 +355,14 @@ class DoxEditor extends SvgPlus {
   add(name, parent = this.selected) {
     let child = this.make_node(name);
     parent.appendChild(child);
-    this.update_node(child);
-    this.update_node(parent, "length");
+    this._update_node(child);
+    this._update_node(parent, "length");
   }
   trash(node = this.selected) {
     let parent = node.parentNode;
     parent.removeChild(node);
     this.selected = null;
-    this.update_node(parent);
+    this._update_node(parent);
   }
   move(dir, node = this.selected) {
     let parent = node.parentNode;
@@ -386,8 +384,8 @@ class DoxEditor extends SvgPlus {
     }
 
     if (child_a != null && child_b != null) {
-      this.update_node(child_a);
-      this.update_node(child_b);
+      this._update_node(child_a);
+      this._update_node(child_b);
     }
   }
   place(target = this.selected, node = this.lastSelected){
@@ -399,12 +397,12 @@ class DoxEditor extends SvgPlus {
       let parent = node.parentNode;
       target.appendChild(node);
       if (parent.contains(target)) {
-        this.update_node(parent);
+        this._update_node(parent);
       } else if (target.contains(parent)) {
-        this.update_node(target);
+        this._update_node(target);
       } else {
-        this.update_node(parent);
-        this.update_node(target);
+        this._update_node(parent);
+        this._update_node(target);
       }
 
     }
@@ -418,12 +416,12 @@ class DoxEditor extends SvgPlus {
       node.removeClassCat("wide");
     }
     this.update_tools();
-    this.update_node(node, "class");
+    this._update_node(node, "class");
   }
   setStyles(styles, node = this.selected){
     node.styles = styles;
     this.update_tools();
-    this.update_node(node, "styles");
+    this._update_node(node, "styles");
   }
 
   set selected(element){
@@ -437,17 +435,15 @@ class DoxEditor extends SvgPlus {
       element.props = {selected: ""};
       this._selected = element;
     } else if (typeof element === "string") {
-      console.log(element);
+      // console.log(element);
     } else {
       this._selected = null;
     }
-    console.log(this._selected != null ? "selected" : "unsulect");
     this.update_tools();
   }
   get selected(){
     return this._selected;
   }
-  get fireUser() {return document.querySelector()}
 
   build(){
     this.build_tools();
@@ -485,7 +481,8 @@ class DoxEditor extends SvgPlus {
     }
     return node;
   }
-  update_node(node, key) {
+
+  _update_node(node, key) {
     let path = node.path;
 
     let value = node.json;
@@ -494,7 +491,9 @@ class DoxEditor extends SvgPlus {
       path = path + "/" + key;
     }
 
-    save(value, path);
+    if (this.onupdate instanceof Function) {
+      this.onupdate(value, path);
+    }
   }
 
   getDoxNodeByPath(path) {
@@ -508,39 +507,32 @@ class DoxEditor extends SvgPlus {
   }
 
 
-  async openFile(key){
-    let data = null;
-    data = await open(key, (update) => {
-      this.content = update;
-    })
-    return data;
+  get value() {
+    return this.mainSection.json;
   }
 
-  set content(data) {
-    let oldData = JSON.stringify(this.mainSection.json);
-    let newData = JSON.stringify(data);
-    if (newData === oldData) {
-      console.log("no change");
-      return;
-    }
+  set value(data) {
+    // set value
+    this._set_value(data);
+  }
 
-    console.log("content");
-    this.__content = data;
-    console.log(data);
-
+  async _set_value(data) {
+    this._value = data;
     if (!this._updating) {
-      this._updating = true;
-      window.requestAnimationFrame(() => {
-        let selectedPath = "";
-        if (this.selected != null) {
-          selectedPath = this.selected.path;
-        }
-        console.log(this.__content);
-        this._updating = false;
-        this.mainSection.json = this.__content;
-        this.selected = this.getDoxNodeByPath(selectedPath);
-      })
+      this._updating = new Promise((resolve, reject) => {
+        window.requestAnimationFrame(() => {
+          let selectedPath = "";
+          if (this.selected != null) {
+            selectedPath = this.selected.path;
+          }
+          this._updating = false;
+          this.mainSection.json = this._value;
+          this.selected = this.getDoxNodeByPath(selectedPath);
+          console.log('%ceditor updated', "color: #79c3ff");
+        });
+      });
     }
+    return this._updating;
   }
 }
 

@@ -67,14 +67,10 @@ h6[contenteditable="true"] {
 dox-editor {
   display: block;
   position: relative;
-  width: var(--width);
-  height: 100%;
   --element-padding: 2px;
   --element-margin: 2px;
   --icon-size: 1.3em;
   --r: 0.4em;
-  overflow: scroll;
-  margin: auto;
 }
 
 dox-editor[edit] .dox-node {
@@ -113,22 +109,19 @@ dox-editor[edit] rich-text.dox-node[selected] {
 }
 
 dox-editor > .dox-container {
-  margin: var(--element-margin);
+  /* margin: var(--element-margin); */
   height: 100%;
   overflow: scroll;
-  margin: 0;
-  padding: 0;
-  padding-right: 7px;
-}
-.dox-container > section, dox-editor[edit] > .dox-container > section, dox-editor[edit] > .dox-container > section[selected] {
-  margin-top: 2em;
-  margin-bottom: 5em;
-  padding: 2em;
+  margin: 2em 0 5em 0;
 }
 
-.dox-container > section {
+dox-editor[edit] > .dox-container > section.dox-node, dox-editor > .dox-container > section.dox-node {
+  padding: var(--page-margin);
   background: white;
 }
+
+
+
 
 dox-tools {
   --bg: #54535174;
@@ -177,9 +170,6 @@ img[hidden] + img.sp5 {
 }
 dox-tools .text-field[hidden] {
   display: none;
-}
-
-dox-tools > div > div:nth-of-type(n+2) {
 }
 
 dox-tools > div > .sp2 {
@@ -236,32 +226,24 @@ dox-tools .text-field[small] input {
   display: none;
 }
 
-section section{
-  break-inside: avoid;
-}
-section-row {
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
+
 
 @media print {
+
   dox-tools {
     display: none;
   }
-  section-row {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
+
   dox-editor {
     overflow: hidden;
     position: relative;
   }
   dox-editor > .dox-container {
     position: relative;
-    overflow: hidden;
+    margin: 0;
   }
-  .dox-container > section {
-    margin: white;
+
+  dox-editor > .dox-container > section.dox-node {
     padding: 0;
     margin: 0;
     position: relative;

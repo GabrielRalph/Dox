@@ -90,7 +90,6 @@ async function getAdminStatus(fileKey) {
   let value = null;
   if (UserUID != null) {
     let path = FILES_REF + fileKey + "/users/" + UserUID;
-    console.log(path);
     let data = await get(ref(Database, path));
     value = data.val();
   }
@@ -102,7 +101,6 @@ async function exists(fileKey) {
   try {
     res = await isPublic(fileKey) !== null;
   } catch (e) {
-    console.log(e);
   }
 
   return res;
@@ -154,7 +152,7 @@ async function open(fileKey, updateCallback) {
     let ispb = await isPublic(fileKey);
     if (UserUID != null && (adminStatus == null || !adminStatus.match(/^(contributor|owner)$/))) {
       await set(ref(Database, FILES_REF + fileKey + "/users/" + UserUID), "inquiry");
-      console.log("enquiry");
+      console.log("%cenquiry sent", "color: orange");
     }
 
     if (ispb == true || (adminStatus != null && adminStatus.match(/^(spectator|contributor|owner)$/))) {
@@ -164,6 +162,7 @@ async function open(fileKey, updateCallback) {
         cancelUpdateListener = onValue(ref(Database, path),
         (e) => {
           let data = e.val();
+          console.log("%cupdate", "color: orange");
           // console.log("data  ",data);
           if (data == null) {
             data = {};
@@ -194,7 +193,7 @@ function close(){
 async function save(content, path = "") {
   if (openFileKey != null) {
     let filePath = FILES_REF + openFileKey + "/content" + path;
-    console.log("set " + filePath, content);
+    console.log(`%cset: %c${filePath}`, "color: orange", "color: #fff7");
     // console.log(filePath, content);
     await set(ref(Database, filePath), content);
   }

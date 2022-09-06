@@ -1,20 +1,26 @@
-body {
+:root {
   --bg: #545351;
-  background: var(--bg);
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: scroll; */
-  margin: 0;
   --width-mm: 210;
+  --margin-top-mm: 12;
+  --margin-bottom-mm: 12;
+  --margin-left-mm: 15;
+  --margin-right-mm: 15;
+  --font-size-pt: 12;
+
+  /* Actual width */
   --width: min(280mm, 97vw);
   --mm: calc(var(--width) / var(--width-mm));
-  --font-size-pt: 12;
+
+  /* --padding: 2em; */
   --pt: calc(var(--mm) * 0.352778);
-  /* width: var(--width); */
+  --page-margin: calc(var(--margin-top-mm) * var(--mm)) calc(var(--margin-right-mm) * var(--mm)) calc(var(--margin-bottom-mm) * var(--mm)) calc(var(--margin-left-mm) * var(--mm));
+}
+
+body {
+  background: var(--bg);
   font-size: calc(var(--pt) * var(--font-size-pt));
+  width: var(--width);
+  margin: auto;
 }
 
 
@@ -54,18 +60,29 @@ section-row > .wide {
   width: 100%;
 }
 
+@page {
+  margin: 12mm 15mm 12mm 15mm;
+}
 
 @media print{
   body {
-    width: 210mm;
+    --width: 210mm;
+    /* width: 210mm; */
     position: relative;
-    background: white;
+    /* background:  */
   }
 
   section {
     display: block;
     page-break-inside: avoid;
   }
+
+  section-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+
 
   .dox-container > section > section{
     page-break-after: always;

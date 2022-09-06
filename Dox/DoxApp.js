@@ -2,7 +2,7 @@ import {SvgPlus} from "../SvgPlus/4.js";
 import {Files, Path} from "../FileTree/file-tree.js";
 import {fireUser} from "../FireUser/fire-user.js";
 import {DoxEditor} from "./DoxEditor.js"
-import {close, remove, create, addUserListener, signout} from "./DoxFirebase.js"
+import {save, open, close, remove, create, addUserListener, signout} from "./DoxFirebase.js"
 
 const FILEROOT = "files/";
 
@@ -22,7 +22,7 @@ class DoxApp extends SvgPlus {
     }
 
     addUserListener((user) => {
-      console.log(user == null ? "no user" : "user " + user.uid);
+      console.log(`%c${user == null ? "no user" : "user " + user.displayName}`, "color: #ffd585");
       this.user = user;
       this.updateLocation();
     })
@@ -66,16 +66,19 @@ class DoxApp extends SvgPlus {
 
   // dox editor
   async openDoxFile(key) {
-    console.log("opening " + key + "...");
+    console.log("%copening " + key + "...", "color: #c4ff90");
     this.show();
+    this.editor.onupdate = null;
     if (fireUser != null) fireUser.loaded = false;
-
     try {
-      let data = await this.editor.openFile(key);
+      await open(key, (data) => {
+        this.editor.value = data;
+      });
       this.show(this.editor);
-      console.log("opened " + key);
+      this.editor.onupdate = save;
+      console.log("%copened and synced to " + key, "color: #c4ff90");
     } catch (e) {
-      console.log("failed to open " + key);
+      console.log("%cfailed to open " + key, "color: red");
       switch (e) {
         case "non existant":
           this.nofile.show(key);
