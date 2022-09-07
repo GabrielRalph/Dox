@@ -111,7 +111,6 @@ dox-editor[edit] rich-text.dox-node[selected] {
 dox-editor > .dox-container {
   /* margin: var(--element-margin); */
   height: 100%;
-  overflow: scroll;
   margin: 2em 0 5em 0;
 }
 
@@ -235,7 +234,7 @@ dox-tools .text-field[small] input {
   }
 
   dox-editor {
-    overflow: hidden;
+
     position: relative;
   }
   dox-editor > .dox-container {
