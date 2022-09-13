@@ -1,40 +1,74 @@
 import {SvgPlus} from "../SvgPlus/4.js"
-import {pasteInputParser} from "./Paste.js"
-import {getRichText, getRichLines} from "./RichText.js"
+import {addKeyCommands} from "./key-cmds.js"
 
-let defaultMetaCmds =  {
-  "b": () => true,
-  "i": () => true,
-  "v": () => true,
-}
-let defaultKeyBlocks = {
-  "Enter": () => false,
-  "{": () => {
-    return insertDelim("{","}")
-  },
-  "$": () => {
-    return insertDelim("$","$")
-  },
-  '"': () => {
-    return insertDelim('"','"')
-  },
-  '(': () => {
-    return insertDelim('(',')')
-  }
-}
+let x, y = 0;
+window.addEventListener("mousemove", (e) => {
+  x = e.x;
+  y = e.y;
+})
+window.addEventListener("click", (e) => {
+  x = e.x;
+  y = e.y;
+})
 
-class Line extends SvgPlus {
-  constructor(line) {
-    super("div");
-    if (line) {
-      this.innerHTML = line;
-    } else {
-      this.innerHTML = "<br>"
+addKeyCommands({
+  "Enter": (e) => {
+    if (isSelected()) {
+      e.preventDefault();
+      let range = getRange();
+      let end = range.endContainer;
+      let dend = 1;
+      if (end instanceof Text) {
+        let offset = range.endOffset;
+        dend = end.data.length - offset;
+        while (end) {
+          end = end.nextSibling;
+          if (end != null && !(end instanceof Text && end.data.length == 0)) {
+            break;
+          }
+        }
+      }
+      console.log("%cdelta end, next sibling", "color: red");
+      console.log(dend, end);
+
+      let frag = new DocumentFragment();
+      frag.append(document.createElement("br"));
+      let text = document.createTextNode("");
+      frag.append(text);
+
+      if (dend === 0 && end === null) {
+        frag.append(document.createElement("br"));
+      }
+
+      insertAtSelection(frag);
+      setSelectionRange(text, 0);
+      return true;
+    }
+  },
+  "Shift+{": () => {
+    if (isSelected()){
+      return insertBrackets("{","}");
+    }
+  },
+  "Shift+$": () => {
+    if (isSelected()){
+      return insertBrackets("$","$");
+    }
+  },
+  'Shift+"': () => {
+    if (isSelected()){
+      return insertBrackets('"','"');
+    }
+  },
+  'Shift+(': () => {
+    if (isSelected()){
+      return insertBrackets('(',')');
     }
   }
-}
+});
 
-function insertDelim(startDelim, endDelim) {
+
+function insertBrackets(startBracket, endBracket) {
   let sel = window.getSelection();
   let range = sel.getRangeAt(0);
   let s = range.startOffset;
@@ -43,15 +77,11 @@ function insertDelim(startDelim, endDelim) {
   let start = range.startContainer;
 
   if (end != start || e > s) {
-    end.data = end.data.slice(0, e) + endDelim + end.data.slice(e);
-    start.data = start.data.slice(0, s) + startDelim + start.data.slice(s);
+    end.data = end.data.slice(0, e) + endBracket + end.data.slice(e);
+    start.data = start.data.slice(0, s) + startBracket + start.data.slice(s);
 
     // update selection
-    let r = document.createRange();
-    r.setStart(start, s + 1)
-    r.setEnd(end, e + startDelim.length);
-    sel.removeAllRanges();
-    sel.addRange(r);
+    setSelectionRange(start, s + 1, end, e + startBracket.length);
 
     return true;
   } else {
@@ -59,180 +89,241 @@ function insertDelim(startDelim, endDelim) {
   }
 }
 
-function validate(key, element, metaCmds, keyBlocks){
-  let res = true;
-  if (key in keyBlocks) {
-    res = !keyBlocks[key]();
-  }
-
-  return res;
-}
-
-function setMath(element){
-  let items = MathJax.startup.document.getMathItemsWithin(element);
-  for (let item of items) {
-    let root = item.typesetRoot;
-    root.setAttribute("contenteditable", false);
-  }
-}
-
-function removeMath(element, doc = document){
-  if (MathJax) {
-    let items = MathJax.startup.document.getMathItemsWithin(element);
-    for (let item of items) {
-      // console.log(item);
-      let textNode = doc.createTextNode(`${item.start.delim}${item.math}${item.end.delim}`);
-      let root = item.typesetRoot;
-      let parent = root.parentNode;
-      if (parent){
-        parent.replaceChild(textNode, root);
-      }
+function getSPath(node, root) {
+  let path = [];
+  while (node != root) {
+    let n = node;
+    let index = 0;
+    while (n.previousSibling) {
+      n = n.previousSibling;
+      index ++;
     }
+    path.unshift(index);
+    node = node.parentNode;
   }
-}
 
-document.removeMath = (e) => {
-  removeMath(e);
-}
 
-let selected_editor = null;
-let selectEditor = (editor) => {
-  if (selected_editor) {
-    selected_editor.unselect();
+  let vpath = [];
+  let offset = 0;
+  let stop = false;
+  for (let index of path) {
+    if (stop) {
+      for (let i = 0; i < index; i++) {
+        let child = node.childNodes[index];
+        offset += node.textContent.length;
+      }
+    } else {
+      vpath.push(index);
+    }
+    node = node.childNodes[index];
+    stop = !(node instanceof Text) && !(node.tagName.toLowerCase() in AllowedTags);
   }
-  selectEditor = editor;
+
+  // for (let i = path.length)
+  console.log(vpath, offset);
+  // console.log(path);
+  // if (node == root) return [];
+  //
+  // let index = 0;
+  //
+  // let path = getSPath(node.parent, root);
+  //
+  // if (node in AllowedTags) {
+  //   path.push(index);
+  // } else {
+  //   path[path.length - 1] += sIndx;
+  // }
+  //
+  // return path;
 }
 
-function makeEditor(element, metaCmds = defaultMetaCmds, keyBlocks = defaultKeyBlocks) {
-  let textValue = "";
-  let meta = false;
-  let setting = false;
 
-  let selected = false;
-  let focused = false;
+let SelectedEditor = null;
+function select(element){
+  unselect();
+  SelectedEditor = element;
 
+  element.value = element.value;
+  // console.log(x, y);
+  // let carrot = document.caretPositionFromPoint(x, y);
+  // console.log(carrot);
 
-  let updateValue = (value) => {
-    textValue = value;
-    const event = new Event("change");
+  element.toggleAttribute("edit", true);
+  element.setAttribute("contenteditable", true);
+  if (!element.focused) {
+    element.focus();
+  }
+
+  const event = new Event("select");
+  element.dispatchEvent(event);
+}
+function unselect(){
+  let element = SelectedEditor
+  if (element) {
+    SelectedEditor = null;
+    element.toggleAttribute("edit", false);
+    element.removeAttribute("contenteditable");
+    typeset(element);
+    if (element.focused) {
+      element.blur();
+    }
+    const event = new Event("unselect");
     element.dispatchEvent(event);
   }
+}
+function typeset(element){
+  if (MathJax) {
+    MathJax.typeset([element]);
+  }
+}
+function isSelected(element = null) {
+  if (element === null) return SelectedEditor !== null;
+  return element.isSameNode(SelectedEditor);
+}
 
-  let edit = (v) => {
-    element.toggleAttribute("contenteditable", v);
+const AllowedTags = {"br": true, "b": true, "i": true,}
+const AllowedStyles = {
+  color: (colorIn) => {
+    let color = null;
+    // if (typeof colorIn === "string") {
+    //   if(!colorIn.match(/((rgb\(\s*0\s*,\s*0\s*,\s*0\s*\))|(#000000)|(#000))/)) {
+    //     color = colorIn;
+    //   }
+    // }
+    // console.log(color);
+    return color;
+  }
+};
+
+function getRange() {
+  const selection = window.getSelection();
+  return selection.getRangeAt(0)
+}
+
+function setRange(range) {
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+}
+
+function insertAtSelection(element) {
+  const selection = window.getSelection();
+  if (!selection.rangeCount) return;
+  selection.deleteFromDocument();
+  selection.getRangeAt(0).insertNode(element);
+}
+
+function setSelectionRange(start, startIndex = 0, end = start, endIndex = 0) {
+  let r = document.createRange();
+  r.setStart(start, startIndex)
+  r.setEnd(end, endIndex);
+  setRange(r);
+}
+
+
+function sanitizePasteHTML(html) {
+  var parser = new DOMParser();
+  let doc = parser.parseFromString(html, 'text/html');
+  let init = true;
+  let sanitizeNode = (node) => {
+    let items = MathJax.startup.document.getMathItemsWithin(node);
+    let sanitized = new Text(node.data);
+    // console.log(node);
+    if (!(node instanceof Text)) {
+      let children = [...node.childNodes]
+      if (node.tagName.toLowerCase() in AllowedTags) {
+        sanitized = document.createElement(node.tagName);
+        for (let styleKey in AllowedStyles) {
+          let value = AllowedStyles[styleKey](node.style[styleKey]);
+          if (value != null) {
+            sanitized.style.setProperty(styleKey, value);
+          }
+        }
+        for (let child of children) {
+          sanitized.appendChild(sanitizeNode(child));
+        }
+      } else {
+        sanitized = new DocumentFragment();
+        for (let child of children) {
+          sanitized.append(sanitizeNode(child));
+        }
+      }
+    }
+
+    return sanitized;
   }
 
-  let select = () => {
-    if (!setting & !selected) {
-      if (selected_editor && selected_editor.selected) {
-        selected_editor.unselect();
+  let body = doc.body;
+  let parsed = sanitizeNode(body);
+
+  return parsed;
+}
+function paste(e){
+  if (isSelected()) {
+    var clip = e.clipboardData || window.clipboardData;
+    if (clip) {
+      let html = clip.getData("text/html");
+      if (html !== null) {
+        e.preventDefault();
+        let element = sanitizePasteHTML(html);
+        if (element != null) {
+          insertAtSelection(element);
+        }
       }
-      selected_editor = element;
-      setting = true;
-      removeMath(element);
-      edit(true);
-      if (!focused) {
-        element.focus();
-      }
-      setting = false;
-      selected = true;
-      const event = new Event("select");
-      element.dispatchEvent(event);
     }
   }
+}
 
-  let typeset = () => {
-    if (MathJax) {
-      MathJax.typeset([element]);
-    }
-  }
-
-  let unselect = () => {
-    if (!setting) {
-      setting = true;
-      edit(false);
-      typeset();
-      if (focused) {
-        element.blur();
-      }
-      setting = false;
-      selected = false;
-      const event = new Event("unselect");
-      element.dispatchEvent(event);
-    }
-  }
-
-
-  Object.defineProperty(element, "selected", {
-    get: () => selected
+function makeEditor(element) {
+  // watch for focus
+  let focused = false;
+  Object.defineProperty(element, "focused", {
+    get: () => focused
   })
-  Object.defineProperty(element, "value", {
-    get: () => textValue,
-    set: (v) => {
-      textValue = v;
-      element.innerHTML = v;
-      unselect();
-    }
-  });
-  Object.defineProperty(element, "rich", {
-    get: () => {
-      return getRichText(textValue);
-    },
-  });
-
-  //
-  // element.addEventListener("contextmenu", (e) => {
-  //   select();
-  //   e.preventDefault()
-  // });
-  element.addEventListener("dblclick", (e) => {
-    select()
-  });
-
   element.addEventListener("focusin", (e) => {
     focused = true;
   });
   element.addEventListener("focusout", (e) => {
     focused = false;
-    if (selected) {
-      unselect()
+    unselect();
+  });
+
+  // select unselect
+  Object.defineProperty(element, "selected", {
+    get: () => isSelected(element),
+    set: (v) => {
+      let oldv = isSelected(element);
+      if (oldv && !v) unselect();
+      else if (!oldv && v) select(element);
     }
   });
 
-
-  element.addEventListener("keydown", (e) => {
-    let key = e.key;
-    if (key == "Meta") {
-      meta = true;
-    }
-    if (meta) {
-      if (key in metaCmds) {
-        let cmd = metaCmds[key]();
-        if (!cmd) {
-          e.preventDefault();
-        }
+  // value
+  let textValue = "";
+  Object.defineProperty(element, "value", {
+    get: () => textValue,
+    set: (v) => {
+      textValue = v;
+      element.innerHTML = v;
+      if (!isSelected(element)) {
+        typeset(element);
       }
-    } else if (!validate(key, element, metaCmds, keyBlocks)){
-      e.preventDefault();
+    }
+  });
+  element.addEventListener("keyup", (e) => {
+    if (isSelected(element)) {
+      textValue = element.innerHTML;
     }
   });
 
-  element.addEventListener("paste", (e) => {
-    let clip = (event.clipboardData || window.clipboardData);
-    pasteInputParser(clip, element);
+  element.addEventListener("dblclick", (e) => {
+    select(element);
     e.preventDefault();
   });
 
-  element.addEventListener("keyup", (e) => {
-    if (e.key == "Meta") {
-      meta = false;
-    }
-    textValue = element.innerHTML
+  element.addEventListener("paste", (e) => {
+    paste(e);
   });
-
-  element.select = select;
-  element.unselect = select;
-
 }
 
 

@@ -1,5 +1,0 @@
-function parseRichText(){
-
-}
-
-export {parseRichText}

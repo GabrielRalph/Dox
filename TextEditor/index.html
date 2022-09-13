@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link href = "./dox.css" rel = "stylesheet" />
+    <!-- <link href = "./dox.css" rel = "stylesheet" /> -->
     <script>
           MathJax = {
             tex: {
@@ -54,9 +54,17 @@
     }
   </style>
   <script type = "module">
-    import {makeEditor} from "./TextEditor.js"
-    for (let input of ["a", "b", "c"]){
-      makeEditor(document.getElementById(input))
-    }
+    import {addKeyCommand} from "./key-cmds.js"
+    // for (let input of ["a", "b", "c"]){
+    //   makeEditor(document.getElementById(input))
+    // }
+    // addKeyCommand("Meta+y", () => {
+    //   console.log("redo");
+    //   return "prevent";
+    // })
+    //
+    // addKeyCommand("Meta+y", () => {
+    //   console.log("redo again");
+    // })
   </script>
 </html>
