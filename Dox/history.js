@@ -17,7 +17,7 @@ export function loadHistory() {
       }
     }
   } catch(e) {
-    historyBuffer = {};
+    historyBuffers = {};
   }
 }
 loadHistory();
