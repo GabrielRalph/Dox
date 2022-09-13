@@ -64,7 +64,8 @@ addKeyCommands({
     if (isSelected()){
       return insertBrackets('(',')');
     }
-  }
+  },
+  'Meta+z': () => SelectedEditor !== null ? "stop" : false
 });
 
 

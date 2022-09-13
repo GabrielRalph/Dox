@@ -219,7 +219,7 @@ class SectionImage extends DoxNode {
   serialize() {
     let data = super.serialize();
     data.url = this.url;
-    console.log(this.url);
+    // console.log(this.url);
     return data;
   }
 

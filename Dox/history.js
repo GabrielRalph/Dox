@@ -48,9 +48,13 @@ export function addHistory(fileKey, value){
       historyBuffers[fileKey].pop();
     }
 
-    // save history to local storage
-    localStorage.setItem("history", JSON.stringify(historyBuffers));
+    saveHistory();
   }
+}
+
+function saveHistory(){
+  // save history to local storage
+  localStorage.setItem("history", JSON.stringify(historyBuffers));
 }
 
 export function getHistoryVersion(fileKey, next){
@@ -65,6 +69,7 @@ export function getHistoryVersion(fileKey, next){
     historyBuffers[fileKey].index = index;
     version = buffer[index];
   }
+  saveHistory();
   return version;
 }
 

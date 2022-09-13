@@ -479,11 +479,13 @@ class DoxEditor extends SvgPlus {
     this.update_tools();
     this._update_node(node, "styles");
   }
+
   async getHistory(next){
     let fileKey = this.openFileKey;
     let version = getHistoryVersion(fileKey, next);
     if (version != null) {
       await this._set_value(version);
+      this._call_update();
     }
   }
 
@@ -554,18 +556,13 @@ class DoxEditor extends SvgPlus {
       path = path + "/" + key;
     }
 
-    // save history
-    let hidx = getHistoryIndex(this.openFileKey);
+    // save history (move index history to front)
     addHistory(this.openFileKey, this.value);
-
-    if (hidx !== 0 && hidx !== null) {
-      path = this.mainSection.path;
-      value = this.mainSection.json;
-      console.log(path);
-    }
-
     console.log('%ceditor updated at ' + path, "color: #79c3ff");
-    // call update callback
+    this._call_update(value, path)
+  }
+  
+  _call_update(value = this.value, path = "") {
     if (this.onupdate instanceof Function) {
       this.onupdate(value, path);
     }
