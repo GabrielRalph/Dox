@@ -9,11 +9,15 @@ import {DOX_NODE_NAMES,
         SectionHeader,
         SectionImage
 } from "./DoxNodes.js";
-import {getHistoryVersion, addHistory, getHistoryIndex} from "./history.js";
+import {getHistoryVersion, addHistory} from "./history.js";
 import {addKeyCommands} from "../TextEditor/key-cmds.js";
 
-const isDoxContainer = (e) => SvgPlus.is(e.selected, DoxContainer);
-const isDoxNode = (e) => SvgPlus.is(e.selected, DoxNode);
+function is (o, c) {
+  return SvgPlus.is(o, c);
+}
+const isDoxContainer = (e) => is(e.selected, DoxContainer);
+const isDoxNode = (e) => is(e.selected, DoxNode);
+const isSectionRow = (e) => is(e.selected, SectionRow);
 const notOnly = (e) => isDoxNode(e) && e.selected.parentNode.children.length > 1;
 const alignValidate = (e, name) => {
   if (SvgPlus.is(e.selected, RichText)) {
@@ -94,6 +98,7 @@ const TOOLS = {
     },
     validate: (e) => alignValidate(e, "justify")
   },
+
   expand: {
     method: (e) => {
       e.setWide(true)
@@ -180,41 +185,38 @@ const TOOLS = {
 const TOOL_TEMPLATE = `<dox-tools>
   <!-- left tools -->
   <div>
-    <!-- <div> -->
       <img name = "trash" />
       <img class = sp5 name = "up" />
       <img name = "down" />
-    <!-- </div>
-    <div> -->
+
       <img class = sp5 name = "section" />
       <img name = "row" />
       <img name = "text" />
       <img name = "image" />
-    <!-- </div>
-    <div> -->
+
       <div small class = "text-field sp5" name = "image_url">
         <span onclick="parentNode.toggleAttribute('small')">url</span>
         <input placeholder="https://"/>
       </div>
 
-      <div small class = "text-field" name = "image_url">
-        <span >upload</span>
-      </div>
-    <!-- </div>
-    <div> -->
+
       <img class = sp5 name = "align_left" />
       <img name = "align_center" />
       <img name = "align_right" />
       <img name = "align_justify" />
+
+      <img class = sp5 name = "align_middle" />
+      <img name = "align_top" />
+      <img name = "align_bottom" />
+      <img name = "align_fill" />
+
       <div class = "text-field" name = "font_size">
         <span>P<span style = "font-size: 0.7em; padding-left:0.2em;">P</span></span>
         <input value = "12" style = 'width: 1.5em; text-align: center'/>
       </div>
-    <!-- </div>
-    <div> -->
+
       <img class = sp5 name = "expand" />
       <img class = sp5 name = "collapse" />
-    <!-- </div> -->
   </div>
 
   <!-- right tools -->
@@ -561,7 +563,7 @@ class DoxEditor extends SvgPlus {
     console.log('%ceditor updated at ' + path, "color: #79c3ff");
     this._call_update(value, path)
   }
-  
+
   _call_update(value = this.value, path = "") {
     if (this.onupdate instanceof Function) {
       this.onupdate(value, path);

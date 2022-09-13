@@ -60,7 +60,7 @@ function keyUp(e){
     delete HeldKeys[e.key];
     keyOrder--;
   }
-  runKeyCommand();
+  runKeyCommand(e);
 }
 
 function getKeyPhrase() {
