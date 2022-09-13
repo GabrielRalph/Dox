@@ -28,8 +28,8 @@ addKeyCommands({
           }
         }
       }
-      console.log("%cdelta end, next sibling", "color: red");
-      console.log(dend, end);
+      // console.log("%cdelta end, next sibling", "color: red");
+      // console.log(dend, end);
 
       let frag = new DocumentFragment();
       frag.append(document.createElement("br"));
@@ -140,6 +140,11 @@ function getSPath(node, root) {
 
 let SelectedEditor = null;
 function select(element){
+  // reselection
+  if (SelectedEditor !== null && SelectedEditor.isSameNode(element)) {
+    return;
+  }
+
   unselect();
   SelectedEditor = element;
 
