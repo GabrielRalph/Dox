@@ -199,4 +199,8 @@ async function save(content, path = "") {
   }
 }
 
-export {create, open, close, remove, save}
+function getOpenFileKey(){
+  return openFileKey;
+}
+
+export {create, open, close, remove, save, openFileKey}

@@ -74,6 +74,7 @@ class DoxApp extends SvgPlus {
       await open(key, (data) => {
         this.editor.value = data;
       });
+      this.editor.openFileKey = key;
       this.show(this.editor);
       this.editor.onupdate = save;
       console.log("%copened and synced to " + key, "color: #c4ff90");

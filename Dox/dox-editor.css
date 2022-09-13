@@ -107,6 +107,9 @@ dox-editor[edit] rich-text.dox-node {
 dox-editor[edit] rich-text.dox-node[selected] {
   border-color: #0c910c95;
 }
+dox-editor[edit] rich-text.dox-node[selected][edit]{
+  cursor: text;
+}
 
 dox-editor > .dox-container {
   /* margin: var(--element-margin); */

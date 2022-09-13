@@ -8,7 +8,9 @@ import {DOX_NODE_NAMES,
         RichText,
         SectionHeader,
         SectionImage
-} from "./DoxNodes.js"
+} from "./DoxNodes.js";
+import {getHistoryVersion, addHistory, getHistoryIndex} from "./history.js";
+import {addKeyCommands} from "../TextEditor/key-cmds.js";
 
 const isDoxContainer = (e) => SvgPlus.is(e.selected, DoxContainer);
 const isDoxNode = (e) => SvgPlus.is(e.selected, DoxNode);
@@ -142,8 +144,15 @@ const TOOLS = {
         e.selected.url = value;
       }
     },
-    validate: (e) => {
-      return SvgPlus.is(e.selected, SectionImage);
+    validate: (e, icon) => {
+      if (SvgPlus.is(e.selected, SectionImage)) {
+        let input = icon.querySelector("input");
+        if (input != null) {
+          input.value = e.selected.url;
+        }
+        return true;
+      }
+      return false;
     }
   },
   font_size: {
@@ -173,7 +182,7 @@ const TOOL_TEMPLATE = `<dox-tools>
   <div>
     <!-- <div> -->
       <img name = "trash" />
-      <img name = "up" />
+      <img class = sp5 name = "up" />
       <img name = "down" />
     <!-- </div>
     <div> -->
@@ -217,6 +226,38 @@ const TOOL_TEMPLATE = `<dox-tools>
 
 function iconFilename(icon) {
   return `icons/i_${icon}.svg`
+}
+
+function checkObjDiff(obj1, obj2) {
+  let different = true;
+  if (typeof obj1 === typeof obj2) {
+    different = false;
+    if (obj1 !== obj2 && (obj1 === null || obj2 === null)) {
+      different = true;
+    } else if (typeof obj1 === "object" && obj1 !== null) {
+      let keys1 = Object.keys(obj1);
+      let keys2 = Object.keys(obj2);
+      let keySet1 = new Set(keys1)
+      let keySet2 = new Set(keys2);
+      let int1 =  keys1.filter((key => !keySet2.has(key)));
+      let int2 =  keys2.filter((key => !keySet1.has(key)));
+      let exclusion = int1.concat(int2);
+
+      if (exclusion.length == 0) {
+        for (let key of keys1) {
+          different ||= checkObjDiff(obj1[key], obj2[key]);
+        }
+      } else {
+        different = true;
+      }
+    } else {
+      different = obj1 !== obj2;
+      if (different) {
+      }
+    }
+  }
+
+  return different;
 }
 
 class ToolIcon extends SvgPlus {
@@ -302,6 +343,8 @@ class ToolIcon extends SvgPlus {
   }
 }
 
+
+
 function getTarget(e) {
   let target = e.target;
   while (target && !SvgPlus.is(target, DoxNode)) {
@@ -316,18 +359,30 @@ function getTarget(e) {
 class DoxEditor extends SvgPlus {
   constructor(el){
     super(el);
+    let edit = false;
     window.addEventListener('beforeprint', (e) => {
+      edit = this.edit;
       this.edit = false;
     });
     window.addEventListener('afterprint', (e) => {
-      this.edit = true;
+      this.edit = edit;
     });
     this._data = {type: "section", length: 0, class: null};
+    addKeyCommands({
+      "Meta+z": (e) => {
+        this.getHistory();
+        return true;
+      },
+      "Meta+y": (e) => {
+        this.getHistory(true);
+        return true;
+      }
+    })
   }
+
   onconnect(){
     this.build();
   }
-
   onmousedown(e) {
     let target = getTarget(e);
     if (target !== "tools") {
@@ -389,6 +444,7 @@ class DoxEditor extends SvgPlus {
     }
   }
   place(target = this.selected, node = this.lastSelected){
+
     let valid = target && node &&
                 (target != node) &&
                 (node != this.mainSection) &&
@@ -422,6 +478,13 @@ class DoxEditor extends SvgPlus {
     node.styles = styles;
     this.update_tools();
     this._update_node(node, "styles");
+  }
+  async getHistory(next){
+    let fileKey = this.openFileKey;
+    let version = getHistoryVersion(fileKey, next);
+    if (version != null) {
+      await this._set_value(version);
+    }
   }
 
   set selected(element){
@@ -491,6 +554,18 @@ class DoxEditor extends SvgPlus {
       path = path + "/" + key;
     }
 
+    // save history
+    let hidx = getHistoryIndex(this.openFileKey);
+    addHistory(this.openFileKey, this.value);
+
+    if (hidx !== 0 && hidx !== null) {
+      path = this.mainSection.path;
+      value = this.mainSection.json;
+      console.log(path);
+    }
+
+    console.log('%ceditor updated at ' + path, "color: #79c3ff");
+    // call update callback
     if (this.onupdate instanceof Function) {
       this.onupdate(value, path);
     }
@@ -506,7 +581,6 @@ class DoxEditor extends SvgPlus {
     return node;
   }
 
-
   get value() {
     return this.mainSection.json;
   }
@@ -517,22 +591,25 @@ class DoxEditor extends SvgPlus {
   }
 
   async _set_value(data) {
-    this._value = data;
-    if (!this._updating) {
-      this._updating = new Promise((resolve, reject) => {
-        window.requestAnimationFrame(() => {
-          let selectedPath = "";
-          if (this.selected != null) {
-            selectedPath = this.selected.path;
-          }
-          this._updating = false;
-          this.mainSection.json = this._value;
-          this.selected = this.getDoxNodeByPath(selectedPath);
-          console.log('%ceditor updated', "color: #79c3ff");
+    if (checkObjDiff(data, this.mainSection.json)) {
+      this._value = data;
+      if (!this._updating) {
+        this._updating = new Promise((resolve, reject) => {
+          window.requestAnimationFrame(() => {
+            let selectedPath = "";
+            if (this.selected != null) {
+              selectedPath = this.selected.path;
+            }
+            this._updating = false;
+            this.mainSection.json = this._value;
+            this.selected = this.getDoxNodeByPath(selectedPath);
+            resolve(true);
+          });
         });
-      });
+      }
+      return this._updating;
     }
-    return this._updating;
+    return null;
   }
 }
 

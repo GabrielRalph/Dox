@@ -138,7 +138,7 @@ class DoxContainer extends DoxNode {
     super.deserialize(data);
     for (let i = 0; i < data.length; i++) {
       let ne = data[i];
-      if (ne.type in DOX_NODE_NAMES) {
+      if (ne && ne.type in DOX_NODE_NAMES) {
         let node = new DOX_NODE_NAMES[ne.type]();
         node.json = ne;
         this.appendChild(node);
