@@ -31,6 +31,18 @@ const alignValidate = (e, name) => {
   }
   return false;
 }
+const alignItemsValidate = (e, name) => {
+  if (isSectionRow(e)) {
+    let align = window.getComputedStyle(e.selected).alignItems;
+    switch (align) {
+      case "center": return name === "middle" ? "highlight" : true;
+      case "flex-start": return name === "top" ? "highlight" : true;
+      case "flex-end": return name === "bottom" ? "highlight" : true;
+      default: return name === "fill" ? "highlight" : true;
+    }
+  }
+  return false;
+}
 
 const TOOLS = {
   trash: {
@@ -98,6 +110,40 @@ const TOOLS = {
     },
     validate: (e) => alignValidate(e, "justify")
   },
+
+  align_middle: {
+    method: (e) => {
+      e.setStyles({
+        "align-items": "center",
+      })
+    },
+    validate: (e) => alignItemsValidate(e, "middle")
+  },
+  align_top: {
+    method: (e) => {
+      e.setStyles({
+        "align-items": "flex-start",
+      })
+    },
+    validate: (e) => alignItemsValidate(e, "top")
+  },
+  align_bottom: {
+    method: (e) => {
+      e.setStyles({
+        "align-items": "flex-end",
+      })
+    },
+    validate: (e) => alignItemsValidate(e, "bottom")
+  },
+  align_fill: {
+    method: (e) => {
+      e.setStyles({
+        "align-items": "stretch",
+      })
+    },
+    validate: (e) => alignItemsValidate(e, "fill")
+  },
+
 
   expand: {
     method: (e) => {

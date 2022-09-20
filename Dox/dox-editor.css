@@ -165,11 +165,11 @@ dox-tools div img:last-of-type{
   margin-right: 0;
 } */
 
-img[hidden] + img.sp5 {
+/* img[hidden] + img.sp5 {
   border: none;
   margin-left: 0;
   padding-left: 0;
-}
+} */
 dox-tools .text-field[hidden] {
   display: none;
 }

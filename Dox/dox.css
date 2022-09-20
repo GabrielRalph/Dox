@@ -69,7 +69,7 @@ section-row > .wide {
     --width: 210mm;
     /* width: 210mm; */
     position: relative;
-    /* background:  */
+    background: white;
   }
 
   section {
