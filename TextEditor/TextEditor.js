@@ -275,6 +275,10 @@ function paste(e){
         if (element != null) {
           insertAtSelection(element);
         }
+      } else {
+        let text = clip.getData("text/plain");
+        let node = document.createTextNode(text);
+        insertAtSelection(node);
       }
     }
   }
