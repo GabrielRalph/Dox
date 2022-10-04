@@ -18,9 +18,9 @@
     <script>
 
       MathJax = {
-        loader: {load: ['[tex]/color']},
+        loader: {load: ['[tex]/color', '[tex]/colortbl']},
         tex: {
-          packages: {'[+]': ['color']},
+          packages: {'[+]': ['color', 'colortbl']},
           inlineMath: [['$', '$'], ['\\(', '\\)']],
           macros: {
             trans: `\\underset{heat}{\\overset{cool}{\\rightleftharpoons}}`,
