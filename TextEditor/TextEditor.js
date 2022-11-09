@@ -160,6 +160,7 @@ function unselect(){
 }
 function typeset(element){
   if (MathJax) {
+    parseInputHTML(element);
     MathJax.typeset([element]);
   }
 }
@@ -187,6 +188,23 @@ const AllowedStyles = {
     return color;
   }
 };
+
+function parseInputHTML(root) {
+  for (let child of root.childNodes) {
+    parseInputHTML(child);
+  }
+  if (root instanceof Element) {
+    root.style.setProperty("font-size", null);
+    if (root.tagName.toLowerCase() == "span")  {
+      let frag = new DocumentFragment();
+      for (let child of root.childNodes) {
+        frag.append(child);
+      }
+      root.parentNode.replaceChild(frag, root);
+    }
+
+  }
+}
 
 function makeEditor(element) {
   // watch for focus
@@ -226,6 +244,7 @@ function makeEditor(element) {
   });
   element.addEventListener("keyup", (e) => {
     if (isSelected(element)) {
+      parseInputHTML(element);
       textValue = element.innerHTML;
     }
   });
