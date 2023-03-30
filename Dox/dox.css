@@ -7,11 +7,15 @@
   --margin-right-mm: 15;
   --font-size-pt: 12;
 
+
   /* Actual width */
   --width: min(280mm, 97vw);
+
+  --inner-width-mm: calc(var(--width-mm) - (var(--margin-left-mm) + var(--margin-right-mm)));
+  --inner-width: calc(var(--width) * var(--inner-width-mm) / var(--width-mm));
+
   --mm: calc(var(--width) / var(--width-mm));
 
-  /* --padding: 2em; */
   --pt: calc(var(--mm) * 0.352778);
   --page-margin: calc(var(--margin-top-mm) * var(--mm)) calc(var(--margin-right-mm) * var(--mm)) calc(var(--margin-bottom-mm) * var(--mm)) calc(var(--margin-left-mm) * var(--mm));
 }
@@ -65,11 +69,23 @@ section-row > .wide {
 }
 
 @media print{
+  :root {
+    --mm: 1mm;
+    --margin-top-mm: 0;
+    --margin-bottom-mm: 0;
+    --margin-left-mm: 0;
+    --margin-right-mm: 0;
+    --width: 100vw;
+  }
+
   body {
-    --width: 210mm;
-    /* width: 210mm; */
     position: relative;
+    /* width: 100vw; */
     background: white;
+    margin: 0;
+    /* margin: var(--page-margin); */
+    /* --inner-width: */
+
   }
 
   section {

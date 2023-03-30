@@ -111,15 +111,16 @@ dox-editor[edit] rich-text.dox-node[selected][edit]{
   cursor: text;
 }
 
-dox-editor > .dox-container {
+dox-editor > .dox-container, dox-editor[edit] .dox-container {
   /* margin: var(--element-margin); */
   height: 100%;
   margin: 2em 0 5em 0;
+  background: white;
+  display: flex;
 }
 
-dox-editor[edit] > .dox-container > section.dox-node, dox-editor > .dox-container > section.dox-node {
-  padding: var(--page-margin);
-  background: white;
+dox-editor > .dox-container > section.dox-node, dox-editor > .dox-container > section.dox-node[selected] {
+  margin: var(--page-margin);
 }
 
 
