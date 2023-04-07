@@ -93,6 +93,12 @@ section-row > .wide {
     page-break-inside: avoid;
   }
 
+  section-image {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding: 1px;
+  }
+
   section-row {
     break-inside: avoid;
     page-break-inside: avoid;
