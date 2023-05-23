@@ -313,16 +313,16 @@ const TOOL_TEMPLATE = `<dox-tools>
       <img name = "row" />
       <img name = "text" />
       <img name = "image" />
-      <div name = "code" class = "text-field" style = "background: #262421;color: white;font-size: 0.7em;padding: 0.2em;border-radius: 5px; cursor: pointer;">Code</div>
+      <img name = "code">
 
 
       <div small class = "text-field sp5" name = "image_url">
         <span onclick="parentNode.toggleAttribute('small')">URL</span>
         <input placeholder="https://"/>
       </div>
-      <div small class = "text-field" name = "width">
+      <div class = "text-field" name = "width">
         <span onclick="parentNode.toggleAttribute('small')">Width</span>
-        <input placeholder="100%"/>
+        <input placeholder="100%" style = "width: 3em"/>
       </div>
       <div small class = "text-field" name = "code_language">
         <span onclick="parentNode.toggleAttribute('small')">Language</span>

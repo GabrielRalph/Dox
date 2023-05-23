@@ -103,6 +103,14 @@ dox-editor[edit] section-row.dox-node[selected] {
   border-color: #d95d0d9d;
 }
 
+dox-editor[edit] code-insert.dox-node {
+  border-color: #b7d9f7;
+}
+
+dox-editor[edit] section-image.dox-node {
+  border-color: #e7a3c888;
+}
+
 dox-editor[edit] rich-text.dox-node {
   border-color: #0c910c45;
 }
