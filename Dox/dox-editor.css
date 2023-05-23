@@ -81,8 +81,10 @@ dox-editor[edit] .dox-node {
   border-radius: var(--r);
   min-height: 1em;
   margin: calc(var(--element-margin) + 1px);
+  overflow: hidden;
 }
 dox-editor[edit] .dox-node[selected] {
+  overflow: hidden;
   border-width: 2px;
   margin: var(--element-margin);
 }
@@ -209,7 +211,7 @@ dox-tools .text-field > * {
 dox-tools .text-field span {
   border-radius: var(--r) 0 0 var(--r);
   background: #262421;
-  color: var(--beige);
+  color: #f2ece4;
   cursor: w-resize;
 }
 
@@ -217,7 +219,8 @@ dox-tools .text-field input {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   border-left: none;
-  background: var(--bg);
+  background: #ece9e4ed;
+  color: black;
 }
 
 /* dox-tools .text-field > * {

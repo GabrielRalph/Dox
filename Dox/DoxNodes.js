@@ -1,6 +1,34 @@
 import {SvgPlus} from "../SvgPlus/4.js";
 import {makeEditor} from "../TextEditor/TextEditor.js";
 
+let FILES = {
+
+}
+
+async function getText(url){
+  let text = null;
+  if (url in FILES) {
+    text = FILES[url];
+    if (text instanceof Promise) {
+      await text;
+    }
+  } else {
+    let load = async () => {
+      try {
+        let res = await fetch(url);
+        let text = await res.text();
+        if (text) {
+          FILES[url] = text;
+        }
+      } catch(e){}
+    }
+    FILES[url] = load();
+    await FILES[url];
+  }
+  if (url in FILES) text = FILES[url];
+  return text;
+}
+
 class DoxNode extends SvgPlus {
   constructor(el){
     super(el);
@@ -169,7 +197,6 @@ class DoxTextNode extends DoxNode {
   }
 }
 
-
 class Section extends DoxContainer {
   constructor() {
     super("section");
@@ -181,7 +208,6 @@ class SectionRow extends DoxContainer {
     super("section-row");
   }
 }
-
 
 class RichText extends DoxTextNode {
   constructor(){
@@ -195,13 +221,10 @@ class SectionHeader extends DoxTextNode{
   }
 }
 
-
-class SectionImage extends DoxNode {
-  constructor(){
-    super("section-image");
+class URLSourceNode extends DoxNode {
+  constructor(el){
+    super(el)
     this._url = "";
-    this.img = this.createChild("img");
-    this.figure = this.createChild("figcaption")
   }
 
   get url() {
@@ -210,11 +233,13 @@ class SectionImage extends DoxNode {
   set url(url){
     if (typeof url !== "string") url = "";
     this._url = url;
-    this.img.props = {
-      src: url,
-    }
+    this.setURL(url);
     this.update("url");
   }
+
+ setURL(url) {
+
+ }
 
   serialize() {
     let data = super.serialize();
@@ -229,6 +254,137 @@ class SectionImage extends DoxNode {
   }
 }
 
+class SectionImage extends URLSourceNode {
+  constructor(){
+    super("section-image");
+    this.img = this.createChild("img");
+  }
+
+  set width(pad){
+    if (!pad || pad + "" === "undefined" || typeof pad !== "string") pad = "100%"
+    this._width = pad;
+    this.setAttribute("style", "");
+    this.img.styles = {"width": pad};
+    this.update("width");
+  }
+
+
+  get width(){
+    return this._width;
+  }
+
+  serialize() {
+    let data = super.serialize();
+    data.width = this.width;
+    return data;
+  }
+
+  deserialize(data) {
+    super.deserialize(data);
+    this.width = data.width;
+  }
+
+  setURL(url){
+    this.img.props = {
+      src: url,
+    }
+  }
+}
+
+class CodeInsert extends URLSourceNode {
+  constructor(){
+    super("code-insert");
+    this.code = this.createChild("pre").createChild("code", {class: "language-cpp"});
+    this._codelang = "cpp";
+    this.lines = [];
+    console.log(this.codelang);
+  }
+
+  set codelang(lang){
+    if (!lang || lang == "undefined" || typeof lang !== "string") lang = "cpp"
+    this.code.class = lang;
+    this._codelang = lang;
+    this.update("codelang");
+    this.highlight();
+  }
+
+
+  get codelang(){
+    return this._codelang;
+  }
+
+  set cstart(value){
+    this._cstart = parseInt(value);
+    this.update("cstart");
+    this.highlight();
+  }
+  set cend(value){
+    this._cend = parseInt(value);
+    this.update("cend");
+    this.highlight();
+  }
+
+  get cstart(){
+    let start = this._cstart;
+    if (typeof start !== 'number' || Number.isNaN(start))start = 0;
+    return start;
+  }
+  get cend(){
+    let end = this._cend;
+    if (typeof end !== 'number' || Number.isNaN(end))end = this.lines.length - 1;
+    return end;
+  }
+
+  async setURL(url) {
+    if (url) {
+      try{
+        let code = await getText(url);
+        this.lines = code.split('\n');
+        this.highlight();
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+
+  highlight(){
+    let code = "";
+    let y = window.scrollY;
+    try {
+      let splice = this.lines.slice(this.cstart, this.cend);
+      code = splice.join('\n');
+      if (this._lastcode !== code) {
+        console.log(y);
+        console.log("diff");
+        this.code.innerHTML = code;
+        if (hljs){
+          hljs.highlightElement(this.code);
+        }
+        window.requestAnimationFrame(() => {
+          window.scrollTo(0, y);
+
+        })
+      }
+      this._lastcode = code;
+
+    } catch(e){
+      // console.log(e);
+    }
+  }
+
+  serialize() {
+    let data = super.serialize();
+    data.codelang = this.codelang;
+    return data;
+  }
+
+  deserialize(data) {
+    super.deserialize(data);
+    this.codelang = data.codelang;
+  }
+
+}
+
 const DOX_NODE_NAMES = {
   Section: Section,
   section: Section,
@@ -241,6 +397,7 @@ const DOX_NODE_NAMES = {
   "section-image": SectionImage,
   "image": SectionImage,
   "header": SectionHeader,
+  "code-insert": CodeInsert,
 }
 
-export {DOX_NODE_NAMES, DoxNode, DoxContainer, DoxTextNode, Section, SectionRow, RichText, SectionHeader, SectionImage}
+export {DOX_NODE_NAMES, URLSourceNode, CodeInsert, DoxNode, DoxContainer, DoxTextNode, Section, SectionRow, RichText, SectionHeader, SectionImage}

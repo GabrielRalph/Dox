@@ -7,7 +7,9 @@ import {DOX_NODE_NAMES,
         SectionRow,
         RichText,
         SectionHeader,
-        SectionImage
+        SectionImage,
+        CodeInsert,
+        URLSourceNode,
 } from "./DoxNodes.js";
 import {getHistoryVersion, addHistory} from "./history.js";
 import {addKeyCommands} from "../TextEditor/key-cmds.js";
@@ -75,6 +77,10 @@ const TOOLS = {
   },
   image: {
     method: (e) => e.add("image"),
+    validate: isDoxContainer,
+  },
+  code: {
+    method: (e) => e.add("code-insert"),
     validate: isDoxContainer,
   },
 
@@ -196,10 +202,79 @@ const TOOLS = {
       }
     },
     validate: (e, icon) => {
-      if (SvgPlus.is(e.selected, SectionImage)) {
+      if (SvgPlus.is(e.selected, URLSourceNode)) {
         let input = icon.querySelector("input");
         if (input != null) {
           input.value = e.selected.url;
+        }
+        return true;
+      }
+      return false;
+    }
+  },
+  width: {
+    method: (e, value) => {
+      if (value) {
+        e.selected.width = value;
+      }
+    },
+    validate: (e, icon) => {
+      if (SvgPlus.is(e.selected, SectionImage)) {
+        let input = icon.querySelector("input");
+        if (input != null) {
+          input.value = e.selected.width;
+        }
+        return true;
+      }
+      return false;
+    }
+  },
+  code_language: {
+    method: (e, value) => {
+      if (value) {
+        e.selected.lang = value;
+      }
+    },
+    validate: (e, icon) => {
+      if (SvgPlus.is(e.selected, CodeInsert)) {
+        let input = icon.querySelector("input");
+        if (input != null) {
+          console.log(e.selected.lang);
+          input.value = e.selected.codelang;
+        }
+        return true;
+      }
+      return false;
+    }
+  },
+  code_start: {
+    method: (e, value) => {
+      if (value) {
+        e.selected.cstart = value;
+      }
+    },
+    validate: (e, icon) => {
+      if (SvgPlus.is(e.selected, CodeInsert)) {
+        let input = icon.querySelector("input");
+        if (input != null) {
+          input.value = e.selected.cstart;
+        }
+        return true;
+      }
+      return false;
+    }
+  },
+  code_end: {
+    method: (e, value) => {
+      if (value) {
+        e.selected.cend = value;
+      }
+    },
+    validate: (e, icon) => {
+      if (SvgPlus.is(e.selected, CodeInsert)) {
+        let input = icon.querySelector("input");
+        if (input != null) {
+          input.value = e.selected.cend;
         }
         return true;
       }
@@ -239,12 +314,29 @@ const TOOL_TEMPLATE = `<dox-tools>
       <img name = "row" />
       <img name = "text" />
       <img name = "image" />
+      <div name = "code" class = "text-field" style = "background: #262421;color: white;font-size: 0.7em;padding: 0.2em;border-radius: 5px; cursor: pointer;">Code</div>
+
 
       <div small class = "text-field sp5" name = "image_url">
-        <span onclick="parentNode.toggleAttribute('small')">url</span>
+        <span onclick="parentNode.toggleAttribute('small')">URL</span>
         <input placeholder="https://"/>
       </div>
-
+      <div small class = "text-field" name = "width">
+        <span onclick="parentNode.toggleAttribute('small')">Width</span>
+        <input placeholder="100%"/>
+      </div>
+      <div small class = "text-field" name = "code_language">
+        <span onclick="parentNode.toggleAttribute('small')">Language</span>
+        <input placeholder="cpp"/>
+      </div>
+      <div small class = "text-field" name = "code_start">
+        <span onclick="parentNode.toggleAttribute('small')">Start Line</span>
+        <input placeholder="0"/>
+      </div>
+      <div small class = "text-field" name = "code_end">
+        <span onclick="parentNode.toggleAttribute('small')">End Line</span>
+        <input placeholder="1"/>
+      </div>
 
       <img class = sp5 name = "align_left" />
       <img name = "align_center" />
@@ -380,7 +472,9 @@ class ToolIcon extends SvgPlus {
   update(editor){
     this.show = this.validate(editor, this);
     this.onclick = () => {
+
       this.method(editor);
+
     }
     let input = this.querySelector("input");
     if (input) {
