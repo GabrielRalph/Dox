@@ -301,8 +301,10 @@ class CodeInsert extends URLSourceNode {
   }
 
   set codelang(lang){
-    if (!lang || lang == "undefined" || typeof lang !== "string") lang = "cpp"
-    this.code.class = lang;
+    if (!lang || lang === "undefined" || typeof lang !== "string") lang = "cpp"
+    console.log(lang);
+    this.code.class = "language-" + lang;
+    console.log(hljs);
     this._codelang = lang;
     this.update("codelang");
     this.highlight();

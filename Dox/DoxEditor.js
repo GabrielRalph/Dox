@@ -232,14 +232,13 @@ const TOOLS = {
   code_language: {
     method: (e, value) => {
       if (value) {
-        e.selected.lang = value;
+        e.selected.codelang = value;
       }
     },
     validate: (e, icon) => {
       if (SvgPlus.is(e.selected, CodeInsert)) {
         let input = icon.querySelector("input");
         if (input != null) {
-          console.log(e.selected.lang);
           input.value = e.selected.codelang;
         }
         return true;
