@@ -835,14 +835,12 @@ class DoxEditor extends SvgPlus {
     if (SvgPlus.is(selected, DoxNode)) {
       selected.removeAttribute("selected");
       this.lastSelected = selected;
-
-      edittext = (SvgPlus.is(selected, RichText) && selected.isSameNode(element));
+      // edittext = (SvgPlus.is(selected, RichText) && selected.isSameNode(element));
     }
 
     if (SvgPlus.is(element, DoxNode)) {
       element.props = {selected: ""};
       this._selected = element;
-      if (edittext) element.select();
     } else if (typeof element === "string") {
       // console.log(element);
     } else {
