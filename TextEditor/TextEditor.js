@@ -259,4 +259,6 @@ function makeEditor(element) {
   });
 }
 
+window.isEditingText = () => SelectedEditor != null;
+
 export {makeEditor}

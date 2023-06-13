@@ -73,9 +73,13 @@ dox-editor {
   --r: 0.4em;
 }
 
+dox-editor[edit] section-row, dox-editor[edit] section{
+  gap: 0;
+}
+
+
 dox-editor[edit] .dox-node {
   cursor: pointer;
-  position: relative;
   padding: var(--element-padding);
   border: 1px solid black;
   border-radius: var(--r);

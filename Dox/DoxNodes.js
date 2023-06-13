@@ -165,12 +165,8 @@ class DoxContainer extends DoxNode {
     this.innerHTML = "";
     super.deserialize(data);
     for (let i = 0; i < data.length; i++) {
-      let ne = data[i];
-      if (ne && ne.type in DOX_NODE_NAMES) {
-        let node = new DOX_NODE_NAMES[ne.type]();
-        node.json = ne;
-        this.appendChild(node);
-      }
+      let node = makeNode(data[i]);
+      if (node !== null) this.appendChild(node);
     }
   }
 }
@@ -258,13 +254,13 @@ class SectionImage extends URLSourceNode {
   constructor(){
     super("section-image");
     this.img = this.createChild("img");
+    this._width = "100%"
   }
 
-  set width(pad){
-    if (!pad || pad + "" === "undefined" || typeof pad !== "string") pad = "100%"
-    this._width = pad;
-    this.setAttribute("style", "");
-    this.img.styles = {"width": pad};
+  set width(width){
+    if (!width || width + "" === "undefined" || typeof width !== "string") width = "100%"
+    this._width = width;
+    this.setAttribute("style", "--img-width: " + width);
     this.update("width");
   }
 
@@ -402,4 +398,13 @@ const DOX_NODE_NAMES = {
   "code-insert": CodeInsert,
 }
 
-export {DOX_NODE_NAMES, URLSourceNode, CodeInsert, DoxNode, DoxContainer, DoxTextNode, Section, SectionRow, RichText, SectionHeader, SectionImage}
+function makeNode(json) {
+  let node = null;
+  if (json && json.type in DOX_NODE_NAMES) {
+    node = new DOX_NODE_NAMES[json.type]();
+    node.json = json;
+  }
+  return node;
+}
+
+export {DOX_NODE_NAMES, URLSourceNode, CodeInsert, DoxNode, DoxContainer, DoxTextNode, Section, SectionRow, RichText, SectionHeader, SectionImage, makeNode}

@@ -6,6 +6,15 @@ let HeldKeys = {
 
 };
 
+function addKey(key) {
+  HeldKeys[key] = keyOrder;
+  keyOrder += 1;
+}
+function removeKey(key) {
+  delete HeldKeys[key];
+  keyOrder -= 1;
+}
+
 let lastFocus = document.hasFocus();
 let next = () => {
   let focus = document.hasFocus();
@@ -30,10 +39,24 @@ window.addEventListener("keydown", keyDown);
 
 window.addEventListener("keyup", keyUp)
 
+window.addEventListener("mousedown", (e) => {
+  addKey("click");
+  runKeyCommand(e);
+});
+window.addEventListener("mousedown", (e) => {
+  removeKey("click");
+  runKeyCommand(e);
+})
+window.addEventListener("contextmenu", (e) => {
+  addKey("ctx");
+  runKeyCommand(e);
+  removeKey("ctx");
+})
+
+
 function keyDown(e){
   if (!(e.key in HeldKeys)) {
-    HeldKeys[e.key] = keyOrder;
-    keyOrder += 1;
+    addKey(e.key);
     runKeyCommand(e);
   }
 }
@@ -57,8 +80,7 @@ function keyUp(e){
   if (e.key === "Meta") {
     releaseAllKeys();
   } else {
-    delete HeldKeys[e.key];
-    keyOrder--;
+    removeKey(e.key);
   }
   runKeyCommand(e);
 }

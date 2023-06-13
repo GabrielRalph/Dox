@@ -10,6 +10,7 @@ import {DOX_NODE_NAMES,
         SectionImage,
         CodeInsert,
         URLSourceNode,
+        makeNode,
 } from "./DoxNodes.js";
 import {getHistoryVersion, addHistory} from "./history.js";
 import {addKeyCommands} from "../TextEditor/key-cmds.js";
@@ -20,9 +21,10 @@ function is (o, c) {
 const isDoxContainer = (e) => is(e.selected, DoxContainer);
 const isDoxNode = (e) => is(e.selected, DoxNode);
 const isSectionRow = (e) => is(e.selected, SectionRow);
+const isText = (e) => is(e.selected, DoxTextNode);
 const notOnly = (e) => isDoxNode(e) && e.selected.parentNode.children.length > 1;
 const alignValidate = (e, name) => {
-  if (SvgPlus.is(e.selected, RichText)) {
+  if (isDoxContainer(e) || isText(e)) {
     let align = window.getComputedStyle(e.selected).textAlign;
     if (align == "start") align = "left";
     if (align == "end") align = "right";
@@ -121,7 +123,7 @@ const TOOLS = {
     method: (e) => {
       e.setStyles({
         "align-items": "center",
-      })
+       })
     },
     validate: (e) => alignItemsValidate(e, "middle")
   },
@@ -204,6 +206,7 @@ const TOOLS = {
     validate: (e, icon) => {
       if (SvgPlus.is(e.selected, URLSourceNode)) {
         let input = icon.querySelector("input");
+
         if (input != null) {
           input.value = e.selected.url;
         }
@@ -282,6 +285,7 @@ const TOOLS = {
   },
   font_size: {
     method: (e, value) => {
+      console.log(value);
       if (value) {
         e.setStyles({
           "--font-size-pt": parseFloat(value)
@@ -289,12 +293,38 @@ const TOOLS = {
       }
     },
     validate: (e, icon) => {
-      if (SvgPlus.is(e.selected, RichText)) {
+      if (isText(e) || isDoxContainer(e)) {
         let styles = e.selected.styles;
         let val = 12;
         if (styles && "--font-size-pt" in styles) {
           val = e.selected.styles["--font-size-pt"];
+          icon.value = val;
+        }else {
+          icon.value = "";
+          icon.input.setAttribute("placeholder", "...")
         }
+        return true;
+      }
+      return false;
+    }
+  },
+  color: {
+    method: (e, value) => {
+      if (!value || value == "") value = null;
+      e.setStyles({
+        "color": value
+      });
+    },
+    validate: (e, icon) => {
+      if (isText(e) || isDoxContainer(e)) {
+        let styles = e.selected.styles;
+        let val = null;
+        if (styles && "color" in styles) {
+          val = e.selected.styles["color"];
+        }else {
+          icon.input.setAttribute("placeholder", "...")
+        }
+        console.log('x');
         icon.value = val;
         return true;
       }
@@ -350,6 +380,10 @@ const TOOL_TEMPLATE = `<dox-tools>
       <div class = "text-field" name = "font_size">
         <span>P<span style = "font-size: 0.7em; padding-left:0.2em;">P</span></span>
         <input value = "12" style = 'width: 1.5em; text-align: center'/>
+      </div>
+      <div class = "text-field" name = "color">
+        <span style = "color: aqua;">C</span>
+        <input value = "" style = 'width: 3em; text-align: center'/>
       </div>
 
       <img class = sp5 name = "expand" />
@@ -455,6 +489,10 @@ class ToolIcon extends SvgPlus {
     return res;
   }
 
+  get input(){
+    return this.querySelector("input");
+  }
+
   set value(v){
     let input = this.querySelector("input");
     if (input) {
@@ -470,15 +508,14 @@ class ToolIcon extends SvgPlus {
 
   update(editor){
     this.show = this.validate(editor, this);
-    this.onclick = () => {
-
-      this.method(editor);
-
-    }
     let input = this.querySelector("input");
     if (input) {
       input.onchange = () => {
         this.method(editor, input.value)
+      }
+    } else {
+      this.onclick = () => {
+        this.method(editor);
       }
     }
   }
@@ -501,7 +538,11 @@ class DoxEditor extends SvgPlus {
   constructor(el){
     super(el);
     let edit = false;
+    this.pageStyles =  new SvgPlus("style");
+    document.body.appendChild(this.pageStyles);
+
     window.addEventListener('beforeprint', (e) => {
+
       edit = this.edit;
       this.edit = false;
     });
@@ -517,12 +558,63 @@ class DoxEditor extends SvgPlus {
       "Meta+y": (e) => {
         this.getHistory(true);
         return true;
+      },
+      "Shift+click": (e) => this.swapEvent(e),
+      "Meta+c": (e) => {
+        if(!window.isEditingText()) {
+          this._copy_buffer = this.selected.json;
+        }
+      },
+      "Meta+v": (e) => {
+        if(!window.isEditingText()) {
+          let {selected} = this;
+          if (isDoxContainer(this)) {
+            let node = makeNode(this._copy_buffer);
+            console.log(node);
+            if (node != null) {
+              selected.appendChild(node);
+              this._update_node(selected);
+            }
+          }
+        }
+      },
+      "Meta+e": (e) => {
+        // console.log("eeeeeeeeeeee");
+        this.empty()
       }
     })
   }
 
+  setPageMargins(value) {
+    let values = value.split(" ");
+    let keys = ["--margin-top-mm",
+    "--margin-right-mm",
+    "--margin-bottom-mm",
+    "--margin-left-mm"];
+    let root = document.querySelector(":root");
+    console.log(root.style);
+    for (let i = 0; i < 4; i++) root.style.setProperty(keys[i],values[i]);
+    this.updatePageMargins();
+  }
+  updatePageMargins(){
+    const styles = window.getComputedStyle(this);
+    let keys = ["--margin-top-mm",
+    "--margin-right-mm",
+    "--margin-bottom-mm",
+    "--margin-left-mm"];
+    let margins = keys.map((x) => styles.getPropertyValue(x) + "mm").join(" ");
+    this.pageStyles.innerHTML = `
+      @media print{
+        @page{
+          margin: ${margins};
+          size: A4;
+        }
+      }`
+  }
+
   onconnect(){
     this.build();
+    this.updatePageMargins();
   }
   onmousedown(e) {
     let target = getTarget(e);
@@ -531,12 +623,24 @@ class DoxEditor extends SvgPlus {
     }
   }
   oncontextmenu(e){
+    if (this.swapEvent(e)) {
+      e.preventDefault();
+    }
+  }
+
+  swapEvent(e){
     let target = getTarget(e);
+    let prevent = false;
     if (target !== null && target !== "tools") {
       if (this.place()) {
-        e.preventDefault();
+        prevent = true;
+      } else if (this.swapImage()) {
+        prevent = true;
+      } else if (this.swap()) {
+        prevent = true;
       }
     }
+    return prevent;
   }
 
   // User methods
@@ -606,6 +710,39 @@ class DoxEditor extends SvgPlus {
 
     return valid;
   }
+  swapImage(target = this.selected, node = this.lastSelected) {
+    let valid = target && node &&
+                (target != node) &&
+                SvgPlus.is(target, SectionImage) &&
+                SvgPlus.is(node, SectionImage);
+    if (valid) {
+      let urlt = target.url;
+      target.url = node.url;
+      node.url = urlt;
+    }
+    return valid;
+  }
+  swap(target = this.selected, node = this.lastSelected) {
+    let valid = target && node &&
+                (target != node) &&
+                !SvgPlus.is(target, DoxContainer) &&
+                !SvgPlus.is(node, DoxContainer);
+    if (valid) {
+      let nparent = node.parentNode;
+      let tparent = target.parentNode;
+      let parent = nparent;
+      while (!(parent && parent.contains(target) && parent.contains(node))) {
+        parent = parent.parentNode;
+      }
+
+      let temp = new SvgPlus("div");
+      nparent.replaceChild(temp, node);
+      tparent.replaceChild(node, target)
+      nparent.replaceChild(target, temp);
+      this._update_node(parent);
+    }
+    return valid;
+  }
   setWide(value, node = this.selected) {
     if (value) {
       node.addClassCat("wide");
@@ -617,8 +754,47 @@ class DoxEditor extends SvgPlus {
   }
   setStyles(styles, node = this.selected){
     node.styles = styles;
+
+    let recurse_clear = (n, keys) => {
+      for (let child of n.children) {
+        let styles = child.styles;
+        if (styles) {
+          let nstyles = {}
+          for (let key in keys) {
+            if (key in styles) nstyles[key] = null;
+          }
+
+          child.styles = nstyles;
+          this._update_node(child, "styles");
+        }
+        recurse_clear(child, keys);
+      }
+    }
+    console.log(styles);
+    recurse_clear(node, styles);
     this.update_tools();
     this._update_node(node, "styles");
+  }
+  empty(node = this.selected){
+    let section = node;
+    while (section && !SvgPlus.is(section, DoxContainer))
+      section = section.parentNode;
+    let valid = section && section != this.mainSection;
+
+    if (valid) {
+      let children = [...section.children];
+      console.log(children);
+      let sparent = section.parentNode;
+      let child = children.pop();
+      sparent.replaceChild(child, section);
+      while (children.length) {
+        let child2 = children.pop();
+        sparent.insertBefore(child2, child);
+        child = child2;
+      }
+      this._update_node(sparent);
+    }
+    return valid;
   }
 
   async getHistory(next){
