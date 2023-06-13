@@ -290,7 +290,6 @@ function makeEditor(element) {
     if (dt > 100) {
       unselect();
     } else {
-      console.log("blocked");
       e.preventDefault()
     }
   });
