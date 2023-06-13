@@ -184,7 +184,7 @@ function getSPath(node, root) {
   // return path;
 }
 
-
+let selectTime = 0;
 let SelectedEditor = null;
 function select(element){
   // reselection
@@ -200,7 +200,7 @@ function select(element){
   // let carrot = document.caretPositionFromPoint(x, y);
   // console.log(carrot);
 
-  element.selectTime = window.performance.now();
+  selectTime = window.performance.now();
   element.toggleAttribute("edit", true);
   element.setAttribute("contenteditable", true);
   if (!element.focused) {
@@ -286,7 +286,7 @@ function makeEditor(element) {
   });
   element.addEventListener("focusout", (e) => {
     focused = false;
-    let dt = window.performance.now() - element.selectTime;
+    let dt = window.performance.now() - selectTime;
     if (dt > 100) {
       unselect();
     } else {
