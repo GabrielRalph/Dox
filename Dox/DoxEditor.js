@@ -324,7 +324,6 @@ const TOOLS = {
         }else {
           icon.input.setAttribute("placeholder", "...")
         }
-        console.log('x');
         icon.value = val;
         return true;
       }
@@ -550,7 +549,7 @@ class DoxEditor extends SvgPlus {
       this.edit = edit;
     });
     this._data = {type: "section", length: 0, class: null};
-    addKeyCommands({
+    let cmds = {
       "Meta+z": (e) => {
         this.getHistory();
         return true;
@@ -580,9 +579,24 @@ class DoxEditor extends SvgPlus {
       },
       "Meta+e": (e) => {
         // console.log("eeeeeeeeeeee");
-        this.empty()
+        this.empty();
+      },
+      "Backspace": (e) => {
+        if (!window.isEditingText()) {
+          this.trash();
+        }
       }
-    })
+
+
+    }
+    for (let name of ["section", "row", "text", "image", "code"]){
+      cmds[name[0]] = (e) => {
+        if (!window.isEditingText()) {
+          this.addBefore(name);
+        }
+      }
+    }
+    addKeyCommands(cmds);
   }
 
   setPageMargins(value) {
@@ -653,7 +667,7 @@ class DoxEditor extends SvgPlus {
   }
 
   add(name, parent = this.selected) {
-    let child = this.make_node(name);
+    let child = makeNode(name);
     parent.appendChild(child);
     this._update_node(child);
     this._update_node(parent, "length");
@@ -783,7 +797,6 @@ class DoxEditor extends SvgPlus {
 
     if (valid) {
       let children = [...section.children];
-      console.log(children);
       let sparent = section.parentNode;
       let child = children.pop();
       sparent.replaceChild(child, section);
@@ -795,6 +808,16 @@ class DoxEditor extends SvgPlus {
       this._update_node(sparent);
     }
     return valid;
+  }
+  addBefore(name = "section"){
+    let {selected, mainSection} = this;
+    if (!selected.isSameNode(mainSection)) {
+      let newNode = makeNode(name);
+      if (newNode != null) {
+        selected.parentNode.insertBefore(newNode, selected);
+      }
+      this._update_node(parent);
+    }
   }
 
   async getHistory(next){
@@ -808,14 +831,18 @@ class DoxEditor extends SvgPlus {
 
   set selected(element){
     let selected = this.selected;
+    let edittext = false;
     if (SvgPlus.is(selected, DoxNode)) {
       selected.removeAttribute("selected");
       this.lastSelected = selected;
+
+      edittext = (SvgPlus.is(selected, RichText) && selected.isSameNode(element));
     }
 
     if (SvgPlus.is(element, DoxNode)) {
       element.props = {selected: ""};
       this._selected = element;
+      if (edittext) element.select();
     } else if (typeof element === "string") {
       // console.log(element);
     } else {
@@ -830,7 +857,7 @@ class DoxEditor extends SvgPlus {
   build(){
     this.build_tools();
     let rel = this.createChild("div", {class: "dox-container"});
-    let main = this.make_node("section");
+    let main = makeNode("section");
     rel.appendChild(main);
     this.mainSection = main;
   }
@@ -856,13 +883,6 @@ class DoxEditor extends SvgPlus {
     }
   }
 
-  make_node(name){
-    let node = null;
-    if (name in DOX_NODE_NAMES) {
-      node = new DOX_NODE_NAMES[name]();
-    }
-    return node;
-  }
 
   _update_node(node, key) {
     let path = node.path;
@@ -878,7 +898,6 @@ class DoxEditor extends SvgPlus {
     console.log('%ceditor updated at ' + path, "color: #79c3ff");
     this._call_update(value, path)
   }
-
   _call_update(value = this.value, path = "") {
     if (this.onupdate instanceof Function) {
       this.onupdate(value, path);

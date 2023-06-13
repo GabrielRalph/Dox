@@ -398,12 +398,27 @@ const DOX_NODE_NAMES = {
   "code-insert": CodeInsert,
 }
 
-function makeNode(json) {
+function makeNode(input) {
   let node = null;
-  if (json && json.type in DOX_NODE_NAMES) {
-    node = new DOX_NODE_NAMES[json.type]();
-    node.json = json;
+  let type = null;
+  let json = null;
+
+  if (input) {
+    if (input in DOX_NODE_NAMES)
+      type = input;
+    else if (typeof input === "object" && input.type in DOX_NODE_NAMES){
+      type = input.type;
+      json = input;
+    }
   }
+
+  if (type != null) {
+    node = new DOX_NODE_NAMES[type]();
+    if (json != null) {
+      node.json = json;
+    }
+  }
+
   return node;
 }
 
