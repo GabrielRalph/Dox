@@ -201,6 +201,7 @@ function select(element){
   // console.log(carrot);
 
   selectTime = window.performance.now();
+  // document.body.style.setProperty("pointer-events", "none");
   element.toggleAttribute("edit", true);
   element.setAttribute("contenteditable", true);
   if (!element.focused) {
@@ -290,6 +291,8 @@ function makeEditor(element) {
     if (dt > 100) {
       unselect();
     } else {
+      console.log("block event");
+      element.focus();
       e.preventDefault()
     }
   });
