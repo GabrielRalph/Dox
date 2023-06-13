@@ -585,10 +585,7 @@ class DoxEditor extends SvgPlus {
         if (!window.isEditingText()) {
           this.trash();
         }
-<<<<<<< HEAD
       }
-
-
     }
     for (let name of ["section", "row", "text", "image", "code"]){
       cmds[name[0]] = (e) => {
@@ -596,18 +593,6 @@ class DoxEditor extends SvgPlus {
           this.addBefore(name);
         }
       }
-=======
-      }
-
-
-    }
-    for (let name of ["section", "row", "text", "image", "code"]){
-      cmds[name[0]] = (e) => {
-        if (!window.isEditingText()) {
-          this.addBefore(name);
-        }
-      }
->>>>>>> 542c6270644c329c47a1fda7237ff85697c213cf
     }
     addKeyCommands(cmds);
   }
@@ -848,12 +833,8 @@ class DoxEditor extends SvgPlus {
     if (SvgPlus.is(selected, DoxNode)) {
       selected.removeAttribute("selected");
       this.lastSelected = selected;
-<<<<<<< HEAD
-      // edittext = (SvgPlus.is(selected, RichText) && selected.isSameNode(element));
-=======
 
-      edittext = (SvgPlus.is(selected, RichText) && selected.isSameNode(element));
->>>>>>> 542c6270644c329c47a1fda7237ff85697c213cf
+      edittext = !window.isEditingText() && (SvgPlus.is(selected, RichText) && selected.isSameNode(element));
     }
 
     if (SvgPlus.is(element, DoxNode)) {
