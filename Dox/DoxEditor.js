@@ -585,6 +585,18 @@ class DoxEditor extends SvgPlus {
         if (!window.isEditingText()) {
           this.trash();
         }
+      },
+      "ArrowUp": (e) => {
+        if (!window.isEditingText()) {
+          this.move(-1);
+          return true
+        }
+      },
+      "ArrowDown": (e) => {
+        if (!window.isEditingText()) {
+          this.move(1);
+          return true
+        }
       }
     }
     for (let name of ["section", "row", "text", "image", "code"]){
