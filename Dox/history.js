@@ -77,7 +77,7 @@ class HistoryBuffer {
   set data(data){
     if (typeof data === "object" && data !== null) {
       for (let key of this.keys) {
-        console.log(key);
+        // console.lwog(key);
         if (key in data) {
           this[key] = data[key];
         }

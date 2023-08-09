@@ -683,10 +683,12 @@ class DoxEditor extends SvgPlus {
     this._update_node(parent, "length");
   }
   trash(node = this.selected) {
-    let parent = node.parentNode;
-    parent.removeChild(node);
-    this.selected = null;
-    this._update_node(parent);
+    if (node != this.mainSection) {
+      let parent = node.parentNode;
+      parent.removeChild(node);
+      this.selected = null;
+      this._update_node(parent);
+    }
   }
   move(dir, node = this.selected) {
     let parent = node.parentNode;

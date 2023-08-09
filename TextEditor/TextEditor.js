@@ -338,6 +338,14 @@ function makeEditor(element) {
   element.select = () => select(element);
 }
 
-window.isEditingText = () => SelectedEditor != null;
+let editorTAGS = {
+  "INPUT": true,
+  "TEXTAREA": true,
+}
+window.isEditingText = () => {
+  let inputedit = false;
+  if (document.activeElement) inputedit = document.activeElement.tagName in editorTAGS;
+  return SelectedEditor != null || inputedit;
+}
 
 export {makeEditor}
