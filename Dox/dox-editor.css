@@ -108,7 +108,11 @@ dox-editor[edit] section-row.dox-node[selected] {
 }
 
 dox-editor[edit] code-insert.dox-node {
-  border-color: #b7d9f7;
+  border-color: #c8bbef;
+}
+
+dox-editor[edit] dox-table.dox-node {
+  border-color: #ff7b69;
 }
 
 dox-editor[edit] section-image.dox-node {

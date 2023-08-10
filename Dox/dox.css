@@ -69,6 +69,15 @@ section-row > .wide {
   width: 100%;
 }
 
+dox-table table {
+  border-collapse: collapse;
+  margin: auto;
+}
+dox-table td {
+  border: 1px solid black;
+  padding: 0.3em;
+}
+
 code-insert pre {margin: 0;}
 code-insert code.hljs {background: transparent;
 font-size: 0.9em; padding: 0;}

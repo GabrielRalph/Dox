@@ -24,7 +24,7 @@ const isSectionRow = (e) => is(e.selected, SectionRow);
 const isText = (e) => is(e.selected, DoxTextNode);
 const notOnly = (e) => isDoxNode(e) && e.selected.parentNode.children.length > 1;
 const alignValidate = (e, name) => {
-  if (isDoxContainer(e) || isText(e)) {
+  if (isDoxContainer(e) || isText(e) || is(e.selected, DOX_NODE_NAMES.table)) {
     let align = window.getComputedStyle(e.selected).textAlign;
     if (align == "start") align = "left";
     if (align == "end") align = "right";
@@ -71,6 +71,10 @@ const TOOLS = {
   },
   row: {
     method: (e) => e.add("row"),
+    validate: isDoxContainer,
+  },
+  table: {
+    method: (e) => e.add("table"),
     validate: isDoxContainer,
   },
   text: {
@@ -342,6 +346,7 @@ const TOOL_TEMPLATE = `<dox-tools>
       <img name = "row" />
       <img name = "text" />
       <img name = "image" />
+      <img name = "table">
       <img name = "code">
 
 

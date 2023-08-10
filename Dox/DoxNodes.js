@@ -290,17 +290,18 @@ class SectionImage extends URLSourceNode {
 class CodeInsert extends URLSourceNode {
   constructor(){
     super("code-insert");
-    this.code = this.createChild("pre").createChild("code", {class: "language-cpp"});
+    this.code = this.createChild("pre");
     this._codelang = "cpp";
     this.lines = [];
-    console.log(this.codelang);
+    // console.log(this.codelang);
+    // console.log();
   }
 
   set codelang(lang){
     if (!lang || lang === "undefined" || typeof lang !== "string") lang = "cpp"
-    console.log(lang);
-    this.code.class = "language-" + lang;
-    console.log(hljs);
+    // console.log(lang);
+    // this.code.class = "language-" + lang;
+    // console.log(hljs);
     this._codelang = lang;
     this.update("codelang");
     this.highlight();
@@ -347,21 +348,16 @@ class CodeInsert extends URLSourceNode {
 
   highlight(){
     let code = "";
-    let y = window.scrollY;
+    // let y = window.scrollY;
     try {
       let splice = this.lines.slice(this.cstart, this.cend);
       code = splice.join('\n');
       if (this._lastcode !== code) {
-        console.log(y);
-        console.log("diff");
         this.code.innerHTML = code;
         if (hljs){
-          hljs.highlightElement(this.code);
+          let html = hljs.highlight(code, {language: this.codelang}).value;
+          this.code.innerHTML = html;
         }
-        window.requestAnimationFrame(() => {
-          window.scrollTo(0, y);
-
-        })
       }
       this._lastcode = code;
 
@@ -383,6 +379,61 @@ class CodeInsert extends URLSourceNode {
 
 }
 
+class DoxTable extends URLSourceNode {
+  constructor(){
+    super("dox-table");
+  }
+
+  async setURL(url) {
+    if (url) {
+      try{
+        let csv = await getText(url);
+        this.csv = csv
+        this.render();
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+
+  render(){
+    // console.log(this.csv);
+    let lines = this.csv.split('\n');
+    let rows = lines.map(l => l.split(","));
+    let frows = [];
+    for (let row of rows) {
+      let rowinfo = [];
+      for (let cell of row) {
+        if (cell.match(/^[\r\t]*$/)) {
+          if (rowinfo.length > 0) {
+            rowinfo[rowinfo.length - 1].colspan++;
+          }
+        } else {
+          rowinfo.push({
+            colspan: 1,
+            content: cell.replace(/^\s*/, "")
+          })
+        }
+      }
+      frows.push(rowinfo);
+    }
+
+    let table = new SvgPlus("table");
+    let tbody = table.createChild("tbody");
+    for (let row of frows) {
+      let tr = tbody.createChild("tr");
+      for (let cell of row) {
+        tr.createChild("td", cell);
+      }
+    }
+    this.innerHTML = "";
+    this.appendChild(table);
+    if (MathJax && MathJax.typeset instanceof Function) MathJax.typeset([this]);
+  }
+
+
+}
+
 const DOX_NODE_NAMES = {
   Section: Section,
   section: Section,
@@ -396,6 +447,8 @@ const DOX_NODE_NAMES = {
   "image": SectionImage,
   "header": SectionHeader,
   "code-insert": CodeInsert,
+  "table": DoxTable,
+  "dox-table": DoxTable,
 }
 
 function makeNode(input) {
