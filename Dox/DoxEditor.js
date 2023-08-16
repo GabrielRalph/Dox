@@ -297,7 +297,7 @@ const TOOLS = {
       }
     },
     validate: (e, icon) => {
-      if (isText(e) || isDoxContainer(e)) {
+      if (isText(e) || isDoxContainer(e) || is(e.selected, DOX_NODE_NAMES.table)) {
         let styles = e.selected.styles;
         let val = 12;
         if (styles && "--font-size-pt" in styles) {

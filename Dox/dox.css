@@ -40,13 +40,18 @@ section-row {
 }
 rich-text {
   display: block;
-  font-size: calc(var(--font-size-pt) * var(--pt))
+
 }
 
+table {
+  font-size: calc(var(--font-size-pt) * var(--pt));
+  
+}
 section {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  font-size: calc(var(--font-size-pt) * var(--pt));
 }
 section-image img{
   width: 100%;
@@ -79,8 +84,8 @@ dox-table td {
 }
 
 code-insert pre {margin: 0;}
-code-insert code.hljs {background: transparent;
-font-size: 0.9em; padding: 0;}
+/* code-insert code.hljs {background: transparent;
+font-size: 0.9em; padding: 0;} */
 
 mjx-frac mjx-dbox mjx-line {
   margin-bottom: 2px;
