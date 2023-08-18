@@ -40,18 +40,16 @@ section-row {
 }
 rich-text {
   display: block;
-
+  /* min-width: 0.5em */
 }
 
-table {
+table, rich-text, code-insert {
   font-size: calc(var(--font-size-pt) * var(--pt));
-  
 }
 section {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  font-size: calc(var(--font-size-pt) * var(--pt));
 }
 section-image img{
   width: 100%;

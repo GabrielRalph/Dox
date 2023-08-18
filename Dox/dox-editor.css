@@ -85,10 +85,9 @@ dox-editor[edit] .dox-node {
   border-radius: var(--r);
   min-height: 1em;
   margin: calc(var(--element-margin) + 1px);
-  overflow: hidden;
 }
 dox-editor[edit] .dox-node[selected] {
-  overflow: hidden;
+  /* overflow: hidden; */
   border-width: 2px;
   margin: var(--element-margin);
 }
