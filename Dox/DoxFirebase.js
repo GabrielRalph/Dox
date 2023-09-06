@@ -1,5 +1,5 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js'
-import {getDatabase, child, push, ref, update, get, onValue, onChildAdded, onChildChanged, onChildRemoved, set, off} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js'
+import {goOnline, enableLogging, getDatabase, child, push, ref, update, get, onValue, onChildAdded, onChildChanged, onChildRemoved, set, off} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js'
 import {getAuth, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged, signOut} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js'
 
 const CONFIG = {
@@ -17,6 +17,7 @@ const FILES_REF = "doxs/files/";
 const App = initializeApp(CONFIG);
 const Database = getDatabase(App);
 const Auth = getAuth();
+// enableLogging((s) => console.log(s))
 
 let UserUID, User;
 let openFileKey = null;
@@ -53,7 +54,6 @@ onAuthStateChanged(Auth, (userData) => {
   if (userData != null) {
     UserUID = userData.uid;
   }
-
   userUpdate(User);
 });
 
@@ -98,9 +98,13 @@ async function getAdminStatus(fileKey) {
 
 async function exists(fileKey) {
   let res = false;
-  try {
-    res = await isPublic(fileKey) !== null;
-  } catch (e) {
+  for (let dcn = 0; dcn < 3; dcn++){
+    try {
+      res = await isPublic(fileKey) !== null;
+      return res;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return res;
