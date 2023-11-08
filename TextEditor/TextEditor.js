@@ -93,8 +93,7 @@ let cpe = assets.createChild("svg").createChild("defs").createChild("clipPath",{
 });
 sHighlight.styles = overlay;
 sHighlight.styles = {
-  background: "#00000003",
-  "backdrop-filter": "blur(1.2px)",
+  background: "#00000011",
   // opacity: 0.3,
   "clip-path": "url(#selection-mask)",
 }

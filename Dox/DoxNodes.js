@@ -450,6 +450,10 @@ const DOX_NODE_NAMES = {
   "table": DoxTable,
   "dox-table": DoxTable,
 }
+const DOX_CONTAINERS = {
+  "section-row": true,
+  "section": true,
+}
 
 function makeNode(input) {
   let node = null;
@@ -475,4 +479,4 @@ function makeNode(input) {
   return node;
 }
 
-export {DOX_NODE_NAMES, URLSourceNode, CodeInsert, DoxNode, DoxContainer, DoxTextNode, Section, SectionRow, RichText, SectionHeader, SectionImage, makeNode}
+export {DOX_CONTAINERS, DOX_NODE_NAMES, URLSourceNode, CodeInsert, DoxNode, DoxContainer, DoxTextNode, Section, SectionRow, RichText, SectionHeader, SectionImage, makeNode}

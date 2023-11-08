@@ -437,6 +437,17 @@ function checkObjDiff(obj1, obj2) {
   return different;
 }
 
+function flatternTree(obj) {
+  // let path = [];
+  // let update = obj2;
+  //
+  // let visitNode = (node) => {
+  //   let data = {};
+  //
+  // }
+
+}
+
 class ToolIcon extends SvgPlus {
   constructor(el){
     super(el);
@@ -941,6 +952,8 @@ class DoxEditor extends SvgPlus {
   }
 
   async _set_value(data) {
+    // flatternTree(data);
+    // if (window.isEditingText()) return;
     if (checkObjDiff(data, this.mainSection.json)) {
       this._value = data;
       if (!this._updating) {
