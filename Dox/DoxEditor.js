@@ -253,6 +253,24 @@ const TOOLS = {
       return false;
     }
   },
+  csv: {
+    method: (e, value) => {
+      if (value) {
+        console.log(e.selected);
+        e.selected.csvText = value;
+      }
+    },
+    validate: (e, icon) => {
+      if (SvgPlus.is(e.selected, DOX_NODE_NAMES.table)) {
+        let input = icon.querySelector("input");
+        if (input != null) {
+          input.value = e.selected.csvText;
+        }
+        return true;
+      }
+      return false;
+    }
+  },
   code_start: {
     method: (e, value) => {
       if (value) {
@@ -272,6 +290,7 @@ const TOOLS = {
   },
   code_end: {
     method: (e, value) => {
+
       if (value) {
         e.selected.cend = value;
       }
@@ -362,6 +381,12 @@ const TOOL_TEMPLATE = `<dox-tools>
         <span onclick="parentNode.toggleAttribute('small')">Language</span>
         <input placeholder="cpp"/>
       </div>
+
+      <div small class = "text-field" name = "csv">
+        <span onclick="parentNode.toggleAttribute('small')">CSV</span>
+        <textarea rows = "1" cols = "10" style = "resize: none;" placeholder="a,b"></textarea>
+      </div>
+
       <div small class = "text-field" name = "code_start">
         <span onclick="parentNode.toggleAttribute('small')">Start Line</span>
         <input placeholder="0"/>
@@ -505,17 +530,17 @@ class ToolIcon extends SvgPlus {
   }
 
   get input(){
-    return this.querySelector("input");
+    return this.querySelector("input, textarea");
   }
 
   set value(v){
-    let input = this.querySelector("input");
+    let input = this.input;
     if (input) {
       input.value = v;
     }
   }
   get value(){
-    let input = this.querySelector("input");
+    let input = this.input;
     if (input) {
       return input.value;
     }
@@ -523,7 +548,7 @@ class ToolIcon extends SvgPlus {
 
   update(editor){
     this.show = this.validate(editor, this);
-    let input = this.querySelector("input");
+    let input = this.input;
     if (input) {
       input.onchange = () => {
         this.method(editor, input.value)

@@ -382,6 +382,7 @@ class CodeInsert extends URLSourceNode {
 class DoxTable extends URLSourceNode {
   constructor(){
     super("dox-table");
+    this.csv = null;
   }
 
   async setURL(url) {
@@ -396,8 +397,32 @@ class DoxTable extends URLSourceNode {
     }
   }
 
+  set csvText(value){
+    if (typeof value === "string" && value.length > 0) {
+      this.csv = value;
+      this.render();
+      this.update("csvText");
+    }
+  }
+  get csvText(){
+    return this.csv;
+  }
+
+  serialize() {
+    let data = super.serialize();
+    data.csvText = this.csvText;
+    return data;
+  }
+
+  deserialize(data) {
+    console.log(data);
+    super.deserialize(data);
+    this.csvText = data.csvText;
+  }
+
+
   render(){
-    // console.log(this.csv);
+    console.log(this.csv);
     let lines = this.csv.split('\n');
     let rows = lines.map(l => l.split(","));
     let frows = [];
@@ -411,7 +436,7 @@ class DoxTable extends URLSourceNode {
         } else {
           rowinfo.push({
             colspan: 1,
-            content: cell.replace(/^\s*/, "")
+            content: cell.replace(/^\s*/, "").replace(/\\n(?!\w)/g, "<br/>")
           })
         }
       }
