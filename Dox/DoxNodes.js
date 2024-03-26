@@ -29,6 +29,9 @@ async function getText(url){
   return text;
 }
 
+/**
+ * @extends {HTMLElement}
+ */
 class DoxNode extends SvgPlus {
   constructor(el){
     super(el);
@@ -91,14 +94,25 @@ class DoxNode extends SvgPlus {
     this.addClassCat("dox-node", "nodes");
   }
 
+  // set width(width){
+  //   if (!width || width + "" === "undefined" || typeof width !== "string") width = "100%"
+  //   this._width = width;
+  //   this.setAttribute("style", "--img-width: " + width);
+  //   this.update("width");
+  // }
+
+  // get width(){
+  //   return (typeof this._width !== "string") ? null : this._width;
+  // }
+
   // OVERWRITTABLE methods
   serialize(){
     let data = {
       type: this.tagName.toLowerCase().replace("_", "-"),
     }
+    // data.width = this.width;
     if (this.styles) data.styles = this.styles;
     if (this.class) data.class = this.getClassCat();
-
     return data;
   }
   deserialize(data) {
@@ -113,6 +127,7 @@ class DoxNode extends SvgPlus {
       } else {
         this.setClassCat({});
       }
+      // this.width = data.width;
     }
   }
 
@@ -178,6 +193,15 @@ class DoxTextNode extends DoxNode {
     this.addEventListener("unselect", () => {
       this.update("content")
     })
+    this.toggleAttribute("indexable", true)
+  }
+
+  get index(){
+    return 0;
+  }
+
+  get indexable(){
+    return true;
   }
 
   serialize() {
@@ -220,14 +244,14 @@ class SectionHeader extends DoxTextNode{
 class URLSourceNode extends DoxNode {
   constructor(el){
     super(el)
-    this._url = "";
+    this._url = null;
   }
 
   get url() {
     return this._url;
   }
   set url(url){
-    if (typeof url !== "string") url = "";
+    if (typeof url !== "string") url = null;
     this._url = url;
     this.setURL(url);
     this.update("url");
@@ -253,36 +277,53 @@ class URLSourceNode extends DoxNode {
 class SectionImage extends URLSourceNode {
   constructor(){
     super("section-image");
-    this.img = this.createChild("img");
     this._width = "100%"
+    this._svg = null;
   }
 
-  set width(width){
-    if (!width || width + "" === "undefined" || typeof width !== "string") width = "100%"
-    this._width = width;
-    this.setAttribute("style", "--img-width: " + width);
-    this.update("width");
+  set svg(svg){
+    if (!svg || svg + "" === "undefined" || typeof svg !== "string") {
+      this._svg = null;
+    } else {
+      this._svg = svg;
+      let t = performance.now();
+      t = "s" + (t + "").replace(".", "-");
+      svg = svg.replace(/\.([A-Za-z0-9-_]+){/g, `.${t}$1{`)
+      this.innerHTML = svg;
+      this.querySelectorAll("[class]").forEach(e => {
+        e.classList.forEach((v => {
+          e.classList.replace(v, t + v)
+        }))
+      })
+
+    }
+    this.update("svg");
   }
 
-
-  get width(){
-    return this._width;
+  get svg() {
+    return this._svg;
   }
+
+  
 
   serialize() {
     let data = super.serialize();
-    data.width = this.width;
+    if (typeof this.svg === "string") data.svg = this.svg;
     return data;
   }
-
+  
   deserialize(data) {
     super.deserialize(data);
-    this.width = data.width;
+    if (typeof data.svg === "string") this.svg = data.svg;
   }
 
   setURL(url){
-    this.img.props = {
-      src: url,
+    if (url != null) {
+      this.svg = null;
+      this.innerHTML = "";
+      this.createChild("img", {
+        src: url
+      });
     }
   }
 }
@@ -458,6 +499,50 @@ class DoxTable extends URLSourceNode {
 
 
 }
+
+// class DoxSvg extends DoxNode {
+//   constructor() {
+//     super("section-image");
+//     this._width = "100%"
+//   }
+
+//   set content(content){
+//     if (!content || content + "" === "undefined" || typeof content !== "string") content = "";
+//     this._content = content;
+//     this.setAttribute("style", "--img-content: " + content);
+//     this.update("content");
+//   }
+
+//   get content() {
+//     return this._content;
+//   }
+
+
+//   set width(width){
+//     if (!width || width + "" === "undefined" || typeof width !== "string") width = "100%"
+//     this._width = width;
+//     this.setAttribute("style", "--img-width: " + width);
+//     this.update("width");
+//   }
+
+//   get width(){
+//     return this._width;
+//   }
+
+//   serialize() {
+//     let data = super.serialize();
+//     data.content = this.content;
+//     data.width = this.width;
+//     return data;
+//   }
+
+//   deserialize(data){
+//     super.deserialize(data);
+//     if ("content" in data) this.content = data.content;
+//     if ("width" in data) this.width = data.width;
+//   }
+// }
+
 
 const DOX_NODE_NAMES = {
   Section: Section,

@@ -47,6 +47,29 @@ const alignItemsValidate = (e, name) => {
   }
   return false;
 }
+const isInSectionRow = (e) => {try {return is(e.selected.parentNode, SectionRow)} catch(e) {return false}}
+
+async function loadFile(type) {
+  let input = new SvgPlus("input");
+  input.props = {
+    accept: type,
+    type: "file",
+  }
+
+  return new Promise((resolve, reject) => {
+    input.oninput = () => {
+      console.log(input.files[0]);
+      let fr = new FileReader();
+      fr.onload = () => {
+        resolve(fr.result);
+      }
+      fr.readAsText(input.files[0]);
+      
+    }
+  
+    input.click();
+  })
+}
 
 const TOOLS = {
   trash: {
@@ -201,6 +224,16 @@ const TOOLS = {
       return !e.edit;
     }
   },
+  upload: {
+    method: async (e) => {
+      let svg = await loadFile("image/svg+xml");
+      console.log(e);
+      e.selected.svg = svg;
+    },
+    validate: (e) => {
+      return SvgPlus.is(e.selected, SectionImage)
+    }
+  },
   image_url: {
     method: (e, value) => {
       if (value) {
@@ -222,14 +255,15 @@ const TOOLS = {
   width: {
     method: (e, value) => {
       if (value) {
-        e.selected.width = value;
+        e.setStyles({"--img-width": value});
       }
     },
     validate: (e, icon) => {
-      if (SvgPlus.is(e.selected, SectionImage)) {
+      
+      if (SvgPlus.is(e.selected, SectionImage) || isInSectionRow(e)) {
         let input = icon.querySelector("input");
         if (input != null) {
-          input.value = e.selected.width;
+          input.value = e.getStyle("--img-width")
         }
         return true;
       }
@@ -405,11 +439,13 @@ const TOOL_TEMPLATE = `<dox-tools>
       <img name = "align_top" />
       <img name = "align_bottom" />
       <img name = "align_fill" />
+      <img name = "upload" />
 
       <div class = "text-field" name = "font_size">
         <span>P<span style = "font-size: 0.7em; padding-left:0.2em;">P</span></span>
         <input value = "12" style = 'width: 1.5em; text-align: center'/>
       </div>
+
       <div class = "text-field" name = "color">
         <span style = "color: aqua;">C</span>
         <input value = "" style = 'width: 3em; text-align: center'/>
@@ -819,7 +855,14 @@ class DoxEditor extends SvgPlus {
     this.update_tools();
     this._update_node(node, "class");
   }
-  setStyles(styles, node = this.selected){
+  getStyle(key, node = this.selected) {
+    let value = null;
+    try {
+      value = node.styles[key];
+    } catch (e) {}
+    return value;
+  }
+  setStyles(styles, clearDown = true, node = this.selected){
     node.styles = styles;
 
     let recurse_clear = (n, keys) => {
@@ -838,7 +881,7 @@ class DoxEditor extends SvgPlus {
       }
     }
     console.log(styles);
-    recurse_clear(node, styles);
+    if (clearDown) recurse_clear(node, styles);
     this.update_tools();
     this._update_node(node, "styles");
   }

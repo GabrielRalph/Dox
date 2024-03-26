@@ -30,6 +30,7 @@ class DoxApp extends SvgPlus {
 
   updateLocation(l = window.location) {
     let key = l.search.replace("?", "");
+    console.log(key);
     key = key.replace(/&.*/g, "")
     if (key == "signout") {
       signout();

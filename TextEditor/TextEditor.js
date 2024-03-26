@@ -119,6 +119,7 @@ function updateClip(el = SelectedEditor){
   cpe.innerHTML = `<path
   d = "M0,0L1,0L1,1L0,1ZM${p[0]}L${p[1]}A${r},0,0,0,${p[2]}L${p[3]}A${r},0,0,0,${p[4]}L${p[5]}A${r},0,0,0,${p[6]}L${p[7]}A${r},0,0,0,${p[0]}" ><\path>`
 }
+
 function highlight(){
   let next = () => {
     if (SelectedEditor != null) {
@@ -213,6 +214,7 @@ function select(element){
   const event = new Event("select");
   element.dispatchEvent(event);
 }
+
 function unselect(){
   let element = SelectedEditor
   if (element) {
@@ -227,12 +229,15 @@ function unselect(){
     element.dispatchEvent(event);
   }
 }
+
 function typeset(element){
   if (MathJax) {
     parseInputHTML(element);
+    addReferenceKeys(element);
     MathJax.typeset([element]);
   }
 }
+
 function isSelected(element = null) {
   if (element === null) return SelectedEditor !== null;
   return element.isSameNode(SelectedEditor);
@@ -272,6 +277,37 @@ function parseInputHTML(root) {
       root.parentNode.replaceChild(frag, root);
     }
 
+  }
+}
+
+let updateReferencesCB = null;
+function addReferenceKeys(root) {
+  root.innerHTML = root.innerHTML.replace(/#\[(?:([^\.\]]+)\.)?([^\.\]]+)\]/g, (a,c, b) => {
+    let cat = typeof c === "string" ? c : "default";
+    return `<ref value = "${b}" category = ${cat}>x</ref>`
+  });
+  if (updateReferencesCB == null) {
+    setTimeout(() => {
+      let refs = document.querySelectorAll("ref");
+      console.log(refs);
+      let indecies = {}
+      let refkeys = {};
+      for (let ref of refs) {
+        let key = ref.getAttribute("value");
+        let cat = ref.getAttribute("category");
+        if (!(cat in indecies)) indecies[cat] = 1;
+        let idx = 1;
+        if (key in refkeys) idx = refkeys[key];
+        else {
+          refkeys[key] = indecies[cat];
+          idx = indecies[cat];
+          indecies[cat]++;
+        }
+        ref.innerHTML = idx;
+      }
+      updateReferencesCB = null;
+    }, 100)
+    updateReferencesCB = true;
   }
 }
 

@@ -61,10 +61,10 @@ section-image {
   flex-direction: column;
   align-items:center;
 }
-section-row > section-image {
+section-row > * {
   width: var(--img-width);
 }
-:not(section-row) > section-image img {
+:not(section-row) > section-image img,:not(section-row) > section-image svg  {
   width: var(--img-width);
 }
 
