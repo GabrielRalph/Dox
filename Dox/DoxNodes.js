@@ -118,6 +118,11 @@ class DoxNode extends SvgPlus {
   deserialize(data) {
     if (data != null) {
       if ("styles" in data) {
+        console.log(data.styles);
+        for (let key in data.styles) {
+          if (data.styles[key] === "null") data.styles[key] = null;
+        }
+        console.log(data.styles);
         this.styles = data.styles;
       } else {
         this.removeAttribute("style")

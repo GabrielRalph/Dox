@@ -1,22 +1,8 @@
-import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js'
-import {goOnline, enableLogging, getDatabase, child, push, ref, update, get, onValue, onChildAdded, onChildChanged, onChildRemoved, set, off} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js'
-import {getAuth, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged, signOut} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js'
+import { onAuthStateChanged, ref, onValue, push, get, set } from "../firebase-export.js"
 
-const CONFIG = {
-    "apiKey": "AIzaSyAwKRqxNdoO05hLlGZwb5AgWugSBzruw6A",
-    "authDomain": "myaccounts-4a6c7.firebaseapp.com",
-    "databaseURL": "https://myaccounts-4a6c7-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "projectId": "myaccounts-4a6c7",
-    "storageBucket": "myaccounts-4a6c7.appspot.com",
-    "messagingSenderId": "678570989696",
-    "appId": "1:678570989696:web:ca70c09476d4c5f627ee65"
-}
 
 const FILES_REF = "doxs/files/";
 
-const App = initializeApp(CONFIG);
-const Database = getDatabase(App);
-const Auth = getAuth();
 // enableLogging((s) => console.log(s))
 
 let UserUID, User;
@@ -48,9 +34,10 @@ function userUpdate(user){
   }
 }
 
-onAuthStateChanged(Auth, (userData) => {
+onAuthStateChanged((userData) => {
   UserUID = null;
   User = userData;
+  console.log(User);
   if (userData != null) {
     UserUID = userData.uid;
   }
@@ -76,13 +63,13 @@ function parseFileKey(text) {
 }
 
 function getNewFileKey(type = "dox"){
-  let fileRef = push(ref(Database, FILES_REF));
+  let fileRef = push(ref(FILES_REF));
 
   return fileRef.key + "_" + type;
 }
 
 async function isPublic(fileKey) {
-  let data = await get(ref(Database, FILES_REF + fileKey + "/public"));
+  let data = await get(ref(FILES_REF + fileKey + "/public"));
   return data.val();
 }
 
@@ -90,7 +77,7 @@ async function getAdminStatus(fileKey) {
   let value = null;
   if (UserUID != null) {
     let path = FILES_REF + fileKey + "/users/" + UserUID;
-    let data = await get(ref(Database, path));
+    let data = await get(ref(path));
     value = data.val();
   }
   return value;
@@ -98,7 +85,8 @@ async function getAdminStatus(fileKey) {
 
 async function exists(fileKey) {
   let res = false;
-  for (let dcn = 0; dcn < 3; dcn++){
+  for (let dcn = 0; dcn < 100; dcn++){
+    console.log(User);
     try {
       res = await isPublic(fileKey) !== null;
       return res;
@@ -121,7 +109,7 @@ async function create(type = "dox") {
     let file = emptyFile();
     file.users[UserUID] = "owner";
 
-    await set(ref(Database, FILES_REF + fileKey), file);
+    await set(ref(FILES_REF + fileKey), file);
   } else {
     throw "File already exists.";
   }
@@ -133,7 +121,7 @@ async function remove(fileKey) {
   fileKey = parseFileKey(fileKey);
 
   if (UserUID != null) {
-    await set(ref(Database, FILES_REF + fileKey), null);
+    await set(ref(FILES_REF + fileKey), null);
     if (fileKey == openFileKey) close();
   }
 }
@@ -155,7 +143,7 @@ async function open(fileKey, updateCallback) {
     let adminStatus = await getAdminStatus(fileKey);
     let ispb = await isPublic(fileKey);
     if (UserUID != null && (adminStatus == null || !adminStatus.match(/^(contributor|owner)$/))) {
-      await set(ref(Database, FILES_REF + fileKey + "/users/" + UserUID), "inquiry");
+      await set(ref(FILES_REF + fileKey + "/users/" + UserUID), "inquiry");
       console.log("%cenquiry sent", "color: orange");
     }
 
@@ -163,7 +151,7 @@ async function open(fileKey, updateCallback) {
       return new Promise((resolve, reject) => {
         let path = FILES_REF + fileKey + "/content";
 
-        cancelUpdateListener = onValue(ref(Database, path),
+        cancelUpdateListener = onValue(ref(path),
         (e) => {
           let data = e.val();
           console.log("%cupdate", "color: orange");
@@ -199,7 +187,7 @@ async function save(content, path = "") {
     let filePath = FILES_REF + openFileKey + "/content" + path;
     console.log(`%cset: %c${filePath}`, "color: orange", "color: #fff7");
     // console.log(filePath, content);
-    await set(ref(Database, filePath), content);
+    await set(ref(filePath), content);
   }
 }
 

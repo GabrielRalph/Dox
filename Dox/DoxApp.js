@@ -1,14 +1,13 @@
 import {SvgPlus} from "../SvgPlus/4.js";
-import {Files, Path} from "../FileTree/file-tree.js";
+// import {Files, Path} from "../FileTree/file-tree.js";
 import {fireUser} from "../FireUser/fire-user.js";
-import {DoxEditor} from "./DoxEditor.js"
+import {} from "./DoxEditor.js"
 import {save, open, close, remove, create, addUserListener, signout} from "./DoxFirebase.js"
 
 const FILEROOT = "files/";
 
 
-// class DoxFiles extends FireFiles {
-// }
+
 
 class DoxApp extends SvgPlus {
   constructor(el){

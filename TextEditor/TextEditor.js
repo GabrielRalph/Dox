@@ -167,7 +167,7 @@ function getSPath(node, root) {
   }
 
   // for (let i = path.length)
-  console.log(vpath, offset);
+  // console.log(vpath, offset);
   // console.log(path);
   // if (node == root) return [];
   //
@@ -233,8 +233,13 @@ function unselect(){
 function typeset(element){
   if (MathJax) {
     parseInputHTML(element);
+    console.log(element);
     addReferenceKeys(element);
-    MathJax.typeset([element]);
+    try {
+      MathJax.typeset([element]);
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
@@ -280,6 +285,34 @@ function parseInputHTML(root) {
   }
 }
 
+function getReferenceIndexString(key_idxs) {
+  key_idxs.sort((a,b) => a>b ? 1 : -1);
+  let jump = 0;
+  let str = "";
+  for (let i = 0; i < key_idxs.length; i++) {
+    if (i > 0) {
+      if (key_idxs[i] == key_idxs[i-1] + 1) {
+        jump++;
+      } else {
+        if (jump > 0) {
+          if (jump == 1) str += `, ${key_idxs[i-1]}`;
+          else str += `-${key_idxs[i-1]}`
+        }
+        str += ", " + key_idxs[i];
+        jump = 0;
+      }
+    } else {
+      str = key_idxs[i] + "";
+    }
+
+    if (i == key_idxs.length-1 && jump > 0) {
+      if (jump == 1) str += `, ${key_idxs[i]}`;
+      else str += `-${key_idxs[i]}`
+    }
+  }
+  return str;
+}
+
 let updateReferencesCB = null;
 function addReferenceKeys(root) {
   root.innerHTML = root.innerHTML.replace(/#\[(?:([^\.\]]+)\.)?([^\.\]]+)\]/g, (a,c, b) => {
@@ -289,21 +322,26 @@ function addReferenceKeys(root) {
   if (updateReferencesCB == null) {
     setTimeout(() => {
       let refs = document.querySelectorAll("ref");
-      console.log(refs);
       let indecies = {}
       let refkeys = {};
       for (let ref of refs) {
-        let key = ref.getAttribute("value");
+        let keys = ref.getAttribute("value").split("|");
         let cat = ref.getAttribute("category");
         if (!(cat in indecies)) indecies[cat] = 1;
-        let idx = 1;
-        if (key in refkeys) idx = refkeys[key];
-        else {
-          refkeys[key] = indecies[cat];
-          idx = indecies[cat];
-          indecies[cat]++;
+
+        let key_idxs = [];
+        for (let key of keys) {
+          let idx = 1;
+          if (key in refkeys) {
+            idx = refkeys[key];
+          } else {
+            refkeys[key] = indecies[cat];
+            idx = indecies[cat];
+            indecies[cat]++;
+          }
+          key_idxs.push(idx);
         }
-        ref.innerHTML = idx;
+        ref.innerHTML = getReferenceIndexString(key_idxs);
       }
       updateReferencesCB = null;
     }, 100)

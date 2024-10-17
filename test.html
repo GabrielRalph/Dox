@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script  type = "module">
+    import {child, push, update, get, onValue, onChildAdded, onChildChanged, onChildRemoved, set, off, GoogleAuthProvider, getApp, getDatabase, getAuth, ref, signInWithRedirect, onAuthStateChanged, signInWithPopup } from "./firebase-export.js"
+    let User = null;
+    onAuthStateChanged((user) => {
+        User = user;
+        console.log(User);
+    })
+
+    window.onclick = () => {
+        if (User == null) {
+            let provider = new GoogleAuthProvider();
+            signInWithPopup(provider);
+        }
+
+    }
+</script>
+</html>
