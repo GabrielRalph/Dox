@@ -329,6 +329,24 @@ class SectionImage extends URLSourceNode {
       this.createChild("img", {
         src: url
       });
+      this.setExternalElement(url);
+    }
+  }
+
+
+  async setExternalElement(src){
+    console.log("check external element" ,src);
+    let element = null; 
+    try {
+      let mod = await import(src);
+      element = mod.default;
+      console.log(element);
+    } catch (e) {
+      console.log(e);
+    }
+    if ((element instanceof Element)) {
+      this.innerHTML = "";
+      this.appendChild(element);
     }
   }
 }
